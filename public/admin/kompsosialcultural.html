@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>E-Katalog Kompetensi dan Pengembangan Pegawai</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+  <!-- Animation Css -->
+    <link href="../admin/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Sweet Alert Css -->
+    <link href="../admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!-- Bootstrap Core Css -->
+    <link href="../admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+ <link href="../admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="../admin/plugins/node-waves/waves.css" rel="stylesheet" />
+ <link href="../admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Animation Css -->
+    <link href="../admin/plugins/animate-css/animate.css" rel="stylesheet" />
+   <link href="../admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!-- Morris Chart Css-->
+    <link href="../admin/plugins/morrisjs/morris.css" rel="stylesheet" />
+<link href="../admin/plugins/waitme/waitMe.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="../admin/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../admin/css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+   
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">E-Katalog Kompetensi dan Pengembangan Pegawai
+</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+                    <!-- Tasks -->
+                    
+                    <!-- #END# Tasks -->
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Defrimont Era</div>
+                    <div class="email">defrimont.era@bekraf.go.id</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+           <div class="menu">
+                 <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="index.html">
+                            <i class="material-icons">dashboard</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+ <li>
+                        <a href="profile.html">
+                            <i class="material-icons">account_circle</i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+
+                     <li>
+
+     <!--    <ul>kamuskompetensi.html</ul> -->
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">book</i>
+                            <span>Kamus Kompetensi</span>
+                             <span class="badge bg-orange">8</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="kompcorevalue.html">Kamus Kompetensi Core value</a>
+                            </li>
+                             <li>
+                                <a href="kompmanajerial.html">Kamus Kompetensi Manajerial</a>
+                            </li>
+                             <li class="active">
+                                <a href="kompsosialcultural.html">Kamus Kompetensi Sosial Cultural</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                      <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Karir</span>
+                        </a>
+                             <ul class="ml-menu">
+                            <li>
+                                <a href="#">Pengembangan Kompetensi</a>
+                            </li>
+                             <li>
+                                <a href="rencanapengembangan.html">Rencana Pengembangan Kompetensi</a>
+                            </li>
+                          <!--   <li>
+                                <a href="rencanakarir.html">Rencana Karir</a>
+                            </li>
+                            <li>
+                                <a href="#">Pengembangan Karir</a>
+                            </li>
+                            <li>
+                                <a href="konseling.html">Konseling</a>
+                            </li> -->
+                            
+                        </ul>
+                    </li>  
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">vpn_key</i>
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                   
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">help</i>
+                            <span>Bantuan</span>
+                        </a>
+                    </li>
+                    </ul>
+
+
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    <a href="javascript:void(0);">E-Katalog</a>| Badan Ekonomi Kreatif
+                </div>
+                
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+       
+        <!-- #END# Right Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Kamus Kompetensi Sosial Cultural</h2>
+                  <h5>Badan Ekonomi Kreatif</h5>
+            </div>
+        </div>
+        <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                          Kamus Kompetensi Sosial Cultural
+                            </h2>
+                           
+                        </div>
+                        <div class="body">
+                         <td><button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal">Tambah Data</button></td>
+                         <br></div>
+                             <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kompetensi</th>
+                                            <th>Level</th>
+                                         <th>Indikator Perilaku</th>
+                                         
+                                         <th>Action</th>
+                                         
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                              <th>No</th>
+                                            <th>Kompetensi</th>
+                                            <th>Level</th>
+                                            <th>Indikator Perilaku</th>
+                                           
+                                         <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">INTEGRITAS</button></center></td>
+                                            <td>LEVEL 1 - Mampu bertindak sesuai nilai, norma, etika organisasi dalam kapasitas pribadi
+</td>
+                                           <td><li>1.1. Bertingkah  laku    sesuai  dengan perkataan; berkata sesuai dengan fakta;</li>
+                                            <li>1.2.    Melaksanakan peraturan, kode etik organisasi dalam lingkungan kerja sehari- hari, pada tataran individu/pribadi;</li>
+                                            <li>1.3.    Tidak menjanjikan/memberikan sesuatu yang bertentangan dengan aturan
+organisasi.
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Mampu mengingatkan, mengajak rekan kerja untuk bertindak sesuai nilai, norma, dan etika organisasi
+</td>
+                                 <td><li>2.1.   Mengingatkan rekan kerja untuk bertindak sesuai dengan nilai, norma,  dan etika organisasi dalam segala situasi dan kondisi; Mengajak orang lain untuk bertindak sesuai etika dan kode etik.</li>
+                                <li>2.2.    Menerapkan norma-norma secara konsisten dalam setiap situasi, pada unit kerja terkecil/kelompok kerjanya.</li>
+                            <li>2.3.    Memberikan informasi yang dapat dipercaya sesuai dengan etika organisasi </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                        
+                                              <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Mampu memastikan, menanamkan keyakinan bersama agar anggota yang dipimpin bertindak sesuai nilai, norma, dan etika organisasi, dalam lingkup formal
+</td>
+                                 <td><li>3.1.   Memastikan anggota yang dipimpin bertindak sesuai dengan nilai, norma,  dan etika organisasi dalam segala situasi dan kondisi.</li>
+                                <li>3.2.    Mampu untuk memberi apresiasi dan teguran bagi anggota yang dipimpin agar bertindak selaras dengan nilai, norma, dan etika organisasi dalam segala situasi dan kondisi.</li>
+                            <li>3.3.    Melakukan monitoring dan evaluasi terhadap penerapan sikap integritas di
+dalam unit kerja yang dipimpin.</li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+    <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Mampu menciptakan situasi kerja yang mendorong kepatuhan pada nilai, norma, dan etika organisasi
+</td>
+                                 <td><li>4.1.   Menciptakan situasi kerja yang mendorong seluruh pemangku kepentingan mematuhi nilai, norma, dan etika organisasi dalam segala situasi dan kondisi.</li>
+                                <li>4.2.    Mendukung dan menerapkan prinsip moral dan standar etika yang tinggi, serta berani menanggung konsekuensinya.</li>
+                            <li>4.3.    Berani melakukan koreksi atau mengambil tindakan atas penyimpangan kode etik/nilai-nilai yang dilakukan oleh orang lain, pada tataran lingkup kerja
+setingkat instansi meskipun ada resiko.
+</li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Mampu menjadi role model dalam penerapan standar keadilan dan etika di tingkat nasional
+</td>
+                                 <td><li>5.1.   Mempertahankan tingkat standar keadilan dan etika yang tinggi dalam perkataan dan tindakan sehari-hari yang dipatuhi oleh seluruh pemangku kepentingan pada lingkup instansi yang dipimpinnya.</li>
+                                <li>5.2     Menjadi "role model" / keteladanan dalam penerapan standar keadilan dan etika yang tinggi di tingkat nasional.</li>
+                            <li>5.3     Membuat konsep kebijakan dan strategi penerapan sikap integritas dalam pelaksanaan tugas dan norma-norma yang sejalan dengan nilai strategis
+organisasi. </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                         <tr>
+                                            <td>2</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#kerjasamaModal">KERJASAMA</button></center></td>
+                                            <td>LEVEL 1 - Berpartisipasi dalam kelompok kerja
+</td>
+                                           <td><li>1.1. Berpartisipasi sebagai anggota tim yang baik,   melakukan tugas/bagiannya, dan mendukung keputusan tim;</li>
+                                            <li>1.2.    Mendengarkan dan menghargai masukan dari orang lain dan memberikan usulan-usulan bagi kepentingan tim;</li>
+                                            <li>1.3.    Mampu menjalin interaksi sosial untuk penyelesaian tugas
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Menumbuhkan tim kerja yang partisipatif dan efektif
+
+</td>
+                             <td><li>2.1.   Membantu orang lain dalam menyelesaikan tugas-tugas mereka untuk mendukung sasaran tim;</li>
+                                <li>2.2.    Berbagi informasi yang relevan atau bermanfaat pada anggota tim; mempertimbangkan masukan dan keahlian anggota dalam tim/kelompok kerja serta bersedia untuk belajar dari orang lain;</li>
+                            <li>2.3.    Membangun komitmen yang tinggi untuk menyelesaikan tugas tim.
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                           <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Efektif membangun tim kerja untuk peningkatan kinerja organisasi
+
+</td>
+                             <td><li>3.1.   Melihat kekuatan/kelemahan anggota tim, membentuk tim yang tepat, mengantisipasi    kemungkinan hambatan, dan mencari solusi yang optimal</li>
+                                <li>3.2.    Mengupayakan dan mengutamakan pengambilan keputusan berdasarkan usulan-usulan anggota tim/kelompok, bernegosiasi secara efektif untuk upaya penyelesaikan pekerjaan yang menjadi target kinerja kelompok dan/atau unit kerja</li>
+                            <li>3.3.       Membangun aliansi dengan para pemangku kepentingan dalam rangka mendukung penyelesaian target kerja kelompok
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Membangun komitmen tim, sinergi
+
+</td>
+                             <td><li>4.1.   Membangun sinergi antar unit kerja di lingkup instansi yang dipimpin</li>
+                                <li>4.2.    Memfasilitasi kepentingan yang berbeda dari unit kerja lain sehingga tercipta sinergi dalam rangka pencapaian target kerja organisasi.</li>
+                            <li>4.3.    Mengembangkan sistem yang menghargai kerja sama antar unit, memberikan dukungan / semangat untuk memastikan tercapainya sinergi dalam rangka pencapaian target kerja organisasi.
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Menciptakan situasi kerja sama secara konsisten, baik di dalam maupun di luar instansi
+
+</td>
+                             <td><li>5.1.   Menciptakan hubungan kerja yang konstruktif dengan  menerapkan norma / etos / nilai-nilai kerja yang baik di dalam dan di luar organisasi; meningkatkan produktivitas dan menjadi panutan dalam organisasi</li>
+                                <li>5.2.    Secara konsisten menjaga sinergi agar pemangku kepentingan dapat bekerja sama dengan orang di dalam maupun di luar organisasi.</li>
+                            <li>5.3.    Membangun konsensus untuk menggabungkan sumberdaya dari berbagai pemangku kepentingan
+untuk tujuan bangsa dan negara.
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#komunikasiModal">KOMUNIKASI</button></center></td>
+                                            <td>LEVEL 1 - Menyampaikan informasi dengan jelas, lengkap, pemahaman yang sama
+
+</td>
+                                           <td><li>1.1. Menyampaikan informasi (data), pikiran atau pendapat dengan jelas, singkat dan tepat dengan menggunakan cara/media yang sesuai dan mengikuti alur yang logis;</li>
+                                            <li>1.2.    Memastikan pemahaman yang sama atas instruksi yang diterima/ diberikan</li>
+                                            <li>1.3.    Mampu melaksanakan kegiatan surat menyurat sesuai tata naskah organisasi.
+
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Aktif menjalankan komunikasi secara formal dan informal; Bersedia mendengarkan orang lain, menginterpretasikan pesan dengan respon yang sesuai, mampu menyusun materi presentasi, pidato, naskah, laporan, dll
+
+
+</td>
+                             <td><li>2.1.   Menggunakan gaya komunikasi informal untuk meningkatkan hubungan profesional;</li>
+                                <li>2.2.    Mendengarkan pihak lain secara aktif; menangkap dan menginterpretasikan pesan-pesan dari orang lain, serta memberikan respon yang sesuai;</li>
+                            <li>2.3.    Membuat materi presentasi, pidato, draft naskah, laporan dll sesuai arahan pimpinan.
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Berkomunikasi secara asertif, terampil berkomunikasi lisan/ tertulis untuk menyampaikan informasi yang sensitif/ rumit/kompleks
+</td>
+                             <td><li>3.1.   Menyampaikan suatu informasi yang sensitif/rumit dengan cara penyampaian dan kondisi yang tepat, sehingga dapat dipahami dan diterima oleh pihak lain;</li>
+                                <li>3.2.    Menyederhanakan topik yang rumit dan sensitif sehingga lebih mudah dipahami dan diterima orang lain;</li>
+                            <li>3.3.    Membuat laporan tahunan/periodik/naskah/dokumen/ proposal yang kompleks; Membuat surat resmi yang sistematis dan tidak menimbulkan pemahaman yang berbeda; membuat proposal yang rinci
+dan lengkap;
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Mampu mengemukakan pemikiran multidimensi secara lisan dan tertulis untuk mendorong kesepakatan dengan tujuan meningkatkan
+kinerja secara keseluruhan
+
+</td>
+                             <td><li>4.1.   Mengintegrasikan informasi-informasi penting dari berbagai sumber dengan pihak lain untuk mendapatkan pemahaman yang sama;</li>
+                                <li>4.2.    Menuangkan pemikiran/konsep dari berbagai sudut pandang/ multidimensi dalam bentuk tulisan formal;</li>
+                            <li>4.3.    Menyampaikan informasi secara persuasif untuk mendorong
+pemangku kepentingan sepakat pada langkah-langkah bersama dengan tujuan meningkatkan kinerja secara keseluruhan.
+
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Menggagas sistem komunikasi yang terbuka secara strategis untuk mencari solusi dengan tujuan meningkatkan kinerja
+
+
+</td>
+                             <td><li>5.1.   Menghilangkan hambatan komunikasi, mampu berkomunikasi dalam isu-isu nasional yang memiliki resiko tinggi, menggalang hubungan dalam skala strategis di tingkat nasional</li>
+                                <li>5.2.    Menggunakan saluran komunikasi formal dan non formal guna mencapai kesepakatan dengan tujuan meningkatkan kinerja di tingkat instansi/nasional</li>
+                            <li>5.3.    Menggagas sistem komunikasi dengan melibatkan pemangku kepentingan sejak dini untuk mencari solusi
+dengan tujuan meningkatkan kinerja di tingkat instansi/nasional
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+ <tr>
+                                            <td>4</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#orientasiModal">ORIENTASI PADA HASIL</button></center></td>
+                                            <td>LEVEL 1 - Betanggung jawab untuk memenuhi standar kerja
+
+</td>
+                                           <td><li>1.1. Menyelesaikan tugas dengan tuntas; dapat diandalkan;</li>
+                                            <li>1.2.    Bekerja dengan teliti dan hati-hati guna meminimalkan kesalahan dengan mengacu pada standar kualitas (SOP).</li>
+                                            <li>1.3.    Bersedia menerima masukan, mengikuti contoh cara bekerja yang lebih efektif, efisien di lingkungan kerjanya.
+
+
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Berupaya meningkatkan hasil kerja pribadi yang lebih tinggi dari standar yang ditetapkan, mencari, mencoba metode alternatif untuk peningkatan kinerja
+
+
+</td>
+                             <td><li>2.1.   Menetapkan dan berupaya mencapai standar kerja pribadi yang lebih tinggi dari standar kerja yang ditetapkan organisasi</li>
+                                <li>2.2.    Mencari, mencoba metode kerja alternatif untuk meningkatkan hasil kerjanya.
+</li>
+                            <li>2.3 Memberi contoh kepada orang-orang di unit kerjanya untuk mencoba menerapkan metode kerja yang lebih efektif yang sudah dilakukannya.
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Menetapkan target kerja yang menantang bagi unit kerja, memberi apresiasi dan teguran untuk mendorong kinerja
+
+
+</td>
+                             <td><li>3.1.   Menetapkan target kinerja unit yang lebih tinggi dari target yang ditetapkan organisasi.</li>
+                                <li>3.2.    Memberikan apresiasi dan teguran untuk mendorong pencapaian hasil unit kerjanya.
+</li>
+                            <li>3.3.    Mengembangkan metode kerja yang lebih efektif dan efisien untuk mencapai target kerja unitnya.
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+ <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Mendorong unit kerja mencapai target yang ditetapkan atau melebihi hasil kerja sebelumnya
+
+
+</td>
+                             <td><li>4.1.   Mendorong unit kerja di tingkat instansi untuk mencapai kinerja yang melebihi target yang ditetapkan.</li>
+                                <li>4.2.    Memantau dan mengevaluasi hasil kerja unitnya agar selaras dengan sasaran strategis instansi.
+</li>
+                            <li>4.3.    Mendorong pemanfaatan sumber daya bersama antar unit kerja dalam rangka meningkatkan efektifitas dan efisiensi pencaian target organisasi
+
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+<tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Meningkatkan mutu pencapaian kerja organisasi
+
+
+</td>
+                             <td><li>5.1.   Memastikan kualitas sesuai standar dan keberlanjutan hasil kerja organisasi yang memberi kontribusi pada pencapaian target prioritas nasional.</li>
+                                <li>5.2.    Memastikan tersedianya sumber daya organisasi untuk menjamin tercapainya target prioritas instansi/nasional.
+</li>
+                            <li>5.3.  Membuat kebijakan untuk menerapkan metode kerja yang lebih efektif-efisien dalam mencapai tujuan
+prioritas nasional
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                        
+
+                                         <tr>
+                                            <td>5</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#pelayananModal">PELAYANAN PUBLIK</button></center></td>
+                                            <td>LEVEL 1 - Menjalankan tugas mengikuti standar pelayanan.
+
+</td>
+                                           <td><li>1.1. Mampu mengerjakan tugas-tugas dengan mengikuti standar pelayanan yang objektif, netral, tidak memihak, tidak diskriminatif, transparan dan tidak terpengaruh kepentingan pribadi/kelompok/partai politik.</li>
+                                            <li>1.2.    Melayani kebutuhan, permintaan dan keluhan pemangku kepentingan</li>
+                                            <li>1.3.    Menyelesaikan masalah dengan tepat tanpa bersikap membela diri dalam kapasitas sebagai pelaksana pelayanan publik.
+
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Mampu mensupervisi/meng awasi/menyelia dan menjelaskan proses pelaksanaan tugas tugas pemerintahan/pelayanan publik secara
+transparan
+
+
+
+</td>
+                             <td><li>2.1    Menunjukan sikap yakin dalam mengerjakan    tugas-tugas pemerintahan/pelayanan      publik, mampu menyelia dan menjelaskan secara obyektif bila ada yang mempertanyakan kebijakan yang diambil;</li>
+                                <li>2.2 Secara aktif mencari informasi untuk mengenali kebutuhan pemangku kepentingan agar dapat menjalankan pelaksanaan tugas pemerintahan, pembangunan dan pelayanan publik secara cepat dan tanggap;
+</li>
+                            <li>2.3 Mampu mengenali dan memanfaatkan kebiasaan, tatacara, situasi tertentu sehingga apa yang disampaikan menjadi perhatian pemangku kepentingan dalam hal penyelesaian tugas-tugas pemerintahan, pembangunan dan pelayanan publik
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                           <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Mampu memanfaatkan kekuatan kelompok serta memperbaiki standar pelayanan publik di lingkup unit kerja
+
+
+
+
+</td>
+                             <td><li>3.1.   Memahami, mendeskripsikan pengaruh dan hubungan/kekuatan kelompok yang sedang berjalan di organisasi (aliansi atau persaingan), dan dampaknya terhadap unit kerja untuk menjalankan tugas pemerintahan secara profesional dan netral, tidak memihak;</li>
+                                <li>3.2.    Menggunakan keterampilan dan pemahaman lintas organisasi untuk secara efektif memfasilitasi kebutuhan kelompok yang lebih besar dengan cara-cara yang mengikuti standar objektif, transparan, profesional, sehingga tidak merugikan para pihak di lingkup pelayanan publik unit kerjanya;
+</li>
+                            <li>3.3.    Mengimplementasikan cara-cara yang efektif untuk memantau dan mengevaluasi masalah yang dihadapi pemangku kepentingan/masyarakat serta mengantisipasi kebutuhan mereka saat menjalankan tugas pelayanan publik di unit kerjanya.
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+<tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Mampu memonitor, mengevaluasi, memperhitungkan dan mengantisipasi dampak dari isu-isu jangka panjang, kesempatan, atau kekuatan politik dalam hal pelayanan kebutuhan pemangku kepentingan yang transparan, objektif, dan profesional
+
+
+
+
+</td>
+                             <td><li>4.1.   Memahami dan memberi perhatian kepada isu-isu jangka panjang, kesempatan atau kekuatan politik yang mempengaruhi organisasi dalam hubungannya dengan dunia luar, memperhitungkan dan mengantisipasi dampak terhadap pelaksanaan tugas- tugas pelayanan publik secara objektif, transparan, dan professional dalam lingkup organisasi;</li>
+                                <li>4.2.    Menjaga agar kebijakan pelayanan publik yang diselenggarakan oleh instansinya telah selaras dengan standar pelayanan yang objektif, netral, tidak memihak, tidak diskriminatif, serta tidak terpengaruh kepentingan pribadi/kelompok/partai politik;
+</li>
+                            <li>4.3.    Menerapkan strategi jangka panjang yang berfokus pada pemenuhan kebutuhan pemangku kepentingan dalam menyusun kebijakan dengan mengikuti standar objektif,  netral, tidak memihak, tidak diskriminatif, transparan, tidak terpengaruh kepentingan pribadi/kelompok.
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                          <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Mampu memastikan kebijakan kebijakan pelayanan publik yang menjamin terselenggaranya pelayanan publik yang objektif, netral, tidak memihak, tidak diskriminatif, serta tidak terpengaruh kepentingan pribadi/kelompok/p artai politik.
+
+
+
+
+</td>
+                             <td><li>5.1.   Mampu menciptakan kebijakan kebijakan pelayanan publik yang menjamin terselenggaranya pelayanan publik yang objektif, netral, tidak memihak, tidak diskriminatif, serta tidak terpengaruh kepentingan pribadi/kelompok/partai politik.</li>
+                                <li>5.2.    Menginternalisasikan nilai dan semangat pelayanan publik yang mengikuti standar objektif,  netral, tidak memihak, tidak diskriminatif, transparan, tidak terpengaruh kepentingan pribadi/kelompok kepada setiap individu di lingkungan instansi/nasional.
+</li>
+                            <li>5.3.    Menjamin terselenggaranya pelayanan publik yang objektif, netral, tidak memihak, tidak diskriminatif, serta tidak terpengaruh kepentingan pribadi/kelompok/partai politik.
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                         <tr>
+                                            <td>6</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#pengembanganModal">PENGEMBANGAN DIRI DAN ORANG LAIN</button></center></td>
+                                            <td>LEVEL 1 - Pengembangan diri
+
+</td>
+                                           <td><li>1.1. Mengidentifikasi    kebutuhan pengembangan diri dan menyeleksi sumber serta metodologi pembelajaran yang diperlukan</li>
+                                            <li>1.2.    Menunjukkan usaha mandiri untuk mempelajari keterampilan atau kemampuan baru dari berbagai media pembelajaran</li>
+                                            <li>1.3.    Berupaya meningkatkan diri dengan belajar dari orang-orang lain yang berwawasan luas di dalam organisasi.
+
+
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Meningkatkan kemampuan bawahan dengan memberikan contoh dan penjelasan cara melaksanakan suatu pekerjaan
+
+
+
+
+</td>
+                             <td><li>2.1.   Meningkatkan kemampuan bawahan dengan memberikan contoh, instruksi, penjelasan dan petunjuk praktis yang jelas kepada bawahan dalam menyelesaikan suatu pekerjaan.</li>
+                                <li>2.2.  Membantu bawahan untuk mempelajari proses, program atau sistem baru
+</li>
+                            <li>2.3. Menggunakan metode lain untuk meyakinkan bahwa orang lain telah memahami penjelasan atau pengarahan
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                             <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Memberikan umpan balik, membimbing
+
+
+
+
+</td>
+                             <td><li>3.1.   Memberikan tugas-tugas yang menantang pada bawahan sebagai media belajar untuk mengembangkan kemampuannya.</li>
+                                <li>3.2.    Mengamati   bawahan dalam mengerjakan tugasnya dan memberikan umpan balik yang objektif dan jujur; melakukan diskusi dengan bawahan untuk memberikan bimbingan dan umpan balik yang berguna bagi bawahan.
+</li>
+                            <li>3.3.    Mendorong kepercayaan diri bawahan; memberikan kepercayaan penuh pada bawahan untuk mengerjakan tugas dengan caranya sendiri; memberi kesempatan dan membantu bawahan menemukan peluang untuk berkembang
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Menyusun program pengembangan jangka panjang dalam rangka mendorong manajemen pembelajaran
+
+
+
+
+
+</td>
+                             <td><li>4.1.   Menyusun program pengembangan jangka panjang bersama-sama dengan bawahan, termasuk didalamnya penetapan tujuan, bimbingan, penugasan dan pengalaman lainnya, serta mengalokasikan waktu untuk mengikuti pelatihan/pendidikan/ pengembangan kompetensi dan karir;</li>
+                                <li>4.2.    Melaksanakan    manajemen pembelajaran termasuk evaluasi dan umpan balik pada tataran organisasi;
+</li>
+                            <li>4.3.    Mengembangkan   orang-orang disekitarnya secara konsisten, melakukan kaderisasi untuk posisi-
+posisi di unit kerjanya.
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+
+  <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Menciptakan situasi yang mendorong organisasi untuk mengembangkan kemampuan belajar secara berkelanjutan dalam rangka
+mendukung pencapaian hasil
+</td>
+                             <td><li>5.1.   Menciptakan situasi yang mendorong individu, kelompok, unit kerja untuk mengembangkan kemampuan belajar secara berkelanjutan di tingkat instansi;</li>
+                                <li>5.2.    Merekomendasikan/memberikan penghargaan bagi upaya pengembangan yang berhasil, memastikan dukungan bagi orang lain dalam mengembangkan kemampuan dalam unit kerja di tingkat instansi;
+</li>
+                            <li>5.3.    Memberikan inspirasi kepada individu atau kelompok untuk belajar secara berkelanjutan dalam penerapan di tingkat instansi.
+
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+ <tr>
+                                            <td>7</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#perubahanModal">MENGELOLA PERUBAHAN</button></center></td>
+                                            <td>LEVEL 1 - Mengikuti perubahan dengan arahan
+
+</td>
+                                           <td><li>1.1. Sadar mengenai perubahan  yang  terjadi di organisasi dan berusaha menyesuaikan diri dengan perubahan tersebut</li>
+                                            <li>1.2.    Mengikuti perubahan secara terbuka sesuai petunjuk/pedoman.</li>
+                                            <li>1.3.    Menyesuaikan cara kerja lama dengan menerapkan metode/proses baru dengan bimbingan orang lain.
+
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                          <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Proaktif beradaptasi mengikuti perubahan
+</td>
+                             <td><li>2.1.   Menyesuaikan cara kerja lama dengan menerapkan metode/proses baru selaras dengan ketentuan yang berlaku tanpa arahan orang lain</li>
+                                <li>2.2.    Mengembangkan kemampuan diri untuk menghadapi perubahan
+</li>
+                            <li>2.3.    Cepat dan tanggap dalam menerima perubahan
+
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                          <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Membantu orang lain mengikuti perubahan, mengantisipasi perubahan secara tepat
+                             <td><li>3.1.   Membantu orang lain dalam melakukan perubahan</li>
+                                <li>3.2.    Menyesuaikan prioritas kerja secara berulang-ulang jika diperlukan
+</li>
+                            <li>3.3.    Mengantisipasi perubahan yang dibutuhkan oleh unit kerjanya secara tepat. Memberikan solusi efektif
+terhadap masalah yang ditimbulkan oleh adanya perubahan </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                        <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Memimpin perubahan pada unit kerja
+                             <td><li>4.1.   Mengarahkan unit kerja untuk lebih siap dalam menghadapi perubahan termasuk memitigasi risiko yang mungkin terjadi;</li>
+                                <li>4.2.    Memastikan perubahan sudah diterapkan secara aktif di lingkup unit kerjanya secara berkala;
+</li>
+                            <li>4.3.    Memimpin dan memastikan penerapan program-program perubahan selaras antar unit kerja.
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Memimpin, menggalang dan menggerakkan dukungan pemangku kepentingan untuk menjalankan perubahan secara berkelanjutan pada tingkat instansi/nasional
+                             <td><li>5.1.   Membuat kebijakan-kebijakan yang mendorong perubahan  yang berdampak pada pencapaian sasaran prioritas nasional;</li>
+                                <li>5.2.    Menggalang dan menggerakkan dukungan para pemangku kepentingan untuk    mengimplementasikan perubahan yang telah ditetapkan
+</li>
+                            <li>5.3.    Secara berkelanjutan, mencari cara- cara baru untuk memberi nilai tambah bagi perubahan yang tengah dijalankan agar memberi manfaat yang lebih besar bagi para pemangku kepentingan.
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#pengambilanModal">PENGAMBILAN KEPUTUSAN</button></center></td>
+                                            <td>LEVEL 1 - Mengumpulkan informasi untuk bertindak sesuai kewenangan
+
+</td>
+                                           <td><li>1.1. Mengumpulkan    dan mempertimbangkan informasi yang dibutuhkan dalam mencari solusi.</li>
+                                            <li>1.2.    Mengenali situasi/pilihan yang tepat untuk bertindak sesuai kewenangan.</li>
+                                            <li>1.3.    Mempertimbangkan kemungkinan solusi yang dapat diterapkan dalam pekerjaan rutin berdasarkan kebijakan dan prosedur yang telah ditentukan.
+
+
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                            <button type="button" class="btn btn-danger waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                          <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 2 - Menganalisis masalah secara mendalam
+                             <td><li>2.1.   Melakukan analisis secara mendalam terhadap informasi yang tersedia dalam upaya mencari solusi.</li>
+                                <li>2.2.    Mempertimbangkan berbagai alternatif yang ada sebelum membuat kesimpulan;
+</li>
+                            <li>2.3.    Membuat keputusan operasional berdasarkan kesimpulan dari berbagai sumber informasi sesuai dengan pedoman yang ada.
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                           <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 3 - Membandingkan berbagai alternatif, menyeimbangkan risiko keberhasilan dalam implementasi
+
+                             <td><li>3.1.   Membandingkan berbagai alternatif tindakan dan implikasinya,</li>
+                                <li>3.2.    Memilih alternatif solusi yang terbaik, membuat keputusan operasional mengacu pada alternatif solusi terbaik yang didasarkan pada analisis data yang sistematis, seksama, mengikuti prinsip kehati-hatian.
+</li>
+                            <li>3.3.    Menyeimbangkan antara kemungkinan risiko dan keberhasilan dalam implementasinya.
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+                                         <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 4 - Menyelesaikan masalah yang mengandung risiko tinggi, mengantisipasi dampak keputusan, membuat tindakan pengamanan; mitigasi risiko
+
+
+                             <td><li>4.1.   Menyusun dan/atau memutuskan konsep penyelesaian masalah yang melibatkan beberapa/seluruh fungsi dalam organisasi.</li>
+                                <li>4.2.    Menghasilkan solusi dari berbagai masalah yang kompleks, terkait dengan bidang kerjanya yang berdampak pada pihak lain.
+</li>
+                            <li>4.3.    Membuat keputusan dan mengantisipasi dampak keputusannya serta menyiapkan tindakan penanganannya (mitigasi risiko)
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+                                          <tr>
+                                            <td>  </td>
+                                            <td>  </td>
+  <td>LEVEL 5 - Menghasilkan solusi dan mengambil keputusan untuk mengatasi permasalahan jangka panjang/strategis, berdampak nasional
+
+                             <td><li>5.1.   Menghasilkan solusi yang dapat mengatasi permasalahan jangka panjang.</li>
+                                <li>5.2.    Menghasilkan solusi strategis yang berdampak    pada    tataran instansi/nasional.
+</li>
+                            <li>5.3.    Membuat keputusan atau kebijakan yang berdampak nasional dengan memitigasi risiko yang mungkin timbul.
+
+
+ </li>
+
+                                           </td>
+                                        
+                                          
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #END# Multi Column -->
+       
+
+
+                            </div>
+                  
+                    
+                                </div>
+                                
+                
+            </div>
+            </div>
+
+
+
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
+                            vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
+                            Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
+                            nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
+                            Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<div class="modal fade" id="IntegritasModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+                           Konsisten berperilaku selaras dengan nilai, norma dan/atau etika organisasi, dan jujur dalam hubungan dengan manajemen, rekan kerja,  bawahan langsung, dan pemangku kepentingan, menciptakan budaya etika tinggi, bertanggungjawab atas tindakan atau keputusan beserta risiko yang menyertainya.
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+             <div class="modal fade" id="kerjasamaModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+                         Kemampuan  menjalin,   membina, mempertahankan hubungan kerja yang efektif, memiliki komitmen saling membantu dalam penyelesaian tugas, dan mengoptimalkan segala sumberdaya untuk mencapai tujuan strategis organisasi.
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="komunikasiModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+                      Kemampuan untuk menerangkan pandangan dan gagasan secara jelas, sistematis disertai argumentasi yang logis dengan cara-cara yang sesuai baik secara lisan maupun tertulis; memastikan pemahaman; mendengarkan secara aktif dan efektif; mempersuasi, meyakinkan dan membujuk orang lain dalam rangka mencapai tujuan organisasi.
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="modal fade" id="orientasiModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+             Kemampuan mempertahankan komitmen pribadi yang tinggi untuk menyelesaikan tugas, dapat diandalkan, bertanggung jawab, mampu secara sistimatis mengidentifikasi risiko dan peluang dengan memperhatikan keterhubungan antara perencanaan dan hasil, untuk keberhasilan organisasi.
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="modal fade" id="pelayananModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+            Kemampuan dalam melaksanakan tugas-tugas pemerintahan, pembangunan dan kegiatan pemenuhan kebutuhan pelayanan publik secara profesional, transparan, mengikuti standar pelayanan yang objektif, netral, tidak memihak, tidak diskriminatif, serta tidak terpengaruh kepentingan pribadi/kelompok/golongan/partai politik
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="modal fade" id="pengembanganModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+           Kemampuan untuk meningkatkan pengetahuan dan menyempurnakan keterampilan diri; menginspirasi orang lain untuk mengembangkan dan menyempurnakan pengetahuan dan keterampilan yang relevan dengan pekerjaan dan pengembangan karir jangka panjang, mendorong kemauan belajar sepanjang hidup, memberikan saran/bantuan, umpan balik, bimbingan untuk membantu orang lain untuk mengembangkan potensi dirinya.
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="perubahanModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+          Kemampuan dalam menyesuaikan diri dengan situasi yang baru atau berubah dan tidak bergantung secara berlebihan pada metode dan proses lama, mengambil tindakan untuk mendukung dan melaksanakan insiatif perubahan, memimpin usaha perubahan, mengambil tanggung jawab pribadi untuk memastikan perubahan berhasil diimplementasikan secara efektif.
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="pengambilanModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+          Kemampuan membuat keputusan yang baik secara tepat waktu dan dengan keyakinan diri setelah mempertimbangkan prinsip kehati-hatian, dirumuskan secara sistematis dan seksama berdasarkan berbagai informasi, alternatif pemecahan masalah dan konsekuensinya, serta bertanggung jawab atas keputusan yang diambil.
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+        
+     
+
+    <!-- Jquery Core Js -->
+    <script src="../admin/plugins/jquery/jquery.min.js"></script>
+  <script src="../admin/plugins/waitme/waitMe.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="../admin/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+ 
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../admin/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="../admin/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="../admin/plugins/raphael/raphael.min.js"></script>
+    <script src="../admin/plugins/morrisjs/morris.js"></script>
+<script src="../admin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- ChartJs -->
+    <script src="../admin/plugins/chartjs/Chart.bundle.js"></script>
+ <script src="../admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../admin/js/admin.js"></script>
+        <script src="../admin/js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../admin/js/demo.js"></script>
+    <!-- Flot Charts Plugin Js -->
+    <script src="../admin/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="../admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="../admin/js/pages/cards/colored.js"></script>
+
+    <!-- Custom Js -->
+  
+    <script src="../admin/js/pages/index.js"></script>
+
+ <script src="../admin/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- Demo Js -->
+    <script src="../admin/js/demo.js"></script>
+   
+    <!-- Jquery Validation Plugin Css -->
+    <script src="../admin/plugins/jquery-validation/jquery.validate.js"></script>
+<script src="../admin/js/pages/forms/form-wizard.js"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="../admin/plugins/jquery-steps/jquery.steps.js"></script>
+  <script src="../admin/js/admin.js"></script>
+     <script src="../admin/plugins/jquery-validation/jquery.validate.js"></script>
+      <script src="../admin/js/pages/forms/form-wizard.js"></script>
+      <script src="../admin/js/admin.js"></script>
+
+  <script src="../admin/js/pages/forms/basic-form-elements.js"></script>
+   <script src="../admin/js/pages/ui/modals.js"></script>
+</body>
+
+</html>

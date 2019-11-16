@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>E-Katalog Kompetensi dan Pengembangan Pegawai</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+  <!-- Animation Css -->
+    <link href="../admin/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Sweet Alert Css -->
+    <link href="../admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!-- Bootstrap Core Css -->
+    <link href="../admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+ <link href="../admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="../admin/plugins/node-waves/waves.css" rel="stylesheet" />
+ <link href="../admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Animation Css -->
+    <link href="../admin/plugins/animate-css/animate.css" rel="stylesheet" />
+   <link href="../admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!-- Morris Chart Css-->
+    <link href="../admin/plugins/morrisjs/morris.css" rel="stylesheet" />
+<link href="../admin/plugins/waitme/waitMe.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="../admin/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../admin/css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+   
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">E-Katalog Kompetensi dan Pengembangan Pegawai</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+                    <!-- Tasks -->
+                    
+                    <!-- #END# Tasks -->
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Defrimont Era</div>
+                    <div class="email">defrimont.era@bekraf.go.id</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+           <div class="menu">
+                 <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="index.html">
+                            <i class="material-icons">dashboard</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+ <li>
+                        <a href="profile.html">
+                            <i class="material-icons">account_circle</i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                      <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Karir</span>
+                        </a>
+                             <ul class="ml-menu">
+                            <li>
+                                <a href="#">Pengembangan Kompetensi</a>
+                            </li>
+                             <li class="active">
+                                <a href="rencanapengembangan.html">Rencana Pengembangan Kompetensi</a>
+                            </li>
+                          <!--   <li>
+                                <a href="rencanakarir.html">Rencana Karir</a>
+                            </li>
+                            <li>
+                                <a href="#">Pengembangan Karir</a>
+                            </li>
+                            <li>
+                                <a href="konseling.html">Konseling</a>
+                            </li> -->
+                            
+                        </ul>
+                    </li>  
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">vpn_key</i>
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="kamuskompetensi.html">
+                            <i class="material-icons">book</i>
+                            <span>Kamus Kompetensi</span>
+                             <span class="badge bg-orange">8</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">help</i>
+                            <span>Bantuan</span>
+                        </a>
+                    </li>
+                    </ul>
+
+
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    <a href="javascript:void(0);">E-Katalog</a>| Badan Ekonomi Kreatif
+                </div>
+                
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+       
+        <!-- #END# Right Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Pengembangan Karir : </h2>
+                  <h5>Kepala Subbagian Peraturan Kepegawaian</h5>
+            </div>
+        </div>
+       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                         <div class="header">
+                            <h2>
+                            Pengembangan Karir : Kepala Subbagian Peraturan Kepegawaian
+                            </h2>
+                            
+                        </div>
+                     
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>Kode Kompetensi</th>
+                                            <th>Nama Kompetensi</th>
+                                            <th>Capaian Kompetensi Pegawai</th>
+                                            <th>Standar Kompetensi Jabatan</th>
+                                           
+                                              <th><center>Gap Kompetensi</center></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                           <th>Kode Kompetensi</th>
+                                            <th>Nama Kompetensi</th>
+                                            <th>Capaian Kompetensi Pegawai</th>
+                                            <th>Standar Kompetensi Jabatan</th>
+                                           
+                                              <th><center>Gap Kompetensi</center></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                          <tr>
+
+                                            <td colspan="5" style="background-color: #ae1556;"><font color="white">INTI</font></td>
+                                                                                     
+                  
+                                        </tr>
+                                        <tr>
+                                            <td>KTO</td>
+                                            <td>Komitmen Terhadap Organisasi</td>
+                                            <td>1</td>
+                                            
+                                              <td>2</td>
+                                        <td style="background-color: red;"><center><font color="white">-1 <button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                    </button></center></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EMP</td>
+                                            <td>EMPATI</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                                         <td style="background-color: orange;"><center><font color="white">0  <button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                        <tr>
+                                            <td>INV</td>
+                                            <td>Inovasi</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                          
+                                                          <td style="background-color: orange;"><center><font color="white">0  <button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                        <tr>
+                                            <td>KPP</td>
+                                            <td>Kepemimpinan</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td style="background-color: red;"><center><font color="white">-1 <button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                          <tr>
+
+                                            <td colspan="5" style="background-color: #ae1556;"><font color="white">MANAJERIAL</font></td>
+                                                                                     
+                  
+                                        </tr>
+                                       <tr>
+                                            <td>M.01</td>
+                                            <td>Integritas</td>
+                                            <td>2</td>
+                                            
+                                              <td>2</td>
+                                        <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                    </button></center></td>
+                                        </tr>
+                                        <tr>
+                                            <td>M.02</td>
+                                            <td>Kerjasama</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                                         <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                      
+                                        <tr>
+                                            <td>M.03</td>
+                                            <td>Komunikasi</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+
+ <tr>
+                                            <td>M.04</td>
+                                            <td>Orientasi Pada Hasil</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                         <tr>
+                                            <td>M.05</td>
+                                            <td>Pelayanan Publik</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+ <tr>
+                                            <td>M.06</td>
+                                            <td>Pengembangan diri dan Orang Lain</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+
+                                         <tr>
+                                            <td>M.07</td>
+                                            <td>Mengelola Perubahan</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                         <tr>
+                                            <td>M.08</td>
+                                            <td>Pengambilan Keputusan</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                           
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>
+                                          <tr>
+
+                                            <td colspan="5" style="background-color: #ae1556;"><font color="white">KOMPETENSI SOSIAL KULTURAL</font></td>
+                                                              <tr>
+                                            <td>SK.01</td>
+                                            <td>Perekat Bangsa</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                          
+                                                          <td><center><button type="button" class="btn btn-warning btn-circle waves-effect waves-float waves-circle waves-float" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">visibility</i>
+                                        </tr>                        
+                  
+                                        </tr>
+            <!-- #END# Multi Column -->
+       
+
+
+                            </div>
+                  
+                    
+                                </div>
+                                
+                
+            </div>
+            </div>
+
+
+
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales orci ante, sed ornare eros vestibulum ut. Ut accumsan
+                            vitae eros sit amet tristique. Nullam scelerisque nunc enim, non dignissim nibh faucibus ullamcorper.
+                            Fusce pulvinar libero vel ligula iaculis ullamcorper. Integer dapibus, mi ac tempor varius, purus
+                            nibh mattis erat, vitae porta nunc nisi non tellus. Vivamus mollis ante non massa egestas fringilla.
+                            Vestibulum egestas consectetur nunc at ultricies. Morbi quis consectetur nunc.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+        
+     
+
+    <!-- Jquery Core Js -->
+    <script src="../admin/plugins/jquery/jquery.min.js"></script>
+  <script src="../admin/plugins/waitme/waitMe.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="../admin/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+ 
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../admin/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="../admin/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="../admin/plugins/raphael/raphael.min.js"></script>
+    <script src="../admin/plugins/morrisjs/morris.js"></script>
+<script src="../admin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- ChartJs -->
+    <script src="../admin/plugins/chartjs/Chart.bundle.js"></script>
+ <script src="../admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../admin/js/admin.js"></script>
+        <script src="../admin/js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../admin/js/demo.js"></script>
+    <!-- Flot Charts Plugin Js -->
+    <script src="../admin/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="../admin/plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="../admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="../admin/js/pages/cards/colored.js"></script>
+
+    <!-- Custom Js -->
+  
+    <script src="../admin/js/pages/index.js"></script>
+
+ <script src="../admin/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- Demo Js -->
+    <script src="../admin/js/demo.js"></script>
+   
+    <!-- Jquery Validation Plugin Css -->
+    <script src="../admin/plugins/jquery-validation/jquery.validate.js"></script>
+<script src="../admin/js/pages/forms/form-wizard.js"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="../admin/plugins/jquery-steps/jquery.steps.js"></script>
+  <script src="../admin/js/admin.js"></script>
+     <script src="../admin/plugins/jquery-validation/jquery.validate.js"></script>
+      <script src="../admin/js/pages/forms/form-wizard.js"></script>
+      <script src="../admin/js/admin.js"></script>
+
+  <script src="../admin/js/pages/forms/basic-form-elements.js"></script>
+   <script src="../admin/js/pages/ui/modals.js"></script>
+</body>
+
+</html>

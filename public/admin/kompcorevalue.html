@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>E-Katalog Kompetensi dan Pengembangan Pegawai</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+  <!-- Animation Css -->
+    <link href="../admin/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Sweet Alert Css -->
+    <link href="../admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <!-- Bootstrap Core Css -->
+    <link href="../admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+ <link href="../admin/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="../admin/plugins/node-waves/waves.css" rel="stylesheet" />
+ <link href="../admin/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Animation Css -->
+    <link href="../admin/plugins/animate-css/animate.css" rel="stylesheet" />
+  
+    <!-- Morris Chart Css-->
+    <link href="../admin/plugins/morrisjs/morris.css" rel="stylesheet" />
+<link href="../admin/plugins/waitme/waitMe.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="../admin/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../admin/css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+   
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">E-Katalog Kompetensi dan Pengembangan Pegawai
+</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                    <!-- Notifications -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- #END# Notifications -->
+                    <!-- Tasks -->
+                    
+                    <!-- #END# Tasks -->
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="image">
+                    <img src="images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Defrimont Era</div>
+                    <div class="email">defrimont.era@bekraf.go.id</div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+           <div class="menu">
+                 <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li>
+                        <a href="index.html">
+                            <i class="material-icons">dashboard</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+ <li>
+                        <a href="profile.html">
+                            <i class="material-icons">account_circle</i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+
+                     <li>
+
+     <!--    <ul>kamuskompetensi.html</ul> -->
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">book</i>
+                            <span>Kamus Kompetensi</span>
+                             <span class="badge bg-orange">8</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li class="active">
+                                <a href="kompcorevalue.html">Kamus Kompetensi Core value</a>
+                            </li>
+                             <li>
+                                <a href="kompmanajerial.html">Kamus Kompetensi Manajerial</a>
+                            </li>
+                             <li>
+                                <a href="kompsosialcultural.html">Kamus Kompetensi Sosial Cultural</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                      <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Karir</span>
+                        </a>
+                             <ul class="ml-menu">
+                            <li>
+                                <a href="#">Pengembangan Kompetensi</a>
+                            </li>
+                             <li>
+                                <a href="rencanapengembangan.html">Rencana Pengembangan Kompetensi</a>
+                            </li>
+                          <!--   <li>
+                                <a href="rencanakarir.html">Rencana Karir</a>
+                            </li>
+                            <li>
+                                <a href="#">Pengembangan Karir</a>
+                            </li>
+                            <li>
+                                <a href="konseling.html">Konseling</a>
+                            </li> -->
+                            
+                        </ul>
+                    </li>  
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">vpn_key</i>
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                 
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">help</i>
+                            <span>Bantuan</span>
+                        </a>
+                    </li>
+                    </ul>
+
+
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    <a href="javascript:void(0);">E-Katalog</a>| Badan Ekonomi Kreatif
+                </div>
+                
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+       
+        <!-- #END# Right Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Kamus Kompetensi Core Value</h2>
+                  <h5>Badan Ekonomi Kreatif</h5>
+            </div>
+        </div>
+        <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                          Kamus Kompetensi Core Value
+                            </h2>
+                           
+                        </div>
+                        <div class="body">
+                         <td><button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal">Tambah Data</button></td>
+
+                          <td><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#tambahkompentensiLabel">Tambah Kompetensi</button></td>
+                         <br></div>
+                             <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kompetensi</th>
+                                            <th>Level</th>
+                                         <th>Indikator Perilaku</th>
+                                         
+                                         <th>Action</th>
+                                         
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                              <th>No</th>
+                                            <th>Kompetensi</th>
+                                            <th>Level</th>
+                                            <th>Indikator Perilaku</th>
+                                           
+                                         <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">KOMITMEN TERHADAP ORGANISASI</button></center></td>
+                                            <td>LEVEL 2 - Melaksanakan pekerjaan sebatas tuntutan tugas dan tanggungjawabnya
+
+</td>
+                                           <td><li>2.1. Tidak berpartisipasi untuk membantu rekan kerja;</li>
+                                            <li>2.2. Mengerjakan tugas hanya berdasarkan perintah;</li>
+                                            <li>2.3. Melaksanakan tugas sesuai Standar Operasional yang berlaku
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+
+                                               <div class="row clearfix js-sweetalert">
+                     <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+         <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
+    </div>
+
+                                           </td>
+                                             
+                                           
+                                        </tr>
+                                       
+                                        
+                                              
+
+                                        
+                                        
+                                          
+                                        </tr>
+                                         <tr>
+                                            <td>2</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#kerjasamaModal">EMPATI</button></center></td>
+                                            <td>LEVEL 2 - Menyediakan diri untuk selalu mendengarkan keluhan/ ungkapan perasaan orang lain
+
+</td>
+                                           <td><li>2.1. Memberikan kesempatan kepada orang lain untuk mengugkapkan perasaan;</li>
+                                            <li>2.2. Meluangkan waktu di sela-sela pekerjaan untuk mendengarkan keluh kesah orang lain;</li>
+                                            <li>2.3. Secara aktif berusaha untuk mengerti persoalan
+</li>
+
+                                           </td>
+                                          
+                                           <td>
+                                            <div class="row clearfix js-sweetalert">
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                          <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                       </div>
+                                             
+                                           
+                                        </tr>
+
+                                        
+
+                                          
+
+                                       
+                                     
+                                        <tr>
+                                            <td>3</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#komunikasiModal">INOVASI</button></center></td>
+                                            <td>LEVEL 2 - Mengidentifikasi alternatif ide/ gagasan baru yang mungkin dapat diterapkan
+
+</td>
+                                           <td><li>2.1. Mengenali gagasan yang muncul dalam tim;</li>
+                                            <li>2.2. Mengidentifikasi gagasan yang dapat diterapkan dalam pekerjaan;</li>
+                                            <li>2.3. Mengetahui gagasan penting yang dapat mendukung kinerja.
+
+</li>
+
+                                           </td>
+                                          
+                                             <td>
+                                            <div class="row clearfix js-sweetalert">
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                          <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                       </div>
+                                             
+                                           
+                                        </tr>
+                                        
+                                       
+                                     
+
+ <tr>
+                                            <td>4</td>
+                                             <td> <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#orientasiModal">KEPEMIMPINAN</button></center></td>
+                                            <td>LEVEL 2 - Membina bawahan dalam penyelesaian pekerjaan
+
+
+</td>
+                                           <td><li>2.1. Mengetahui kekuatan tim;</li>
+                                            <li>2.2. Membina tim berdasarkan kekuatannya;</li>
+                                            <li>2.3. Mendukung pelaksanaan tugas timnya.
+
+</li>
+
+                                           </td>
+                                          
+                                             <td>
+                                            <div class="row clearfix js-sweetalert">
+                                            <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>    
+                                          <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
+
+                                           </td>
+                                       </div>
+                                             
+                                           
+                                        </tr>
+                                                                                   
+
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- #END# Multi Column -->
+       
+
+
+                            </div>
+                  
+                    
+                                </div>
+                                
+                
+            </div>
+            </div>
+ </div>
+
+
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">TAMBAH DATA KAMUS KOMPETENSI</h4>
+                            <h6>CORE VALUE</h6>
+                        </div>
+                        <div class="modal-body">
+                            
+
+ <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                       
+                        <div class="body">
+                            <form id="form_validation" method="POST">
+                              <div class="form-group form-float">
+                                    <div class="form-line">
+                                    <select class="form-group form-float">
+                                        <option value="">-- Pilih Kompetensi --</option>
+                                        <option value="10">KOMITMEN TERHADAP ORGANISASI</option>
+                                        <option value="20">EMPATI</option>
+                                        <option value="30">INOVASI</option>
+                                        <option value="40">KEPEMIMPINAN</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                             <h6>
+                              LEVEL
+                          </br>
+                                <small>menambahkan data level kompetensi</small>
+                            </h6>
+                               <textarea id="t1">
+                                   
+                               </textarea>
+                     
+                                 <h6>
+                            INDIKATOR PERILAKU
+                          </br>
+                                <small>menambahkan data indikator perilaku</small>
+                            </h6>
+                                  
+                                 <textarea id="t2">
+                                   
+                               </textarea>
+                     
+                        
+                    
+                    </br>
+                               
+                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                           
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <div class="modal fade" id="tambahkompentensiLabel" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="tambahkompentensiLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          TES
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<div class="modal fade" id="IntegritasModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+                          Kemampuan untuk menyelaraskan perilaku pribadi dengan kepentingan organisasi dalam rangka mewujudkan visi misi.
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+             <div class="modal fade" id="kerjasamaModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+                         Kemampuan untuk mendengarkan dan memahami pikiran, perasaan, atau masalah orang lain yang tidak terucapkan atau tidak sepenuhnya disampaikan.
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="komunikasiModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+                      Kemampuan memunculkan ide/ gagasan dan pemikiran baru dalam rangka meningkatkan efektivitas kerja.
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="modal fade" id="orientasiModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="largeModalLabel">Definisi</h4>
+                        </div>
+                        <div class="modal-body">
+           Kemampuan meyakinkan, mempengaruhi dan memotivasi orang lain dengan tujuan agar mereka mengikuti dan melaksanakan rencana kerja unit/ organisasi.
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                          
+                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             
+    </section>
+
+        
+     
+
+        <!-- Jquery Core Js -->
+        <script src="../admin/plugins/jquery/jquery.min.js"></script>
+  <script src="../admin/plugins/waitme/waitMe.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="../admin/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+ 
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../admin/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="../admin/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="../admin/plugins/raphael/raphael.min.js"></script>
+    <script src="../admin/plugins/morrisjs/morris.js"></script>
+<script src="../admin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- ChartJs -->
+    <script src="../admin/plugins/chartjs/Chart.bundle.js"></script>
+ <script src="../admin/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../admin/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../admin/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../admin/js/admin.js"></script>
+       <script src="../admin/js/pages/ui/dialogs.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../admin/js/demo.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="../admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="../admin/js/pages/cards/colored.js"></script>
+
+
+ <script src="../admin/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- Demo Js -->
+    <script src="../admin/js/demo.js"></script>
+   
+    <!-- Jquery Validation Plugin Css -->
+    <script src="../admin/plugins/jquery-validation/jquery.validate.js"></script>
+<script src="../admin/js/pages/forms/form-wizard.js"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="../admin/plugins/jquery-steps/jquery.steps.js"></script>
+  <script src="../admin/js/admin.js"></script>
+     <script src="../admin/plugins/jquery-validation/jquery.validate.js"></script>
+      <script src="../admin/js/admin.js"></script>
+
+   <script src="../admin/js/pages/ui/modals.js"></script>
+   <script src="../admin/plugins/ckeditor/ckeditor.js"></script>
+    <script src="../admin/js/pages/forms/editors.js"></script>
+     <script src="../admin/plugins/tinymce/tinymce.js"></script>    
+        <script src="../admin/plugins/autosize/autosize.js"></script>
+            <script src="../admin/js/pages/forms/basic-form-elements.js"></script>
+
+    <script type="text/javascript">
+        CKEDITOR.replace( 't1',
+            {
+                width : "100%",
+                height : "200px",
+            }
+        ).setData('Level Kompetensi');
+
+        CKEDITOR.replace( 't2',
+            {
+                width : "100%",
+                height : "200px",
+            }
+        ).setData('Indikator Perilaku');
+
+    </script>
+</body>
+
+</html>
