@@ -11,8 +11,13 @@
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', 'Web\HomeController@index');
 Route::get('/home', 'Web\HomeController@index');
 Route::get('/home/index', 'Web\HomeController@index');
-Route::get('/profile', 'Web\ProfileController@index');
-Route::get('/profile/index', 'Web\ProfileController@index');
+=======
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+Route::get('/home/index', 'HomeController@index');
+Route::get('/login', 'Login2Controller@index');
+>>>>>>> 54df3d7740acfe65129e267a2a1ad2b1b8bebdab
