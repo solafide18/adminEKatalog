@@ -46,20 +46,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <img src="loginbkraft/images/logo.png">
                 </div>
                 <div class="header-left-bottom">
-                    <form action="#" method="post">
+                    <form action="" method="post" accept-charset="UTF-8" >
+                    {{csrf_field()}}
                         <div class="icon1">
                             <span class="fa fa-user"></span>
-                            <input type="email" placeholder="Username">
+                            <input type="email" placeholder="Username" name='pin'>
                         </div>
                         <div class="icon1">
                             <span class="fa fa-lock"></span>
-                            <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Password" name='pass'>
                         </div>
-                        <div class="login-check">
+                        <!--<div class="login-check">
                             <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Remember Me</label>
-                        </div>
+                        </div>-->
                         <div class="bottom">
-                            <button type="button" class="btn" onclick="location.href='https://def.berqas.com/admin/'">Log In</button>
+                            <button type="submit" class="btn"> 
+                                Login
+                            </button>                
                         </div>
 
                     </form>
