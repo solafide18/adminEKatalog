@@ -25,8 +25,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
 
     <!-- Custom Theme files -->
-    <link href="loginbkraft/css/style.css" rel="stylesheet"/>
-    <link href="loginbkraft/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="loginbkraft/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="loginbkraft/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
     <!-- //Custom Theme files -->
 
     <!-- web font -->
