@@ -14,7 +14,7 @@
                     <ul class="dropdown-menu pull-right">
 
                         <li role="separator" class="divider"></li>
-                        <li><a href="../login/index.html"><i class="material-icons">input</i>Logout</a></li>
+                        <li><a href="../login/index"><i class="material-icons">input</i>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -25,20 +25,20 @@
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
-                    <a href="index.html">
+                    <a href="index">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="profile.html">
+                    <a href="profile">
                         <i class="material-icons">account_circle</i>
                         <span>Profile</span>
                     </a>
                 </li>
                 <li>
 
-                    <!--    <ul>kamuskompetensi.html</ul> -->
+                    <!--    <ul>kamuskompetensi</ul> -->
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">book</i>
                         <span>Kamus Kompetensi</span>
@@ -46,13 +46,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="kompcorevalue.html">Kamus Kompetensi Core value</a>
+                            <a href="kompcorevalue">Kamus Kompetensi Core value</a>
                         </li>
                         <li>
-                            <a href="kompmanajerial.html">Kamus Kompetensi Manajerial</a>
+                            <a href="kompmanajerial">Kamus Kompetensi Manajerial</a>
                         </li>
                         <li>
-                            <a href="kompsosialcultural.html">Kamus Kompetensi Sosial Cultural</a>
+                            <a href="kompsosialcultural">Kamus Kompetensi Sosial Cultural</a>
                         </li>
 
                     </ul>
@@ -68,16 +68,16 @@
                             <a href="#">Pengembangan Kompetensi</a>
                         </li>
                         <li>
-                            <a href="rencanapengembangan.html">Rencana Pengembangan Kompetensi</a>
+                            <a href="rencanapengembangan">Rencana Pengembangan Kompetensi</a>
                         </li>
                         <!--   <li>
-                                <a href="rencanakarir.html">Rencana Karir</a>
+                                <a href="rencanakarir">Rencana Karir</a>
                             </li>
                             <li>
                                 <a href="#">Pengembangan Karir</a>
                             </li>
                             <li>
-                                <a href="konseling.html">Konseling</a>
+                                <a href="konseling">Konseling</a>
                             </li> -->
 
                     </ul>
