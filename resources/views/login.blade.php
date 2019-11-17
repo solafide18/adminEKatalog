@@ -25,8 +25,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
 
 	<!-- Custom Theme files -->
-	<link href="{{url('login/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
-	<link href="{{url('login/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{url('loginbkraf/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{url('loginbkraf/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Custom Theme files -->
 
 	<!-- web font -->
@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1>E- Katalog Pengembangan Kompetensi Pegawai</h1>
 		<div class="header-main">
 			<div class="main-icon">
-                <img src="{{url('login/images/logo.png')}}">
+                <img src="{{url('loginbkraft/images/logo.png')}}">
 			</div>
 			<div class="header-left-bottom">
 				<form action="#" method="post">
