@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKompetensisTable extends Migration
+class CreateKategoriKompetensisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateKompetensisTable extends Migration
      */
     public function up()
     {
-        Schema::create('kompetensis', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('kategori_kompetensis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->integer('minimum_lvl');
-            $table->string('description')->nullable();
+            $table->string('description')->unique();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -32,6 +28,6 @@ class CreateKompetensisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kompetensis');
+        Schema::dropIfExists('kategori_kompetensis');
     }
 }
