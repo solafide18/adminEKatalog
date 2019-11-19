@@ -19,3 +19,5 @@
 
 <!-- AdminBSB Themes. You can choose a theme from css/themes <ins></ins>stead of get all themes -->
 <link href="admin/css/themes/all-themes.css" rel="stylesheet" />
+
+<link href="DataTables-1.10.20/css/jquery.dataTables.css" rel="stylesheet" />

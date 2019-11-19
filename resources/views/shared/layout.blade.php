@@ -9,6 +9,8 @@
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     @include('shared.style')
+
+    <script src="admin/plugins/jquery/jquery.min.js"></script>
     
 </head>
 </head>
