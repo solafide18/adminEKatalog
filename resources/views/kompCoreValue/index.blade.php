@@ -4,7 +4,7 @@
 <style>
     .tablewrap {
         overflow: auto;
-        padding: 0 10px 0 10px;
+        padding: 10px 10px 10px 10px;
     }
 </style>
 <div class="block-header">
@@ -28,7 +28,7 @@
                         data-target="#tambahkompentensiLabel">Tambah Kompetensi</button></td>
                 <br>
             </div>
-            <div class="">
+            <div class="wrapper-grid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tablewrap">
@@ -46,7 +46,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>1</td>
                                         <td>
                                             <center><button type="button" class="btn btn-warning waves-effect m-r-20"
@@ -71,7 +71,7 @@
                                                     data-type="confirm"><i class="material-icons">cancel</i></button>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -84,12 +84,52 @@
 <!-- <script src="admin/plugins/jquery/jquery.min.js"></script> -->
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#kompcorevalue-table").DataTable({
-            paging: false
-        });
+        
         console.log("ready");
+        loadgrid();
+        
     });
 
+    function loadgrid()
+    {
+        $.ajax({
+            url:'api/get/KategoriKompetensi',
+            type:'get',
+            dataType:'json',
+            success:function(result){
+                console.log(result.data);
+                var rawhtml = "";
+                var data = result.data;
+                for(var i=0;i<data.length;i++)
+                {
+                    rawhtml=
+                        '<tr>'+
+                            '<td>'+data[i].No+'</td>'+
+                            '<td><center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">'+data[i].Kompetensi+'</button></center>'+
+                            '</td>'+
+                            '<td>'+data[i].Level+
+                            '</td>'+
+                            '<td>'+data[i].Indikator+
+                            '</td>'+
+                            '<td>'+
+                                '<div class="js-sweetalert">'+
+                                    '<button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i>'+
+                                    '</button>'+
+                                    '<button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>'+
+                                '</div>'+
+                            '</td>'+
+                        '</tr>'
 
+                    $("#kompcorevalue-table tbody").append(rawhtml);
+                    console.log(data[i]);
+                    console.log(rawhtml);
+                    
+                }
+                $("#kompcorevalue-table").DataTable({
+                    // paging: false
+                });
+            }
+        })
+    }
 </script>
 @endsection

@@ -8,7 +8,7 @@
 <script src="admin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
 <!-- Slimscroll Plugin Js -->
-<script src="admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- <script src="admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script> -->
 
 <!-- Waves Effect Plugin Js -->
 <script src="admin/plugins/node-waves/waves.js"></script>
@@ -38,7 +38,7 @@
 <!-- <script src="admin/js/pages/index.js"></script> -->
 
 <!-- Demo Js -->
-<script src="admin/js/demo.js"></script>
+<!-- <script src="admin/js/demo.js"></script> -->
 
 <!-- DataTables-1.10.20 -->
 <script src="DataTables-1.10.20/js/jquery.dataTables.js"></script>
