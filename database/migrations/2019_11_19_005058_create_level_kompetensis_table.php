@@ -16,7 +16,7 @@ class CreateLevelKompetensisTable extends Migration
         Schema::create('level_kompetensis', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->integer('level')->unique();
+            $table->integer('level');
             $table->string('level_description');
             $table->timestamps();
 
@@ -27,6 +27,8 @@ class CreateLevelKompetensisTable extends Migration
             $table->foreign('kompetensi_id')->references('id')
             ->on('kompetensis')
             ->onDelete('cascade');;
+            $table->string('index_perilaku')->nulable();
+            $table->integer('nilai_minimum');
         });
     }
 
