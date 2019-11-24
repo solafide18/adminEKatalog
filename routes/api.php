@@ -17,3 +17,5 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 Route::get('/get/KategoriKompetensi', 'Api\KategoriKompetensiController@get');
+Route::get('/Kompetensi/{id}', 'Api\KompetensiController@get');
+Route::post('/Kompetensi', 'Api\KompetensiController@post');

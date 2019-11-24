@@ -33,12 +33,16 @@
 <!-- Sparkline Chart Plugin Js -->
 <script src="admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
+<!-- Sweet Alert Plugin Js -->
+<script src="admin/plugins/sweetalert/sweetalert.min.js"></script>
+
 <!-- Custom Js -->
 <script src="admin/js/admin.js"></script>
 <!-- <script src="admin/js/pages/index.js"></script> -->
 
 <!-- Demo Js -->
 <!-- <script src="admin/js/demo.js"></script> -->
+
 
 <!-- DataTables-1.10.20 -->
 <script src="DataTables-1.10.20/js/jquery.dataTables.js"></script>

@@ -14,6 +14,9 @@
 <!-- Morris Chart Css-->
 <link href="admin/plugins/morrisjs/morris.css" rel="stylesheet" />
 
+<!-- Sweet Alert Css-->
+<link href="admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
 <!-- Custom Css -->
 <link href="admin/css/style.css" rel="stylesheet">
 
