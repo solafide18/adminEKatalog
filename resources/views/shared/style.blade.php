@@ -12,10 +12,14 @@
 <link href="admin/plugins/animate-css/animate.css" rel="stylesheet" />
 
 <!-- Morris Chart Css-->
-<link href="admin/plugins/morrisjs/morris.css" rel="stylesheet" />
+<!-- <link href="admin/plugins/morrisjs/morris.css" rel="stylesheet" /> -->
 
 <!-- Sweet Alert Css-->
 <link href="admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+<link href="DataTables-1.10.20/css/jquery.dataTables.css" rel="stylesheet" />
+
+<link href="css/fstdropdown.min.css" rel="stylesheet">
 
 <!-- Custom Css -->
 <link href="admin/css/style.css" rel="stylesheet">
@@ -23,4 +27,4 @@
 <!-- AdminBSB Themes. You can choose a theme from css/themes <ins></ins>stead of get all themes -->
 <link href="admin/css/themes/all-themes.css" rel="stylesheet" />
 
-<link href="DataTables-1.10.20/css/jquery.dataTables.css" rel="stylesheet" />
+

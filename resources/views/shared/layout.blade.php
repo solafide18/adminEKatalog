@@ -10,8 +10,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     @include('shared.style')
 
-    <script src="admin/plugins/jquery/jquery.min.js"></script>
-    
+    @include('shared.scripts')    
 </head>
 </head>
 
@@ -25,7 +24,7 @@
         </div>
     </section>
 
-    @include('shared.scripts')
+    
 </body>
 
 </html>
