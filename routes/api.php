@@ -19,3 +19,5 @@ use Illuminate\Http\Request;
 Route::get('/get/KategoriKompetensi', 'Api\KategoriKompetensiController@get');
 Route::get('/Kompetensi/{id}', 'Api\KompetensiController@get');
 Route::post('/Kompetensi', 'Api\KompetensiController@post');
+Route::post('/Kompetensi/Level', 'Api\KompetensiController@addLevel');
+Route::get('/Kompetensi/listKompetensi/{id}', 'Api\KompetensiController@listKompetensi');

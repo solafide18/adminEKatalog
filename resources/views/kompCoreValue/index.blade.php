@@ -84,15 +84,17 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Tambah Data</h4>
+                <hr>
             </div>
             <div class="modal-body">
-                <div class="form-group">
+
+                <div class="">
                     <div class="row">
                         <div class="col-md-4">
                             <label for="">Kompetensi</label>
                         </div>
                         <div class="col-md-8">
-                            <select class='fstdropdown-select' id="ddlKompetensi">
+                            <select class='form-group form-control' id="ddlKompetensi">
                                 <option value="">Select option</option>
                                 <option value="1">First</option>
                                 <option value="2">Second</option>
@@ -100,6 +102,7 @@
                             </select>
                         </div>
                     </div>
+                    <hr>
                 </div>
                 <div class="">
                     <div class="row">
@@ -131,14 +134,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8">
+                        <button class="btn btn-warning" id="addLevelTemp">Add Level</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table id="tblAddLevelTemp" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Deskripsi</th>
+                                    <th>Index Prilaku</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveAddData">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="modalTambahDataKompetensi" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -179,14 +205,15 @@
                         <textarea type="text" class="input-group form-control required" id="desc_komp"></textarea>
                     </div>
                 </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add Kompetensi</button>
+                <button type="button" class="btn btn-primary" id="btnAddkompetensi">Add Kompetensi</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 <!-- <script src="admin/plugins/jquery/jquery.min.js"></script> -->
 <script type="text/javascript">
     const menuid = 1;
@@ -198,6 +225,7 @@
     });
 
     function loadgrid() {
+        $("#kompcorevalue-table").DataTable().destroy();
         $.ajax({
             url: "api/Kompetensi/" + menuid,
             type: 'get',
@@ -262,6 +290,15 @@
     }
 
     $("#btnTambahData").click(function() {
+        $("#ddlKompetensi").val("");
+        $("#inLevel").val(1);
+        $("#inDescripsiLvl").val("");
+        $("#inIdxPrilaku").val("");
+        var tbl = $("#tblAddLevelTemp").DataTable();
+        tbl.rows()
+            .remove()
+            .draw();
+        loadDdlKompetensi();
         $("#modalTambahData").modal("show");
     })
 
@@ -269,7 +306,7 @@
         $("#modalTambahDataKompetensi").modal("show");
     })
 
-    $("#modalTambahDataKompetensi button.btn-primary").click(function() {
+    $("#modalTambahDataKompetensi button#btnAddkompetensi").click(function() {
         // alert("ok");
         // swal("Hello world!");
         var req = {
@@ -316,8 +353,99 @@
             let kompetensi_id = $(parents[0]).attr("kompetensi_id");
             alert(kompetensi_id);
         }
+    }
 
-        // alert("delete");
+    $("#modalTambahData button#btnSaveAddData").click(function() {
+        try {
+            // debugger;
+            let tblAddLevelTemp = $("#tblAddLevelTemp").DataTable();
+            let ddlKompetensi = $("#ddlKompetensi").val();
+            if (ddlKompetensi == null || ddlKompetensi == "") throw "Harap Pilih Kompetensi Terlebih dahulu";
+            if (tblAddLevelTemp.data().length == 0) throw "Kompetensi Setidaknya Memiliki 1 Data Level";
+
+            let list_level = [];
+
+            tblAddLevelTemp.data().each(function(data, idx) {
+                let item_level = {
+                    level: data[0],
+                    level_description: data[1],
+                    index_perilaku: data[2],
+                    kompetensi_id: ddlKompetensi
+                }
+                list_level.push(item_level);
+            });
+
+            let req = list_level;
+
+            $.ajax({
+                url: "api/Kompetensi/Level",
+                type: 'post',
+                data: {
+                    req: req
+                },
+                // contentType: "application/json",
+                dataType: 'json',
+                success: function(result) {
+                    swal("Success!",
+                        result.message,
+                        "success"
+                    );
+                    loadgrid();
+                    $("#modalTambahData").modal("hide");
+                }
+            });
+        } catch (err) {
+            swal("Error!",
+                err,
+                "warning"
+            );
+        }
+    })
+
+    $("#addLevelTemp").click(function() {
+        try {
+            let tblAddLevelTemp = $("#tblAddLevelTemp").DataTable();
+            let inLevel = $("#inLevel").val();
+            let inDescripsiLvl = $("#inDescripsiLvl").val();
+            let inIdxPrilaku = $("#inIdxPrilaku").val();
+            let flag_is_valid = true;
+            tblAddLevelTemp.data().each(function(data, idx) {
+                if (inLevel == data[0]) flag_is_valid = false;
+            });
+            if (!flag_is_valid) throw "Level Sudah ada";
+            if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
+            if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
+
+            tblAddLevelTemp.row.add([
+                inLevel,
+                inDescripsiLvl,
+                inIdxPrilaku,
+            ]).draw();
+
+        } catch (err) {
+            swal("Error!",
+                err,
+                "warning"
+            );
+        }
+    })
+
+    function loadDdlKompetensi() {
+        $.ajax({
+            url: "api/Kompetensi/listKompetensi/" + menuid,
+            type: 'get',
+            dataType: 'json',
+            success: function(result) {
+                let data = result.data;
+                let rawhtml = '<option value="">Select option</option>';
+                console.log(data);
+                for(let i=0; i<data.length; i++)
+                {
+                    rawhtml+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                }
+                $("#ddlKompetensi").html(rawhtml)
+            }
+        })
     }
 </script>
 @endsection
