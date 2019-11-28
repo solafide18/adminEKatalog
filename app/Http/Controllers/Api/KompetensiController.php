@@ -58,9 +58,12 @@ class KompetensiController extends Controller
         ]);
     }
 
-    public function addLevel(Request $request)
+    public function addLevel(Request $request,$id)
     {
         $data = $request->req;
+        // DB::table('level_kompetensis')
+        //     ->where('kompetensi_id', $id)
+        //     ->delete();
         for ($i = 0; $i < count($data); $i++) {
             // $data[$i]->level_kompetensi = DB::table('level_kompetensis')->where('kompetensi_id',$data[$i]->id)->orderBy('level')->get();
 
@@ -82,22 +85,76 @@ class KompetensiController extends Controller
             'data' => $data
         ]);
     }
+
+    public function editLevel(Request $request,$id)
+    {
+        $data = $request->req;
+        // DB::table('level_kompetensis')
+        //     ->where('kompetensi_id', $id)
+        //     ->delete();
+        for ($i = 0; $i < count($data); $i++) {
+            // $data[$i]->level_kompetensi = DB::table('level_kompetensis')->where('kompetensi_id',$data[$i]->id)->orderBy('level')->get();
+
+            DB::table('level_kompetensis')->insert(
+                [
+                    'level' => $data[$i]['level'],
+                    'level_description' => $data[$i]['level_description'],
+                    'created_at' => Carbon::now()->toDateTimeString(),
+                    'kompetensi_id' => $data[$i]['kompetensi_id'],
+                    'index_perilaku' => $data[$i]['index_perilaku'],
+                    'nilai_minimum' => 0,
+                ]
+            );
+        }
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Data Inserted!',
+            'data' => $data
+        ]);
+    }
+
     public function listKompetensi($id)
     {
         $data = DB::table('kompetensis')
-            ->leftJoin('level_kompetensis','level_kompetensis.kompetensi_id','=','kompetensis.id')
+            // ->leftJoin('level_kompetensis','level_kompetensis.kompetensi_id','=','kompetensis.id')
             ->select(
                 'kompetensis.id',
                 'kompetensis.name'
             )
             ->where('kategori_id', $id)
-            ->whereNull('level_kompetensis.kompetensi_id')
+            // ->whereNull('level_kompetensis.kompetensi_id')
             ->get();
 
         return response()->json([
             'code' => 200,
             'message' => 'Success!',
             'data' => $data
+        ]);
+    }
+
+    public function listLevelKompetensi($id)
+    {
+        $data = DB::table('level_kompetensis')
+            ->where('kompetensi_id', $id)
+            ->get();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Success!',
+            'data' => $data
+        ]);
+    }
+
+    public function deleteLevel($id)
+    {
+        DB::table('level_kompetensis')
+            ->where('kompetensi_id', $id)
+            ->delete();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Data Deleted!'
         ]);
     }
 }
