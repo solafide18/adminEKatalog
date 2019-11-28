@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use \GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class LoginController extends Controller
 {
@@ -17,15 +18,25 @@ class LoginController extends Controller
     public function login(Request $request) {
         $pin = $request->input('pin');
         $pass = $request->input('pass');
-        print_r($pin);
-        print_r($pass);
 
-        //$client = new GuzzleHttp\Client();
-        //$res = $client->get('https://api.github.com/user', ['auth' =>  ['user', 'pass']]);
-        //echo $res->getStatusCode(); // 200
-        //echo $res->getBody();
+        $client = new Client;
+        $res = $client->get('http://sadewa.bekraf.go.id/api/login?',
+        [
+            'form_params' => [
+                'token' => '7va9dfnf9v7df9av8sd7f9',
+                'username' => $pin,
+                'password' => $pass
+                ]
+        ]);
 
-        return view('home/index');
+        $jsonResponse = json_decode($res->getBody(), true);
+        error_log('login?');
+        error_log($jsonResponse['data']['login']);
+
+        if ($jsonResponse['data']['login'] == 1) {
+            return view('home/index');
+        }    
+        
     }
 
 
