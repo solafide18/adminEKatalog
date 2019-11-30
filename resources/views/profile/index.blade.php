@@ -75,16 +75,16 @@
             <div class="body">
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">SKP</a></li>
+                        <!-- <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">SKP</a></li> -->
                         <li role="presentation"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Kompetensi</a></li>
-                        <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Potensi</a></li>
-                        <li role="presentation"><a href="#petabakat" aria-controls="settings" role="tab" data-toggle="tab">Peta Bakat</a></li>
+                        <!-- <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Potensi</a></li>
+                        <li role="presentation"><a href="#petabakat" aria-controls="settings" role="tab" data-toggle="tab">Peta Bakat</a></li> -->
                     </ul>
 
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="home">
 
-                            <div class="row clearfix">
+                            <!-- <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
 
@@ -167,7 +167,7 @@
                             </div>
 
 
-                        </div>
+                        </div> -->
                         <div role="tabpanel" class="tab-pane fade in" id="profile_settings">
 
 
@@ -210,7 +210,7 @@
                             </div>
 
                         </div>
-                        <div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
+                        <!-- <div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
@@ -397,13 +397,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
 
 
-
-
-                        <div role="tabpanel" class="tab-pane fade in" id="petabakat">
+                        <!-- <div role="tabpanel" class="tab-pane fade in" id="petabakat">
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="card">
@@ -422,7 +420,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
