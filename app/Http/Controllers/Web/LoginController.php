@@ -11,8 +11,10 @@ use GuzzleHttp\Client;
 class LoginController extends Controller
 {
     public function index() {
-        error_log('Do login here');
-        return view('login/index');
+        $data['data'] = "";
+        $data['errorLogin'] = false;
+
+        return view('login/index', $data);
     }
 
     public function login(Request $request) {
@@ -34,12 +36,17 @@ class LoginController extends Controller
         $jsonResponse = json_decode($res->getBody(), true);
         error_log('login?');
         error_log($jsonResponse['data']['login']);
+        $data['data'] = $jsonResponse['data'];
+        $data['errorLogin'] = false;
+        //$errorLogin = '<script>alert("User Name or Password invalid")</script>';
 
         if ($jsonResponse['data']['login'] == 1) {
-            return view('home/index');
+            return view('home/index', $data);
         }   
         else {
-            return View('login/index');
+            
+            $data['errorLogin'] = true;
+            return View('login/index', $data->toJson());
         } 
         
     }

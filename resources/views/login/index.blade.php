@@ -46,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <img src="loginbkraft/images/logo.png">
                 </div>
                 <div class="header-left-bottom">
-                    <form action="" method="post" accept-charset="UTF-8" >
+                    <form action=""  method="post" accept-charset="UTF-8" >
                     {{csrf_field()}}
                         <div class="icon1">
                             <span class="fa fa-user"></span>
@@ -79,15 +79,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
     <!-- //main -->
     <script>
+        var obj = {prop1: 'prop1Value', prop2: 'prop2Value', child: {childProp1: 'childProp1Value'}}
+        console.log(obj)
+
+        var data = JSON.parse("{!! $data??'[]'!!}");
+        console.log(data)
         
-        onload();
-        function onload(){
-            if(""!="")
-            {
-                alert("User Name or Password invalid")
-            }
-        }
     </script>
+
 
 </body>
 
