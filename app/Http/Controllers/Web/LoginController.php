@@ -37,7 +37,7 @@ class LoginController extends Controller
             $request->session()->push('authenticated', 'always');
             $request->session()->push('token', '7va9dfnf9v7df9av8sd7f9');
             $request->session()->push('id', $jsonResponse['data']['pegawai']['pin']);
-            $data = DB::table('kategori_kompetensis')
+            $menu = DB::table('kategori_kompetensis')
             ->select(
                 'id',
                 'description',
@@ -45,7 +45,9 @@ class LoginController extends Controller
             )
             ->orderBy('id')
             ->get();
-            $request->session()->push('data', $data);
+            $request->session()->push('menu', $menu);
+            
+            $request->session()->push('test_session', 'okk');
             return redirect()->action('Web\HomeController@index');
         }   
         else {

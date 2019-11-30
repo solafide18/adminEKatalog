@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="profile">
+                    <a href="{{url('/')}}/profile">
                         <i class="material-icons">account_circle</i>
                         <span>Profile</span>
                     </a>
@@ -45,6 +45,7 @@
                         <span class="badge bg-orange">8</span>
                     </a>
                     <ul class="ml-menu">
+
                         <li>
                             <a href="{{url('/')}}/kompcorevalue">Kamus Kompetensi Core value</a>
                         </li>
@@ -114,3 +115,18 @@
 
     <!-- #END# Right Sidebar -->
 </section>
+<script>
+    var lmenu =  @foreach(Session::get('menu') as $menu)
+                                '{!!$menu??[]!!}';
+                        @endforeach
+    $(document).ready(function () {
+        console.log(lmenu);   
+        loadSideMenu(); 
+    });
+    function loadSideMenu()
+    {
+        let menu = JSON.parse(lmenu);
+        console.log("menu",menu);
+    }
+    
+</script>
