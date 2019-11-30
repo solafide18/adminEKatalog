@@ -46,9 +46,10 @@ class LoginController extends Controller
             return redirect()->action('Web\HomeController@index');
         }   
         else {
-            
-            $data['errorLogin'] = true;
-            return View('login/index', $data->toJson());
+            error_log('masuk else error');
+            $msg = $jsonResponse['message'];
+
+            return view('login/index',['msg'=>$msg]);
         } 
         
     }
