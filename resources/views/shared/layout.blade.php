@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>E-Katalog Kompetensi dan Pengembangan Pegawai</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{url('/')}}/favicon.ico" type="image/x-icon">
     @include('shared.style')
 
     @include('shared.scripts')    
@@ -15,6 +15,7 @@
 </head>
 
 <body class="theme-red">
+    <input type="hidden" value="{{url('/')}}" id="urlPath">
     @include('shared.pageloader')
     @include('shared.navbar')
     @include('shared.section')

@@ -12,6 +12,8 @@ class HomeController extends Controller
     {
         error_log("this is home");
         $value = $request->session()->get('authenticated', 'default');
+        $base_url = url('/');
+        error_log($base_url);
         error_log( print_r( $value, true ) );
         if ($value[0]=='always') {
             return view('home/index');

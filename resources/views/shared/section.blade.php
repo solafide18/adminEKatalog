@@ -4,7 +4,7 @@
         <!-- User Info -->
         <div class="user-info">
             <div class="image">
-                <img src="admin/images/user.png" width="48" height="48" alt="User" />
+                <img src="{{url('/')}}/admin/images/user.png" width="48" height="48" alt="User" />
             </div>
             <div class="info-container">
                 <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Defrimont Era</div>
@@ -14,7 +14,7 @@
                     <ul class="dropdown-menu pull-right">
 
                         <li role="separator" class="divider"></li>
-                        <li><a href="../login/index"><i class="material-icons">input</i>Logout</a></li>
+                        <li><a href="{{url('/')}}/logout"><i class="material-icons">input</i>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,13 +46,13 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="kompcorevalue">Kamus Kompetensi Core value</a>
+                            <a href="{{url('/')}}/kompcorevalue">Kamus Kompetensi Core value</a>
                         </li>
                         <li>
-                            <a href="kompmanajerial">Kamus Kompetensi Manajerial</a>
+                            <a href="{{url('/')}}/kompmanajerial">Kamus Kompetensi Manajerial</a>
                         </li>
                         <li>
-                            <a href="kompsosialcultural">Kamus Kompetensi Sosial Cultural</a>
+                            <a href="{{url('/')}}/kompsosialcultural">Kamus Kompetensi Sosial Cultural</a>
                         </li>
 
                     </ul>
@@ -68,7 +68,7 @@
                             <a href="#">Pengembangan Kompetensi</a>
                         </li>
                         <li>
-                            <a href="rencanapengembangan">Rencana Pengembangan Kompetensi</a>
+                            <a href="{{url('/')}}/rencanapengembangan">Rencana Pengembangan Kompetensi</a>
                         </li>
                         <!--   <li>
                                 <a href="rencanakarir">Rencana Karir</a>
