@@ -146,12 +146,13 @@ class KompetensiController extends Controller
         ]);
     }
 
-    public function deleteLevel($id)
+    public function deleteLevel($id,$lvl)
     {
         DB::table('level_kompetensis')
             ->where('kompetensi_id', $id)
+            ->where('level',$lvl)
             ->delete();
-
+            // dd($lid);
         return response()->json([
             'code' => 200,
             'message' => 'Data Deleted!'

@@ -323,11 +323,13 @@
                     let data_level = data[i].level_kompetensi;
                     let count_level = data_level.length;
                     let flag_col_kompetensi = 0;
+                    let old_level = -1;
                     let no = i + 1;
                     if (count_level > 0) {
                         for (let j = 0; j < data_level.length; j++) {
-                            rawhtml = '<tr level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
-                            if (flag_col_kompetensi == 0) {
+                            rawhtml = '<tr level="'+data_level[j].level+'" level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
+                            // if (flag_col_kompetensi == 0) {
+                            if (old_level != data_level[j].level) {
                                 rawhtml += '<td>' + no + '</td>' +
                                     '<td>' +
                                     '<center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">' + data[i].name + '</button></center>' +
@@ -344,11 +346,12 @@
                                 '</td>' +
                                 '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>") +
                                 '</td>';
-                            if (flag_col_kompetensi == 0) {
+                            // if (flag_col_kompetensi == 0) {
+                            if (old_level != data_level[j].level) {
                                 rawhtml +=
                                     '<td>' +
                                     '<div class="js-sweetalert">' +
-                                    '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-20"><i class="material-icons">mode_edit</i>' +
+                                    '<button type="button" onclick="editData(this)klhj" class="btn btn-info waves-effect m-r-20"><i class="material-icons">mode_edit</i>' +
                                     '</button>' +
                                     '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>' +
                                     '</div>' +
@@ -359,6 +362,7 @@
                             }
                             rawhtml += '</tr>'
                             flag_col_kompetensi++;
+                            old_level= data_level[j].level;
                             $("#kompcorevalue-table tbody").append(rawhtml);
                             // console.log(data[i]);
                             // console.log(rawhtml);
@@ -648,9 +652,10 @@
                     if (parents.length == 0) throw "Kompetensi ID tidak ditemukan";
 
                     let kompetensi_id = $(parents[0]).attr("kompetensi_id");
-                    console.log(kompetensi_id);
+                    let level = $(parents[0]).attr("level");
+                    console.log(kompetensi_id,level);
                     $.ajax({
-                        url: "api/Kompetensi/deleteLevel/" + kompetensi_id,
+                        url: "api/Kompetensi/deleteLevel/" + kompetensi_id+"/"+level,
                         type: 'delete',
                         dataType: 'json',
                         success: function (result) {
@@ -673,6 +678,8 @@
                 }
             });
         } catch (err) {
+            console.log(err);
+            
             swal("Error!",
                 err,
                 "warning"

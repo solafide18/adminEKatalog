@@ -24,4 +24,4 @@ Route::post('/Kompetensi/editLevel/{id}', 'Api\KompetensiController@editLevel');
 Route::get('/Kompetensi/listKompetensi/{id}', 'Api\KompetensiController@listKompetensi');
 Route::get('/Kompetensi/listLevelKompetensi/{id}', 'Api\KompetensiController@listLevelKompetensi');
 
-Route::delete('/Kompetensi/deleteLevel/{id}', 'Api\KompetensiController@deleteLevel');
+Route::delete('/Kompetensi/deleteLevel/{id}/{lvl}', 'Api\KompetensiController@deleteLevel');
