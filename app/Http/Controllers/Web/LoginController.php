@@ -19,11 +19,13 @@ class LoginController extends Controller
         $pin = $request->input('pin');
         $pass = $request->input('pass');
 
+        error_log($pin);
+        error_log($pass);
         $client = new Client;
-        $res = $client->get('http://sadewa.bekraf.go.id/api/login?',
+        $res = $client->get('https://sadewa.bekraf.go.id/api/login?token=7va9dfnf9v7df9av8sd7f9',
         [
-            'form_params' => [
-                'token' => '7va9dfnf9v7df9av8sd7f9',
+            'query' => [
+                'token'=> '7va9dfnf9v7df9av8sd7f9',
                 'username' => $pin,
                 'password' => $pass
                 ]
@@ -35,7 +37,10 @@ class LoginController extends Controller
 
         if ($jsonResponse['data']['login'] == 1) {
             return view('home/index');
-        }    
+        }   
+        else {
+            return View('login/index');
+        } 
         
     }
 

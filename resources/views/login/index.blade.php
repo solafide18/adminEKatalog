@@ -50,7 +50,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     {{csrf_field()}}
                         <div class="icon1">
                             <span class="fa fa-user"></span>
-                            <input type="email" placeholder="Username" name='pin'>
+                            <input type="text" placeholder="Username" name='pin'>
                         </div>
                         <div class="icon1">
                             <span class="fa fa-lock"></span>
@@ -78,6 +78,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- //main -->
+    <script>
+        
+        onload();
+        function onload(){
+            if(""!="")
+            {
+                alert("User Name or Password invalid")
+            }
+        }
+    </script>
 
 </body>
 
