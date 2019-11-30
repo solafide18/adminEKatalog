@@ -20,6 +20,7 @@ class LoginController extends Controller
     public function login(Request $request) {
         $pin = $request->input('pin');
         $pass = $request->input('pass');
+        $request->session()->flush('authenticated', 'always');
 
         error_log($pin);
         error_log($pass);
@@ -41,7 +42,8 @@ class LoginController extends Controller
         //$errorLogin = '<script>alert("User Name or Password invalid")</script>';
 
         if ($jsonResponse['data']['login'] == 1) {
-            return view('home/index', $data);
+            $request->session()->push('authenticated', 'always');
+            return redirect()->action('Web\HomeController@index');
         }   
         else {
             

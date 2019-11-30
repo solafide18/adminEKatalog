@@ -8,8 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('home/index');
+        error_log("this is home");
+        $value = $request->session()->get('authenticated', 'default');
+        error_log( print_r( $value, true ) );
+        if ($value[0]=='always') {
+            return view('home/index');
+        } else {
+            return redirect()->action('Web\LoginController@index');
+        }
     }
+    
 }
