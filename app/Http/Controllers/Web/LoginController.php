@@ -43,5 +43,9 @@ class LoginController extends Controller
             return view('login/index',['msg'=>$msg]);
         } 
     }
+    public function logout(Request $request) {
+        $request->session()->flush();
 
+        return redirect()->action('Web\LoginController@index');
+    }
 }
