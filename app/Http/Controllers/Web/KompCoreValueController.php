@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class KompCoreValueController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('kompcorevalue/index');
+        $value = $request->session()->get('authenticated', 'default');
+        if ($value[0]=='always') {
+            return view('kompcorevalue/index');
+        } else {
+            return redirect()->action('Web\LoginController@index');
+        }
     }
 }

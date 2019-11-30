@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class KompManajerialController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('kompmanajerial/index');
+        $value = $request->session()->get('authenticated', 'default');
+        if ($value[0]=='always') {
+            return view('kompmanajerial/index');
+        } else {
+            return redirect()->action('Web\LoginController@index');
+        }
     }
 }

@@ -82,7 +82,7 @@
 
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#">
                         <i class="material-icons">vpn_key</i>
                         <span>Change Password</span>
@@ -94,7 +94,7 @@
                         <i class="material-icons">help</i>
                         <span>Bantuan</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
 
 
