@@ -46,7 +46,19 @@ class LoginController extends Controller
             ->orderBy('id')
             ->get();
             $request->session()->push('menu', $menu);
+            $request->session()->push('nama', $jsonResponse['data']['pegawai']['nama']);
+            $request->session()->push('email', $jsonResponse['data']['pegawai']['email_kantor']);
             
+            $isAdmin = DB::table('admin_pegawais')
+            ->where('pegawai_id', $pin)
+            ->get();
+            error_log(count($isAdmin));
+            if (count($isAdmin) > 0){
+                $request->session()->push('isAdmin', 'true');
+            } else {
+                $request->session()->push('isAdmin', 'false');
+            }
+
             $request->session()->push('test_session', 'okk');
             return redirect()->action('Web\HomeController@index');
         }   

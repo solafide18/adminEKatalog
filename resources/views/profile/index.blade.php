@@ -7,13 +7,13 @@
             <div class="profile-header">&nbsp;</div>
             <div class="profile-body">
                 <div class="image-area">
-                    <img src="admin/images/defri.jpg" alt="AdminBSB - Profile Image" />
+                    <img src="admin/images/user.png" alt="AdminBSB - Profile Image" />
                 </div>
                 <div class="content-area">
-                    <h3>Defrimont Era</h3>
-                    <h6>Penata Muda / II C</h6>
-                    <p>199702172019021001</p>
-                    <p>Staf LPSE</p>
+                    <h3>{!!$nama??''!!}</h3>
+                    <h6>{!!$unitKerja??''!!}</h6>
+                    <p>{!!$nip??''!!}</p>
+                    <p>{!!$namaJabatan??''!!}</p>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
                             Pendidikan Terakhir
                         </div>
                         <div class="content">
-                            S1/D4
+                            {!!$pendidikan??''!!}
                         </div>
                     </li>
 
@@ -42,10 +42,7 @@
                                 Jabatan
                             </div>
                             <div class="content">
-                                Pengelola Layanan Pengadaan Secara Elektronik Pada Sub Bagian Layanan Pengadaan Secara Elektronik >
-                                Bagian Pengadaan Barang Dan Jasa > Biro Umum
-                                Dan Kepegawaian > Sekretariat Utama
-                                Badan Ekonomi Kreatif
+                                {!!$namaJabatan??''!!}
                             </div>
                         </li>
                         <li>
@@ -190,53 +187,20 @@
                                                         <tr>
                                                             <th>Kode Kompetensi</th>
                                                             <th>Nama Kompetensi</th>
-                                                            <th>2016</th>
-
+                                                            <th>Level</th>
+                                                            <th>GAP</th>
 
                                                         </tr>
                                                     </thead>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>Kode Kompetensi</th>
-                                                            <th>Nama Kompetensi</th>
-                                                            <th>2016</th>
-
-
-                                                        </tr>
-                                                    </tfoot>
                                                     <tbody>
-
-
-                                                        <tr>
-                                                            <td>BPP</td>
-                                                            <td>Berorientasi Pada Pelayanan</td>
-                                                            <td>2</td>
-
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>INT</td>
-                                                            <td>Integritas</td>
-                                                            <td>2</td>
-
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>KS</td>
-                                                            <td>Kerjasama</td>
-                                                            <td>2</td>
-
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>KTO</td>
-                                                            <td>Komitmen Pada Organisasi</td>
-                                                            <td>1</td>
-
-
-                                                        </tr>
-
-
+                                                        @foreach($tableKompetensi as $item)
+                                                            <tr>
+                                                                <td>{{$item->code}}</td>
+                                                                <td>{{$item->name}}</td>
+                                                                <td>{{$item->level}}</td>
+                                                                <td>{{$item->gap}}</td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
