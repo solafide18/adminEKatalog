@@ -52,14 +52,12 @@ class LoginController extends Controller
             $isAdmin = DB::table('admin_pegawais')
             ->where('pegawai_id', $pin)
             ->get();
-            error_log(count($isAdmin));
             if (count($isAdmin) > 0){
                 $request->session()->push('isAdmin', 'admin');
             } else {
                 $request->session()->push('isAdmin', 'user');
             }
 
-            $request->session()->push('test_session', 'okk');
             return redirect()->action('Web\HomeController@index');
         }   
         else {
