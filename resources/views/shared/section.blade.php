@@ -44,7 +44,7 @@
                         <span>Kamus Kompetensi</span>
                         <span class="badge bg-orange">8</span>
                     </a>
-                    <ul class="ml-menu">
+                    <ul class="ml-menu" id="menu-kompetensi">
 
                         <li>
                             <a href="{{url('/')}}/kompcorevalue">Kamus Kompetensi Core value</a>
@@ -116,9 +116,9 @@
     <!-- #END# Right Sidebar -->
 </section>
 <script>
-    var lmenu =  @foreach(Session::get('menu') as $menu)
-                                '{!!$menu??[]!!}';
-                        @endforeach
+    var lmenu =  @foreach(Session::get('menu') as $menu)'{!!$menu??[]!!}';@endforeach
+    
+    var urlPath = "{{url('/')}}";
     $(document).ready(function () {
         console.log(lmenu);   
         loadSideMenu(); 
@@ -126,7 +126,15 @@
     function loadSideMenu()
     {
         let menu = JSON.parse(lmenu);
-        console.log("menu",menu);
+        let rawhtml = '';
+        $(menu).each(function(i,n){
+            console.log(i,n);
+            rawhtml+="<li>";
+            rawhtml+='<a href="'+urlPath+n.link_url+'">'+n.description+'</a>';
+            rawhtml+='</li>';
+        });
+        $("#menu-kompetensi").html(rawhtml);
+        // console.log("menu",menu);
     }
     
 </script>
