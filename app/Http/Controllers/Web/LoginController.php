@@ -35,6 +35,17 @@ class LoginController extends Controller
 
         if ($jsonResponse['data']['login'] == 1) {
             $request->session()->push('authenticated', 'always');
+            $request->session()->push('token', '7va9dfnf9v7df9av8sd7f9');
+            $request->session()->push('id', $jsonResponse['data']['pegawai']['pin']);
+            $data = DB::table('kategori_kompetensis')
+            ->select(
+                'id',
+                'description',
+                'link_url'
+            )
+            ->orderBy('id')
+            ->get();
+            $request->session()->push('data', $data);
             return redirect()->action('Web\HomeController@index');
         }   
         else {
@@ -47,5 +58,17 @@ class LoginController extends Controller
         $request->session()->flush();
 
         return redirect()->action('Web\LoginController@index');
+    }
+
+    private function getListKamusKompetensi(Request $request) {
+        $data = DB::table('level_kompetensis')
+            ->select(
+                'id',
+                'description',
+                'link_url'
+            )
+            ->orderBy('kompetensis.kategori_id')
+            ->get();
+            $request->session('data', $data);
     }
 }
