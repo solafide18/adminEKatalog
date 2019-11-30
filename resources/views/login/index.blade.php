@@ -97,11 +97,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <!-- //main -->
-    <script>
-        var obj = {prop1: 'prop1Value', prop2: 'prop2Value', child: {childProp1: 'childProp1Value'}}
-        console.log(obj);
-    </script>
-
 
 </body>
 
