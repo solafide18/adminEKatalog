@@ -29,6 +29,23 @@ class KompetensiPegawaiController extends Controller {
         ]);
     }
 
+    public function deleteKopetensiPegawai($id) {
+        try {
+            DB::table('kompetensi_pegawais')
+            ->where('id', $id)
+            ->delete();
+            return response()->json([
+                'code' => 200,
+                'message' => 'Data Deleted!'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'code' => 200,
+                'message' => 'Failed to Delete!'
+            ]);
+        }
+    }
+
     public function getListKompetensiPegawai() {
         $kompetensiPegawai = DB::table('kompetensi_pegawais')
             ->join('level_kompetensis', 'level_kompetensis.id', '=', 'kompetensi_pegawais.level_kompetensi_id')
