@@ -42,7 +42,6 @@
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">book</i>
                         <span>Kamus Kompetensi</span>
-                        <span class="badge bg-orange">8</span>
                     </a>
                     <ul class="ml-menu" id="menu-kompetensi">
 
@@ -120,7 +119,7 @@
     
     var urlPath = "{{url('/')}}";
     $(document).ready(function () {
-        console.log(lmenu);   
+        // console.log(lmenu);   
         loadSideMenu(); 
     });
     function loadSideMenu()
@@ -128,7 +127,7 @@
         let menu = JSON.parse(lmenu);
         let rawhtml = '';
         $(menu).each(function(i,n){
-            console.log(i,n);
+            // console.log(i,n);
             rawhtml+="<li>";
             rawhtml+='<a href="'+urlPath+n.link_url+'">'+n.description+'</a>';
             rawhtml+='</li>';

@@ -11,8 +11,9 @@ class KompSosialCulturalController extends Controller
     public function index(Request $request)
     {
         $value = $request->session()->get('authenticated', 'default');
+        $isAdmin = $request->session()->get('isAdmin', 'default')[0];
         if ($value[0]=='always') {
-            return view('kompsosialcultural/index');
+            return view('kompsosialcultural/index',['isAdmin'=>$isAdmin]);
         } else {
             return redirect()->action('Web\LoginController@index');
         }

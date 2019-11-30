@@ -54,9 +54,9 @@ class LoginController extends Controller
             ->get();
             error_log(count($isAdmin));
             if (count($isAdmin) > 0){
-                $request->session()->push('isAdmin', 'true');
+                $request->session()->push('isAdmin', 'admin');
             } else {
-                $request->session()->push('isAdmin', 'false');
+                $request->session()->push('isAdmin', 'user');
             }
 
             $request->session()->push('test_session', 'okk');

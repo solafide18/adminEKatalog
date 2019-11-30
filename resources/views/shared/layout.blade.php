@@ -16,6 +16,7 @@
 
 <body class="theme-red">
     <input type="hidden" value="{{url('/')}}" id="urlPath">
+    <input type="hidden" value="{{Session::get('isAdmin')[0]}}" id="isAdm">
     @include('shared.pageloader')
     @include('shared.navbar')
     @include('shared.section')
