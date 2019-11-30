@@ -35,6 +35,7 @@ class KompetensiPegawaiController extends Controller {
             ->join('kompetensis', 'kompetensis.id', '=', 'level_kompetensis.kompetensi_id')
             ->select(
                 'kompetensi_pegawais.id',
+                'kompetensi_pegawais.pegawai_name',
                 'kompetensi_pegawais.pegawai_id',
                 'kompetensi_pegawais.nilai',
                 'kompetensi_pegawais.gap',
