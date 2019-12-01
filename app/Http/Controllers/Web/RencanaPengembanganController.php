@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class RencanaPengembanganController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('rencanapengembangan/index');
+        $value = $request->session()->get('authenticated', 'default');
+        $isAdmin = $request->session()->get('isAdmin', 'default')[0];
+        if ($value[0]=='always') {
+            
+            return view('rencanapengembangan/index',['isAdmin'=>$isAdmin]);
+        } else {
+            return redirect()->action('Web\LoginController@index');
+        }
     }
 }

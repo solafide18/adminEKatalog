@@ -1,6 +1,7 @@
 <!-- Jquery Core Js -->
 <!-- <script src="admin/plugins/jquery/jquery.min.js"></script> -->
 <script src="{{url('/')}}/admin/plugins/jquery/jquery.min.js"></script>
+<script src="{{url('/')}}/js/jquery-ui.js"></script>
 <!-- Bootstrap Core Js -->
 <script src="{{url('/')}}/admin/plugins/bootstrap/js/bootstrap.js"></script>
 
@@ -36,7 +37,7 @@
 <!-- Sweet Alert Plugin Js -->
 <script src="{{url('/')}}/admin/plugins/sweetalert/sweetalert.min.js"></script>
 
-<script src="{{url('/')}}/js/fstdropdown.min.js"></script>
+<!-- <script src="{{url('/')}}/js/fstdropdown.min.js"></script> -->
 
 <!-- Custom Js -->
 <script src="{{url('/')}}/admin/js/admin.js"></script>

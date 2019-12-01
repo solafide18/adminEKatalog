@@ -18,8 +18,8 @@
 <link href="{{url('/')}}/admin/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 
 <link href="{{url('/')}}/DataTables-1.10.20/css/jquery.dataTables.css" rel="stylesheet" />
-
-<link href="{{url('/')}}/css/fstdropdown.min.css" rel="stylesheet">
+<!-- 
+<link href="{{url('/')}}/css/fstdropdown.min.css" rel="stylesheet"> -->
 
 <!-- Custom Css -->
 <link href="{{url('/')}}/admin/css/style.css" rel="stylesheet">

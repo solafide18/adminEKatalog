@@ -268,10 +268,10 @@ $("#addLevelTemp").click(function () {
         let inDescripsiLvl = $("#modalTambahData #inDescripsiLvl").val();
         let inIdxPrilaku = $("#modalTambahData #inIdxPrilaku").val();
         let flag_is_valid = true;
-        tblAddLevelTemp.data().each(function (data, idx) {
-            if (inLevel == data[0]) flag_is_valid = false;
-        });
-        if (!flag_is_valid) throw "Level Sudah ada";
+        // tblAddLevelTemp.data().each(function (data, idx) {
+        //     if (inLevel == data[0]) flag_is_valid = false;
+        // });
+        // if (!flag_is_valid) throw "Level Sudah ada";
         if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
         if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
 
