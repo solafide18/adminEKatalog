@@ -28,3 +28,5 @@ Route::get('/kompsosialcultural', 'Web\KompSosialCulturalController@index');
 Route::get('/kompsosialcultural/index', 'Web\KompSosialCulturalController@index');
 Route::get('/rencanapengembangan', 'Web\RencanaPengembanganController@index');
 Route::get('/rencanapengembangan/index', 'Web\RencanaPengembanganController@index');
+Route::get('/administrator', 'Web\AdministratorController@index');
+Route::get('/administrator/index', 'Web\AdministratorController@index');

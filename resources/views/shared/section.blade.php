@@ -86,20 +86,22 @@
 
                     </ul>
                 </li>
-                <!-- <li>
-                    <a href="#">
-                        <i class="material-icons">vpn_key</i>
-                        <span>Change Password</span>
-                    </a>
-                </li>
 
+                @if(Session::get('isAdmin')[0] == 'admin') 
                 <li>
-                    <a href="#">
-                        <i class="material-icons">help</i>
-                        <span>Bantuan</span>
+                    <a href="{{url('/')}}/administrator">
+                        <i class="material-icons">build</i>
+                        <span>Admin Setup</span>
                     </a>
-                </li> -->
+                
+                </li>
+                @endif
+                
             </ul>
+
+            
+            
+            
 
 
         </div>
