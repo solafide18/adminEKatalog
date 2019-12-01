@@ -6,6 +6,9 @@
         overflow: auto;
         padding: 10px 10px 10px 10px;
     }
+    input.form-control.disabled{
+        background-color: rgb(218, 213, 213);
+    }
 </style>
 <div class="block-header">
     <h2>Rencana Pengembangan Kompetensi</h2>
@@ -20,12 +23,9 @@
             </div>
             <div class="body">
                 @if($isAdmin == 'admin')
-                    <td><button type="button" class="btn btn-info waves-effect m-r-20" id="btnTambahData">Tambah
-                            Data</button></td>
-
-                    <td><button type="button" class="btn btn-warning waves-effect m-r-20"
-                            id="btnTambahDataKompetensi">Tambah Kompetensi</button></td>
-                    <br>
+                <button type="button" class="btn btn-info waves-effect m-r-20" id="btnTambahData">Tambah
+                    Data</button>
+                <br>
                 @endif
             </div>
             <div class="wrapper-grid">
@@ -35,13 +35,12 @@
                             <table id="table-main" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Pegawai ID</th>
-                                        <th>Pegawai Name</th>
+                                        <th>Pegawai</th>
                                         <th>Kompetensi</th>
                                         <th>Level</th>
-                                        <th>GAP</th>
-                                        <th>Nilai</th>
                                         <th>Nilai Minimum</th>
+                                        <th>Nilai</th>
+                                        <th>GAP</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -56,7 +55,7 @@
     </div>
 </div>
 <div class="modal fade" id="modalTambahData" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -65,209 +64,67 @@
                 <hr>
             </div>
             <div class="modal-body">
-
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Kompetensi</label>
+                            <label for="">Pegawai ID / PIN</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" id="inPegawaiID" class="form-group form-control">
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-info waves-effect m-r-20" id="btnSearch" onclick="findPegawai()"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Pegawai Name</label>
                         </div>
                         <div class="col-md-8">
-                            <select class='form-group form-control' id="ddlKompetensi">
+                            <input type="text" id="inPegawaiName" class="form-group form-control disabled" readonly>
+                            <input type="hidden" id="inPegawaiNIP" class="form-group form-control disabled" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Kompetensi Level</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class='form-group form-control' id="ddlKompetensiLevel" onchange="getNilaiMinimum(this)">
                                 <option value="">Select option</option>
-                                <option value="1">First</option>
-                                <option value="2">Second</option>
-                                <option value="3">Third</option>
                             </select>
                         </div>
                     </div>
-                    <hr>
                 </div>
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Level</label>
+                            <label for="">Nilai Minimum</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="number" min="1" value="1" class="input-group form-control required"
-                                id="inLevel">
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="">Deskripsi</label>
-                        </div>
-                        <div class="col-md-8">
-                            <textarea class="form-group form-control" name="" id="inDescripsiLvl" cols="45"
-                                rows="2"></textarea>
+                            <input type="number" min="1" value="1" readonly class="input-group form-control disabled"
+                                id="inNilaiMin">
                         </div>
                     </div>
                 </div>
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Index Prilaku</label>
+                            <label for="">Nilai</label>
                         </div>
                         <div class="col-md-8">
-                            <textarea class="form-group form-control" name="" id="inIdxPrilaku" cols="45"
-                                rows="4"></textarea>
+                            <input type="number" min="1" value="1" class="input-group form-control" id="inNilai">
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-8">
-                        <button class="btn btn-warning" id="addLevelTemp">Add Level</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <table id="tblAddLevelTemp" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Level</th>
-                                    <th>Deskripsi</th>
-                                    <th>Index Prilaku</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveAddData">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalEditData" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Edit Data</h4>
-                <input type="hidden" id="KompetensiIdEdit">
-                <hr>
-            </div>
-            <div class="modal-body">
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="">Level</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="number" min="1" value="1" class="input-group form-control required"
-                                id="inLevel">
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="">Deskripsi</label>
-                        </div>
-                        <div class="col-md-8">
-                            <textarea class="form-group form-control" name="" id="inDescripsiLvl" cols="45"
-                                rows="2"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="">Index Prilaku</label>
-                        </div>
-                        <div class="col-md-8">
-                            <textarea class="form-group form-control" name="" id="inIdxPrilaku" cols="45"
-                                rows="4"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-8">
-                        <button class="btn btn-warning" id="addEditLevelTemp">Add Level</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <table id="tblEditLevelTemp" class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Level</th>
-                                    <th>Deskripsi</th>
-                                    <th>Index Prilaku</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveAddData">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalTambahDataKompetensi" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Kompetensi</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="">Nama Kompetensi</label>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="input-group form-control required" id="name_komp">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="">Code</label>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="input-group form-control required" id="code_komp">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="">Minimum Level</label>
-                    </div>
-                    <div class="col-md-8">
-                        <input type="number" min="1" value="1" class="input-group form-control number required"
-                            id="min_lvl_komp">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label for="">Deskripsi</label>
-                    </div>
-                    <div class="col-md-8">
-                        <textarea type="text" class="input-group form-control required" id="desc_komp"></textarea>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnAddkompetensi">Add Kompetensi</button>
+                <button type="button" class="btn btn-primary" id="btnSaveAddData" onclick="save()">Save changes</button>
             </div>
         </div>
     </div>

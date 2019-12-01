@@ -29,3 +29,6 @@ Route::delete('/Kompetensi/deleteLevel/{id}/{lvl}', 'Api\KompetensiController@de
 Route::get('/pegawai/kompetensi', 'Api\KompetensiPegawaiController@getListKompetensiPegawai');
 Route::post('/pegawai/kompetensi', 'Api\KompetensiPegawaiController@postKompetensiPegawai');
 Route::delete('/pegawai/kompetensi/{id}', 'Api\KompetensiPegawaiController@deleteKopetensiPegawai');
+
+Route::get('/pegawai/listPegawai', 'Api\KompetensiPegawaiController@getListPegawai');
+Route::get('/pegawai/listKompetensiLevel', 'Api\KompetensiPegawaiController@getListKompetensiLevel');

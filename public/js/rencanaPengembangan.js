@@ -16,14 +16,23 @@ function loadgrid() {
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            console.log(result.data);
+            // console.log(result.data);
             let rawhtml = "";
             let data = result.data;
             for (let i = 0; i < data.length; i++) {
-                rawhtml = '<tr pid="' + data[i].id + '">'
-
-                rawhtml += '</tr>'
-
+                rawhtml = '<tr uid="' + data[i].id + '">';
+                rawhtml += '<td>'+data[i].pegawai_id+' - '+ data[i].pegawai_name +'</td>';
+                rawhtml += '<td>'+data[i].code+' - '+ data[i].name +'</td>';
+                rawhtml += '<td>'+data[i].level+' - '+ data[i].description +'</td>';
+                rawhtml += '<td>'+data[i].nilai_minimum+'</td>';
+                rawhtml += '<td>'+data[i].nilai+'</td>';
+                rawhtml += '<td>'+data[i].gap+'</td>';
+                rawhtml += '<td>'+'<div class="js-sweetalert">';
+                rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>';
+                rawhtml += '</div>' +'</td>';
+                rawhtml += '</tr>';
+                // console.log(data[i]);
+                
                 $("#table-main tbody").append(rawhtml);
             }
             $("#table-main").DataTable({
@@ -34,263 +43,155 @@ function loadgrid() {
     })
 }
 
-$("#btnTambahData").click(function () {
-    $("#ddlKompetensi").val("");
-    $("#inLevel").val(1);
-    $("#inDescripsiLvl").val("");
-    $("#inIdxPrilaku").val("");
-    var tbl = $("#tblAddLevelTemp").DataTable();
-    tbl.rows()
-        .remove()
-        .draw();
-    loadDdlKompetensi();
+$("#btnTambahData").click(function () { 
+    clearFieldTambahData();
+    // loadDDLPegawai();
+    loadDDLKompetensi();
     $("#modalTambahData").modal("show");
 })
-
-$("#btnTambahDataKompetensi").click(function () {
-    $("#name_komp").val("");
-    $("#code_komp").val("");
-    $("#min_lvl_komp").val("");
-    $("#desc_komp").val("");
-    $("#modalTambahDataKompetensi").modal("show");
-})
-
-$("#modalTambahDataKompetensi button#btnAddkompetensi").click(function () {
-    // alert("ok");
-    // swal("Hello world!");
-    var req = {
-        name: $("#name_komp").val(),
-        code: $("#code_komp").val(),
-        minimum_lvl: $("#min_lvl_komp").val(),
-        description: $("#desc_komp").val(),
-        kategori_id: menuid
-    }
-    console.log(req);
+function clearFieldTambahData()
+{
+    $("#ddlKompetensiLevel").val("");
+    $("#inPegawaiID").val("");
+    $("#inPegawaiName").val("");
+    $("#inNilaiMin").val("");
+    $("#inNilai").val("");
+    $("#inPegawaiNIP").val("");
+}
+function loadDDLPegawai()
+{
     $.ajax({
-        url: $("#urlPath").val() + '/api/Kompetensi',
-        type: 'post',
+        url: $("#urlPath").val() + "/api/pegawai/listPegawai",
+        type: 'get',
         dataType: 'json',
-        data: {
-            req: req
+        success: function (result) {
+
         },
-        success: function (res) {
-            console.log(res);
-            $("#modalTambahDataKompetensi").modal("hide");
-            if (res.code == 200) {
-                $("#name_komp").val("");
-                $("#code_komp").val("");
-                $("#min_lvl_komp").val("");
-                $("#desc_komp").val("");
-                swal("Success!",
-                    res.message,
-                    "success"
-                );
-            } else {
-                swal("Error!",
-                    res.message,
-                    "error"
-                );
-            }
+        error:function(err){
+            console.log(err);            
         }
     })
-})
-
-$("#addEditLevelTemp button#btnSaveAddData").click(function () {
-    try {
-        // debugger;
-        let tblEditLevelTemp = $("#tblEditLevelTemp").DataTable();
-        let ddlKompetensi = $("#KompetensiIdEdit").val();
-
-        if (tblEditLevelTemp.data().length == 0) throw "Kompetensi Setidaknya Memiliki 1 Data Level";
-
-        let list_level = [];
-
-        tblEditLevelTemp.data().each(function (data, idx) {
-            let item_level = {
-                level: data[0],
-                level_description: data[1],
-                index_perilaku: data[2],
-                kompetensi_id: ddlKompetensi
-            }
-            list_level.push(item_level);
-        });
-
-        let req = list_level;
-
-        $.ajax({
-            url: $("#urlPath").val() + "/api/Kompetensi/editLevel/" + ddlKompetensi,
-            type: 'post',
-            data: {
-                req: req
-            },
-            // contentType: "application/json",
-            dataType: 'json',
-            success: function (result) {
-                swal("Success!",
-                    result.message,
-                    "success"
-                );
-                loadgrid();
-                $("#modalEditData").modal("hide");
-            }
-        });
-    } catch (err) {
-        swal("Error!",
-            err,
-            "warning"
-        );
-    }
-})
-
-$("#modalTambahData button#btnSaveAddData").click(function () {
-    try {
-        // debugger;
-        let tblAddLevelTemp = $("#tblAddLevelTemp").DataTable();
-        let ddlKompetensi = $("#ddlKompetensi").val();
-        if (ddlKompetensi == null || ddlKompetensi == "") throw "Harap Pilih Kompetensi Terlebih dahulu";
-        if (tblAddLevelTemp.data().length == 0) throw "Kompetensi Setidaknya Memiliki 1 Data Level";
-
-        let list_level = [];
-
-        tblAddLevelTemp.data().each(function (data, idx) {
-            let item_level = {
-                level: data[0],
-                level_description: data[1],
-                index_perilaku: data[2],
-                kompetensi_id: ddlKompetensi
-            }
-            list_level.push(item_level);
-        });
-
-        let req = list_level;
-
-        $.ajax({
-            url: $("#urlPath").val() + "/api/Kompetensi/Level/" + ddlKompetensi,
-            type: 'post',
-            data: {
-                req: req
-            },
-            // contentType: "application/json",
-            dataType: 'json',
-            success: function (result) {
-                swal("Success!",
-                    result.message,
-                    "success"
-                );
-                loadgrid();
-                $("#modalTambahData").modal("hide");
-            }
-        });
-    } catch (err) {
-        swal("Error!",
-            err,
-            "warning"
-        );
-    }
-})
-
-$("#addEditLevelTemp").click(function () {
-    try {
-        let tblEditLevelTemp = $("#tblEditLevelTemp").DataTable();
-        let inLevel = $("#modalEditData #inLevel").val();
-        let inDescripsiLvl = $("#modalEditData #inDescripsiLvl").val();
-        let inIdxPrilaku = $("#modalEditData #inIdxPrilaku").val();
-        let flag_is_valid = true;
-        tblEditLevelTemp.data().each(function (data, idx) {
-            if (inLevel == data[0]) flag_is_valid = false;
-        });
-        if (!flag_is_valid) throw "Level Sudah ada";
-        if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
-        if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
-
-        tblEditLevelTemp.row.add([
-            inLevel,
-            inDescripsiLvl,
-            inIdxPrilaku,
-        ]).draw();
-
-    } catch (err) {
-        swal("Error!",
-            err,
-            "warning"
-        );
-    }
-})
-
-$("#addLevelTemp").click(function () {
-    try {
-        let tblAddLevelTemp = $("#tblAddLevelTemp").DataTable();
-        let inLevel = $("#modalTambahData #inLevel").val();
-        let inDescripsiLvl = $("#modalTambahData #inDescripsiLvl").val();
-        let inIdxPrilaku = $("#modalTambahData #inIdxPrilaku").val();
-        let flag_is_valid = true;
-        tblAddLevelTemp.data().each(function (data, idx) {
-            if (inLevel == data[0]) flag_is_valid = false;
-        });
-        if (!flag_is_valid) throw "Level Sudah ada";
-        if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
-        if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
-
-        tblAddLevelTemp.row.add([
-            inLevel,
-            inDescripsiLvl,
-            inIdxPrilaku,
-        ]).draw();
-
-    } catch (err) {
-        swal("Error!",
-            err,
-            "warning"
-        );
-    }
-})
-
-function loadDdlKompetensi() {
+}
+function loadDDLKompetensi()
+{
     $.ajax({
-        url: $("#urlPath").val() + "/api/Kompetensi/listKompetensi/" + menuid,
+        url: $("#urlPath").val() + "/api/pegawai/listKompetensiLevel",
         type: 'get',
         dataType: 'json',
         success: function (result) {
             let data = result.data;
-            let rawhtml = '<option value="">Select option</option>';
-            console.log(data);
-            for (let i = 0; i < data.length; i++) {
-                rawhtml += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+            for(let i=0;i<data.length;i++)
+            {
+                let rawhtml = '<option value="">Select option</option>';
+                // console.log(data);
+                for (let i = 0; i < data.length; i++) {
+                    rawhtml += '<option nilmin="'+data[i].nilai_minimum+'" value="' + data[i].level + '">'+data[i].name+'(' + data[i].code+') - Level ';
+                    rawhtml +=  data[i].level+' - '+ data[i].level_description + '</option>';
+                }
+                $("#ddlKompetensiLevel").html(rawhtml)
             }
-            $("#ddlKompetensi").html(rawhtml)
+        },
+        error:function(err){
+            console.log(err);            
         }
     })
 }
 
-async function editData(e) {
-    var parents = $(e).closest("tr");
-    if (parents.length == 0) throw "Kompetensi ID tidak ditemukan";
-
-    let kompetensi_id = $(parents[0]).attr("kompetensi_id");
-    await $.ajax({
-        url: $("#urlPath").val() + "/api/Kompetensi/listLevelKompetensi/" + kompetensi_id,
+function findPegawai()
+{
+    console.log("finding starting");
+    
+    $.ajax({
+        url: $("#urlPath").val() + "/api/pegawai/listPegawai",
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            var tbl = $("#tblEditLevelTemp").DataTable();
-            tbl.rows()
-                .remove()
-                .draw();
-            var data = result.data;
-            for (let i = 0; i < data.length; i++) {
-                tbl.row.add([
-                    data[i].level,
-                    data[i].level_description,
-                    data[i].index_perilaku,
-                ]).draw();
-                $("#KompetensiIdEdit").val(data[i].kompetensi_id);
+            let words = $("#inPegawaiID").val();
+            let data = result.data;
+            let item = data.find(item=>item.pin === words);
+            if(item == null )
+            {
+                $("#inPegawaiName").val("");
+                $("#inPegawaiNIP").val("");
+                swal("Error!",
+                    "Pegawai ID : " + words+", Tidak ditemukan",
+                    "warning"
+                );
             }
+            else{
+                $("#inPegawaiName").val(item.nama);
+                $("#inPegawaiNIP").val(item.nip);
+            }
+        },
+        error:function(err){
+            console.log(err);            
         }
     })
-    $("#modalEditData").modal('show');
 }
 
-function deleteData(e) {
+function getNilaiMinimum(e)
+{
+    // debugger;
+    var nilmin = $('option:selected', e).attr('nilmin');
+    console.log("find nilai min = ",nilmin);
+    $("#inNilaiMin").val(nilmin);
+}
+
+function save()
+{
+    try{
+    let level_kompetensi_id = $("#ddlKompetensiLevel").val();
+    let pegawai_id = $("#inPegawaiID").val();
+    let pegawai_name = $("#inPegawaiName").val();
+    let nilai = $("#inNilai").val();
+    let nilai_min = $("#inNilaiMin").val();
+    let gap = parseInt(nilai)-parseInt(nilai_min);
+    let nip = $("#inPegawaiNIP").val();
+    if(pegawai_name == null || pegawai_name == undefined || pegawai_name == "" || pegawai_name == "undefined") throw "Pastikan Pegawai ID yang anda masukan benar, dan tekan tombol search untuk memastikan";
+    if(level_kompetensi_id == null || level_kompetensi_id == undefined || level_kompetensi_id == "" || level_kompetensi_id == "undefined") throw "Field Kompetensi Level masih Kosong/Belum dipilih";
+    if(nilai == null || nilai == undefined || nilai == "" || nilai == "undefined") throw "Field Nilai masih Kosong";
+    let req = {
+        pegawai_id:pegawai_id,
+        pegawai_name:pegawai_name,
+        nip:nip==null?" ":nip,
+        level_kompetensi_id:level_kompetensi_id,
+        nilai:nilai,
+        gap:gap
+    }
+    console.log(req);
+    
+    $.ajax({
+        url: $("#urlPath").val() + "/api/pegawai/kompetensi",
+        type: 'post',
+        data:{req:req},
+        dataType: 'json',
+        success: function (result) {
+            loadgrid();
+            $("#modalTambahData").modal("hide");
+            swal("Success!",
+                result.message,
+                "success"
+            );
+        },
+        error:function(err){
+            console.log(err);            
+            swal("Error!",
+                err,
+                "error"
+            );
+        }
+    })
+
+    } catch(err) {
+        swal("Warning!",
+            err,
+            "warning"
+        );
+    }
+}
+
+function deleteData(e)
+{
     try {
         swal({
             title: "Are you sure?",
@@ -307,11 +208,11 @@ function deleteData(e) {
                 var parents = $(e).closest("tr");
                 if (parents.length == 0) throw "Kompetensi ID tidak ditemukan";
 
-                let kompetensi_id = $(parents[0]).attr("kompetensi_id");
-                let level = $(parents[0]).attr("level");
-                console.log(kompetensi_id, level);
+                let uid = $(parents[0]).attr("uid");
+                // let level = $(parents[0]).attr("level");
+                // console.log(kompetensi_id, level);
                 $.ajax({
-                    url: $("#urlPath").val() + "/api/Kompetensi/deleteLevel/" + kompetensi_id + "/" + level,
+                    url: $("#urlPath").val() + "/api/pegawai/kompetensi/" + uid,
                     type: 'delete',
                     dataType: 'json',
                     success: function (result) {
