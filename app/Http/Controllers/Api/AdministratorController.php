@@ -9,19 +9,29 @@ use Carbon\Carbon;
 
 class AdministratorController extends Controller {
 
-    public function addAdmin(Request $data)
+    public function getAdmin(Request $req)
     {
-        $data = DB::table('admin_pegawais')
+        $data = DB::table('admin_pegawais')->get();
+        return response()->json([
+            'code' => 200,
+            'message' => 'Data Found!',
+            'data' => $data
+        ]);
+    }
+    public function addAdmin(Request $request)
+    {
+        DB::table('admin_pegawais')
         ->insert([
-            'pegawai_id' => $data['pegawai_id'],
+            'pegawai_id' => $request->req['pegawai_id'],
             'is_admin' => true,
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
-    return response()->json([
-            'code' => 200,
-            'message' => 'Data Inserted!',
-            'data' => $data
-    ]);
+        $data = DB::table('admin_pegawais')->where('pegawai_id',$request->req['pegawai_id'])->get();
+        return response()->json([
+                'code' => 200,
+                'message' => 'Data Inserted!',
+                'data' => $data
+        ]);
     }
 
     public function deleteAdmin($id) {

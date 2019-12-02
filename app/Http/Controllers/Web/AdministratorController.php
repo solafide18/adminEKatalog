@@ -13,10 +13,10 @@ class AdministratorController extends Controller {
         $value = $request->session()->get('authenticated', 'default');
         $isAdmin = $request->session()->get('isAdmin', 'default')[0];
 
-        $listAdmin = DB::table('admin_pegawais')->get();
+        // $listAdmin = DB::table('admin_pegawais')->get();
 
         if ($value[0]=='always') {
-            return view('administrator/index',['isAdmin'=>$isAdmin,'listAdmin'=>$listAdmin]);
+            return view('administrator/index',['isAdmin'=>$isAdmin]);
         } else {
             return redirect()->action('Web\LoginController@index');
         }
