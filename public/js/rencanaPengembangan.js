@@ -28,7 +28,9 @@ function loadgrid() {
                 rawhtml += '<td>'+data[i].nilai+'</td>';
                 rawhtml += '<td>'+data[i].gap+'</td>';
                 rawhtml += '<td>'+'<div class="js-sweetalert">';
-                rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>';
+                if(isAdm == 'admin'){
+                    rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>';
+                }
                 rawhtml += '</div>' +'</td>';
                 rawhtml += '</tr>';
                 // console.log(data[i]);
@@ -124,7 +126,11 @@ function findPegawai()
             }
         },
         error:function(err){
-            console.log(err);            
+            console.log(err);      
+            swal("Error!",
+                err,
+                "warning"
+            );      
         }
     })
 }
