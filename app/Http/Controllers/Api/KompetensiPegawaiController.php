@@ -107,7 +107,7 @@ class KompetensiPegawaiController extends Controller {
         $data = DB::table('kompetensis as a')
                 ->join('level_kompetensis as b','b.kompetensi_id','=','a.id')
                 ->select(
-                    'a.id',
+                    'b.id',
                     'a.name',
                     'a.code',
                     'b.level',

@@ -16,7 +16,7 @@ function loadgrid() {
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            // console.log(result.data);
+            console.log(result.data);
             let rawhtml = "";
             let data = result.data;
             for (let i = 0; i < data.length; i++) {
@@ -41,6 +41,10 @@ function loadgrid() {
                 // paging: false,
                 "ordering": false
             });
+        },
+        error:function(err){
+            console.log(err);
+            
         }
     })
 }
@@ -87,7 +91,7 @@ function loadDDLKompetensi()
                 let rawhtml = '<option value="">Select option</option>';
                 // console.log(data);
                 for (let i = 0; i < data.length; i++) {
-                    rawhtml += '<option nilmin="'+data[i].nilai_minimum+'" value="' + data[i].level + '">'+data[i].name+'(' + data[i].code+') - Level ';
+                    rawhtml += '<option nilmin="'+data[i].nilai_minimum+'" value="' + data[i].id + '">'+data[i].name+'(' + data[i].code+') - Level ';
                     rawhtml +=  data[i].level+' - '+ data[i].level_description + '</option>';
                 }
                 $("#ddlKompetensiLevel").html(rawhtml)

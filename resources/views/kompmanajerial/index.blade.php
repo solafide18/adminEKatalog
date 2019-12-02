@@ -76,9 +76,6 @@
                         <div class="col-md-8">
                             <select class='form-group form-control' id="ddlKompetensi">
                                 <option value="">Select option</option>
-                                <option value="1">First</option>
-                                <option value="2">Second</option>
-                                <option value="3">Third</option>
                             </select>
                         </div>
                     </div>
