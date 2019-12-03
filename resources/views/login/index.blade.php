@@ -25,14 +25,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
 
     <!-- Custom Theme files -->
-    <link href="loginbkraft/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="loginbkraft/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{url('/')}}/loginbkraft/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{url('/')}}/loginbkraft/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
     <!-- //Custom Theme files -->
 
     <!-- web font -->
     <link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
     <!-- //web font -->
-
+    <style>
+        .error-msg{
+            width:100%;
+            min-height:30px;
+            background-color: brown;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .error-details{
+            color: #fff;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,15 +54,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="bg-layer">
             <h1>E- Katalog Pengembangan Kompetensi Pegawai</h1>
             <div class="header-main">
+                @if($msg ?? ''!="")
+                    <div class="error-msg">
+                        <div class="error-details">
+                            <h4>{{$msg ?? '' ?? ''}}</h4>
+                        </div>
+                    </div>
+                @endif
                 <div class="main-icon">
-                    <img src="loginbkraft/images/logo.png">
+                    <img src="{{url('/')}}/loginbkraft/images/logo.png">
                 </div>
                 <div class="header-left-bottom">
-                    <form action="" method="post" accept-charset="UTF-8" >
+                    <form action="{{url('/')}}/login"  method="post" accept-charset="UTF-8" >
                     {{csrf_field()}}
                         <div class="icon1">
                             <span class="fa fa-user"></span>
-                            <input type="email" placeholder="Username" name='pin'>
+                            <input type="text" placeholder="Username" name='pin'>
                         </div>
                         <div class="icon1">
                             <span class="fa fa-lock"></span>

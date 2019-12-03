@@ -154,6 +154,16 @@ a {
     background: transparent;
     letter-spacing: 1px;
 }
+.header-left-bottom input[type="text"] {
+    outline: none;
+    font-size: 15px;
+    color: #222;
+	border:none;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    letter-spacing: 1px;
+}
 .header-left-bottom input[type="password"]{
 	outline: none;
 	font-size: 15px;
@@ -373,6 +383,9 @@ h3 a {
 		margin: 0 1em;
 	}
 	.header-left-bottom input[type="email"],.header-left-bottom input[type="password"] {
+		width: 88%;
+    }
+    .header-left-bottom input[type="text"]{
 		width: 88%;
 	}
 	.social ul li {

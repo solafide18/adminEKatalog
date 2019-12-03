@@ -17,3 +17,22 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 Route::get('/get/KategoriKompetensi', 'Api\KategoriKompetensiController@get');
+Route::get('/Kompetensi/{id}', 'Api\KompetensiController@get');
+Route::post('/Kompetensi', 'Api\KompetensiController@post');
+Route::post('/Kompetensi/Level/{id}', 'Api\KompetensiController@addLevel');
+Route::post('/Kompetensi/editLevel/{id}', 'Api\KompetensiController@editLevel');
+Route::get('/Kompetensi/listKompetensi/{id}', 'Api\KompetensiController@listKompetensi');
+Route::get('/Kompetensi/listLevelKompetensi/{id}', 'Api\KompetensiController@listLevelKompetensi');
+
+Route::delete('/Kompetensi/deleteLevel/{id}/{lvl}', 'Api\KompetensiController@deleteLevel');
+
+Route::get('/pegawai/kompetensi', 'Api\KompetensiPegawaiController@getListKompetensiPegawai');
+Route::post('/pegawai/kompetensi', 'Api\KompetensiPegawaiController@postKompetensiPegawai');
+Route::delete('/pegawai/kompetensi/{id}', 'Api\KompetensiPegawaiController@deleteKopetensiPegawai');
+
+Route::get('/admin', 'Api\AdministratorController@getAdmin');
+Route::post('/admin', 'Api\AdministratorController@addAdmin');
+Route::delete('/admin/{id}', 'Api\AdministratorController@deleteAdmin');
+
+Route::get('/pegawai/listPegawai', 'Api\KompetensiPegawaiController@getListPegawai');
+Route::get('/pegawai/listKompetensiLevel', 'Api\KompetensiPegawaiController@getListKompetensiLevel');

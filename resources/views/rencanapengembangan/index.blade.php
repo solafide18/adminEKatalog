@@ -1,184 +1,133 @@
 @extends('shared.layout')
 
 @section('content')
+<style>
+    .tablewrap {
+        overflow: auto;
+        padding: 10px 10px 10px 10px;
+    }
+    input.form-control.disabled{
+        background-color: rgb(218, 213, 213);
+    }
+</style>
 <div class="block-header">
-    <h2>Kamus Kompetensi Core Value</h2>
+    <h2>Rencana Pengembangan Kompetensi</h2>
     <h5>Badan Ekonomi Kreatif</h5>
 </div>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2>
-                    Kamus Kompetensi Core Value
-                </h2>
+                <h2>Rencana Pengembangan Kompetensi</h2>
 
             </div>
             <div class="body">
-                <td><button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal">Tambah Data</button></td>
-
-                <td><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#tambahkompentensiLabel">Tambah Kompetensi</button></td>
+                @if($isAdmin == 'admin')
+                <button type="button" class="btn btn-info waves-effect m-r-20" id="btnTambahData">Tambah
+                    Data</button>
                 <br>
+                @endif
             </div>
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kompetensi</th>
-                            <th>Level</th>
-                            <th>Indikator Perilaku</th>
-
-                            <th>Action</th>
-
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Kompetensi</th>
-                            <th>Level</th>
-                            <th>Indikator Perilaku</th>
-
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">KOMITMEN TERHADAP
-                                        ORGANISASI</button></center>
-                            </td>
-                            <td>LEVEL 2 - Melaksanakan pekerjaan sebatas tuntutan tugas dan tanggungjawabnya
-
-                            </td>
-                            <td>
-                                <li>2.1. Tidak berpartisipasi untuk membantu rekan kerja;</li>
-                                <li>2.2. Mengerjakan tugas hanya berdasarkan perintah;</li>
-                                <li>2.3. Melaksanakan tugas sesuai Standar Operasional yang berlaku
-                                </li>
-
-                            </td>
-
-                            <td>
-
-                                <div class="row clearfix js-sweetalert">
-                                    <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>
-                                    <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
-                                </div>
-
-                            </td>
-
-
-                        </tr>
-
-
-
-
-
-
-
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>
-                                <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#kerjasamaModal">EMPATI</button>
-                                </center>
-                            </td>
-                            <td>LEVEL 2 - Menyediakan diri untuk selalu mendengarkan keluhan/ ungkapan perasaan
-                                orang lain
-
-                            </td>
-                            <td>
-                                <li>2.1. Memberikan kesempatan kepada orang lain untuk mengugkapkan perasaan;
-                                </li>
-                                <li>2.2. Meluangkan waktu di sela-sela pekerjaan untuk mendengarkan keluh kesah
-                                    orang lain;</li>
-                                <li>2.3. Secara aktif berusaha untuk mengerti persoalan
-                                </li>
-
-                            </td>
-
-                            <td>
-                                <div class="row clearfix js-sweetalert">
-                                    <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>
-                                    <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
-
-                            </td>
+            <div class="wrapper-grid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tablewrap">
+                            <table id="table-main" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Pegawai</th>
+                                        <th>Kompetensi</th>
+                                        <th>Level</th>
+                                        <th>Nilai Minimum</th>
+                                        <th>Nilai</th>
+                                        <th>GAP</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-            </tr>
-
-
-
-
-
-
-
-            <tr>
-                <td>3</td>
-                <td>
-                    <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#komunikasiModal">INOVASI</button></center>
-                </td>
-                <td>LEVEL 2 - Mengidentifikasi alternatif ide/ gagasan baru yang mungkin dapat diterapkan
-
-                </td>
-                <td>
-                    <li>2.1. Mengenali gagasan yang muncul dalam tim;</li>
-                    <li>2.2. Mengidentifikasi gagasan yang dapat diterapkan dalam pekerjaan;</li>
-                    <li>2.3. Mengetahui gagasan penting yang dapat mendukung kinerja.
-
-                    </li>
-
-                </td>
-
-                <td>
-                    <div class="row clearfix js-sweetalert">
-                        <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>
-                        <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
-
-                </td>
         </div>
-
-
-        </tr>
-
-
-
-
-        <tr>
-            <td>4</td>
-            <td>
-                <center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#orientasiModal">KEPEMIMPINAN</button></center>
-            </td>
-            <td>LEVEL 2 - Membina bawahan dalam penyelesaian pekerjaan
-
-
-            </td>
-            <td>
-                <li>2.1. Mengetahui kekuatan tim;</li>
-                <li>2.2. Membina tim berdasarkan kekuatannya;</li>
-                <li>2.3. Mendukung pelaksanaan tugas timnya.
-
-                </li>
-
-            </td>
-
-            <td>
-                <div class="row clearfix js-sweetalert">
-                    <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#largeModal"><i class="material-icons">mode_edit</i></button>
-                    <button type="button" class="btn btn-danger waves-effect m-r-20" data-type="confirm"><i class="material-icons">cancel</i></button>
-
-            </td>
     </div>
-
-
-    </tr>
-
-
-    </tbody>
-    </table>
 </div>
+<div class="modal fade" id="modalTambahData" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Tambah Data</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Pegawai ID / PIN</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" id="inPegawaiID" class="form-group form-control">
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-info waves-effect m-r-20" id="btnSearch" onclick="findPegawai()"><i class="material-icons">search</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Pegawai Name</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" id="inPegawaiName" class="form-group form-control disabled" readonly>
+                            <input type="hidden" id="inPegawaiNIP" class="form-group form-control disabled" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Kompetensi Level</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class='form-group form-control' id="ddlKompetensiLevel" onchange="getNilaiMinimum(this)">
+                                <option value="">Select option</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Nilai Minimum</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" min="1" value="1" readonly class="input-group form-control disabled"
+                                id="inNilaiMin">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Nilai</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" min="1" value="1" class="input-group form-control" id="inNilai">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveAddData" onclick="save()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{url('/')}}/js/rencanaPengembangan.js"></script>
 @endsection
