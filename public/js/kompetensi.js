@@ -43,16 +43,16 @@ function loadgrid() {
                             rawhtml += '<td></td><td></td>'
                         }
 
-                        rawhtml += '<td> LEVEL ' + data_level[j].level + ' - ' + data_level[j].level_description +
-                            '</td>' +
-                            '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>") +
-                            '</td>';
+                        rawhtml += '<td> LEVEL ' + data_level[j].level + ' - ' + data_level[j].level_description + '</td>';
+                        rawhtml += '<td>' + data_level[j].nilai_minimum + '</td>';
+                        rawhtml += '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>");
+                        rawhtml += '</td>';
                         // if (flag_col_kompetensi == 0) {
                         if (old_level != data_level[j].level && isAdm == "admin") {
                             rawhtml +=
                                 '<td>' +
                                 '<div class="js-sweetalert">' +
-                                '<button type="button" onclick="editData(this)klhj" class="btn btn-info waves-effect m-r-20"><i class="material-icons">mode_edit</i>' +
+                                '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-20"><i class="material-icons">mode_edit</i>' +
                                 '</button>' +
                                 '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>' +
                                 '</div>' +
@@ -83,6 +83,7 @@ $("#btnTambahData").click(function () {
     $("#inLevel").val(1);
     $("#inDescripsiLvl").val("");
     $("#inIdxPrilaku").val("");
+    $("#inNilaiMin").val(0);
     var tbl = $("#tblAddLevelTemp").DataTable();
     tbl.rows()
         .remove()
@@ -154,7 +155,8 @@ $("#addEditLevelTemp button#btnSaveAddData").click(function () {
                 level: data[0],
                 level_description: data[1],
                 index_perilaku: data[2],
-                kompetensi_id: ddlKompetensi
+                kompetensi_id: ddlKompetensi,
+                nilai_minimum: data[3]
             }
             list_level.push(item_level);
         });
@@ -201,13 +203,15 @@ $("#modalTambahData button#btnSaveAddData").click(function () {
                 level: data[0],
                 level_description: data[1],
                 index_perilaku: data[2],
-                kompetensi_id: ddlKompetensi
+                kompetensi_id: ddlKompetensi,
+                nilai_minimum:data[3]
             }
             list_level.push(item_level);
         });
 
         let req = list_level;
-
+        console.log(req);
+        
         $.ajax({
             url: $("#urlPath").val() + "/api/Kompetensi/Level/" + ddlKompetensi,
             type: 'post',
@@ -239,11 +243,12 @@ $("#addEditLevelTemp").click(function () {
         let inLevel = $("#modalEditData #inLevel").val();
         let inDescripsiLvl = $("#modalEditData #inDescripsiLvl").val();
         let inIdxPrilaku = $("#modalEditData #inIdxPrilaku").val();
+        let inNilaiMin = $("#modalEditData #inNilaiMin").val();
         let flag_is_valid = true;
-        tblEditLevelTemp.data().each(function (data, idx) {
-            if (inLevel == data[0]) flag_is_valid = false;
-        });
-        if (!flag_is_valid) throw "Level Sudah ada";
+        // tblEditLevelTemp.data().each(function (data, idx) {
+        //     if (inLevel == data[0]) flag_is_valid = false;
+        // });
+        // if (!flag_is_valid) throw "Level Sudah ada";
         if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
         if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
 
@@ -251,6 +256,7 @@ $("#addEditLevelTemp").click(function () {
             inLevel,
             inDescripsiLvl,
             inIdxPrilaku,
+            inNilaiMin
         ]).draw();
 
     } catch (err) {
@@ -267,6 +273,7 @@ $("#addLevelTemp").click(function () {
         let inLevel = $("#modalTambahData #inLevel").val();
         let inDescripsiLvl = $("#modalTambahData #inDescripsiLvl").val();
         let inIdxPrilaku = $("#modalTambahData #inIdxPrilaku").val();
+        let inNilaiMin = $("#modalTambahData #inNilaiMin").val();
         let flag_is_valid = true;
         // tblAddLevelTemp.data().each(function (data, idx) {
         //     if (inLevel == data[0]) flag_is_valid = false;
@@ -279,6 +286,7 @@ $("#addLevelTemp").click(function () {
             inLevel,
             inDescripsiLvl,
             inIdxPrilaku,
+            inNilaiMin
         ]).draw();
 
     } catch (err) {
@@ -326,6 +334,7 @@ async function editData(e) {
                     data[i].level,
                     data[i].level_description,
                     data[i].index_perilaku,
+                    data[i].nilai_minimum
                 ]).draw();
                 $("#KompetensiIdEdit").val(data[i].kompetensi_id);
             }

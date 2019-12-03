@@ -1,3 +1,8 @@
+<style>
+    .menu{
+        overflow:auto;
+    }
+</style>
 <section>
     <!-- Left Sidebar -->
     <aside id="leftsidebar" class="sidebar">
@@ -68,9 +73,9 @@
                         <span>Karir</span>
                     </a>
                     <ul class="ml-menu">
-                        <li>
+                        <!-- <li>
                             <a href="#">Pengembangan Kompetensi</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="{{url('/')}}/rencanapengembangan">Rencana Pengembangan Kompetensi</a>
                         </li>

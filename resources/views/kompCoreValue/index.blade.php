@@ -41,10 +41,9 @@
                                         <th>No</th>
                                         <th>Kompetensi</th>
                                         <th>Level</th>
+                                        <th>Nilai Minimum</th>
                                         <th>Indikator Perilaku</th>
-
                                         <th>Action</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,7 +83,7 @@
     </div>
 </div>
 <div class="modal fade" id="modalTambahData" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -115,6 +114,17 @@
                         <div class="col-md-8">
                             <input type="number" min="1" value="1" class="input-group form-control required"
                                 id="inLevel">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Nilai minimum</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" min="0" value="0" class="input-group form-control required"
+                                id="inNilaiMin">
                         </div>
                     </div>
                 </div>
@@ -155,6 +165,7 @@
                                     <th>Level</th>
                                     <th>Deskripsi</th>
                                     <th>Index Prilaku</th>
+                                    <th>Nilai Minimum</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -172,7 +183,7 @@
     </div>
 </div>
 <div class="modal fade" id="modalEditData" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -190,6 +201,17 @@
                         <div class="col-md-8">
                             <input type="number" min="1" value="1" class="input-group form-control required"
                                 id="inLevel">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Nilai minimum</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" min="0" value="0" class="input-group form-control required"
+                                id="inNilaiMin">
                         </div>
                     </div>
                 </div>
@@ -230,6 +252,7 @@
                                     <th>Level</th>
                                     <th>Deskripsi</th>
                                     <th>Index Prilaku</th>
+                                    <th>Nilai Minimum</th>
                                 </tr>
                             </thead>
                             <tbody>
