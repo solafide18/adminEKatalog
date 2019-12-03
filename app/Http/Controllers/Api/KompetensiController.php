@@ -74,7 +74,7 @@ class KompetensiController extends Controller
                     'created_at' => Carbon::now()->toDateTimeString(),
                     'kompetensi_id' => $data[$i]['kompetensi_id'],
                     'index_perilaku' => $data[$i]['index_perilaku'],
-                    'nilai_minimum' => 0,
+                    'nilai_minimum' => $data[$i]['nilai_minimum'],
                 ]
             );
         }
@@ -102,7 +102,7 @@ class KompetensiController extends Controller
                     'created_at' => Carbon::now()->toDateTimeString(),
                     'kompetensi_id' => $data[$i]['kompetensi_id'],
                     'index_perilaku' => $data[$i]['index_perilaku'],
-                    'nilai_minimum' => 0,
+                    'nilai_minimum' => $data[$i]['nilai_minimum'],
                 ]
             );
         }
