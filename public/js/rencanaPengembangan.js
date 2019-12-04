@@ -27,6 +27,7 @@ function loadgrid() {
                 rawhtml += '<td>'+data[i].nilai_minimum+'</td>';
                 rawhtml += '<td>'+data[i].nilai+'</td>';
                 rawhtml += '<td>'+data[i].gap+'</td>';
+                rawhtml += '<td>'+data[i].information+'</td>';
                 rawhtml += '<td>'+'<div class="js-sweetalert">';
                 if(isAdm == 'admin'){
                     rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>';
@@ -63,6 +64,8 @@ function clearFieldTambahData()
     $("#inNilaiMin").val("");
     $("#inNilai").val("");
     $("#inPegawaiNIP").val("");
+    $("#inGAP").val("");
+    $("#inInformation").val("");
 }
 function loadDDLPegawai()
 {
@@ -147,6 +150,14 @@ function getNilaiMinimum(e)
     $("#inNilaiMin").val(nilmin);
 }
 
+function nilaiChange(e)
+{
+    let nilai = $(e).val();
+    let nilai_min = $("#inNilaiMin").val();
+    let gap = parseInt(nilai)-parseInt(nilai_min);
+    $("#inGAP").val(gap);
+}
+
 function save()
 {
     try{
@@ -157,16 +168,19 @@ function save()
     let nilai_min = $("#inNilaiMin").val();
     let gap = parseInt(nilai)-parseInt(nilai_min);
     let nip = $("#inPegawaiNIP").val();
-    if(pegawai_name == null || pegawai_name == undefined || pegawai_name == "" || pegawai_name == "undefined") throw "Pastikan Pegawai ID yang anda masukan benar, dan tekan tombol search untuk memastikan";
-    if(level_kompetensi_id == null || level_kompetensi_id == undefined || level_kompetensi_id == "" || level_kompetensi_id == "undefined") throw "Field Kompetensi Level masih Kosong/Belum dipilih";
-    if(nilai == null || nilai == undefined || nilai == "" || nilai == "undefined") throw "Field Nilai masih Kosong";
+    let information = $("#inInformation").val();
+    if(pegawai_name == null || pegawai_name == undefined || pegawai_name == "" ) throw "Pastikan Pegawai ID yang anda masukan benar, dan tekan tombol search untuk memastikan";
+    if(level_kompetensi_id == null || level_kompetensi_id == undefined || level_kompetensi_id == ""  ) throw "Field Kompetensi Level masih Kosong/Belum dipilih";
+    if(nilai == null || nilai == undefined || nilai == "" ) throw "Field Nilai masih Kosong";
+    if(information == null || information == undefined || information == "" ) throw "Field Informasi masih Kosong";
     let req = {
         pegawai_id:pegawai_id,
         pegawai_name:pegawai_name,
         nip:nip==null?" ":nip,
         level_kompetensi_id:level_kompetensi_id,
         nilai:nilai,
-        gap:gap
+        gap:gap,
+        information:information
     }
     console.log(req);
     

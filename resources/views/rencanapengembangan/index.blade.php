@@ -41,6 +41,7 @@
                                         <th>Nilai Minimum</th>
                                         <th>Nilai</th>
                                         <th>GAP</th>
+                                        <th>Informasi</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -117,7 +118,29 @@
                             <label for="">Nilai</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="number" min="1" value="1" class="input-group form-control" id="inNilai">
+                            <input type="number" min="1" value="1" class="input-group form-control" id="inNilai" onchange="nilaiChange(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">GAP</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" readonly class="input-group form-control disabled"
+                                id="inGAP">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Informasi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="input-group form-control" id="inInformation">
+                            </textarea>
                         </div>
                     </div>
                 </div>

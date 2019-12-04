@@ -100,12 +100,12 @@
 <script>
     $(document).ready(function () {
         console.log("ready");
-        loadChart();
+        getDataChart();
     });
 
-    async function getDataChart() {
+    function getDataChart() {
         var listData = [];
-        await $.ajax({
+        $.ajax({
             url: $("#urlPath").val() + "/api/dashboard/getChart/{{Session::get('id')[0]??''}}",
             type: 'get',
             dataType: 'json',
@@ -116,19 +116,20 @@
                 for (let i = 0; i < data.length; i++) {
                     listData.push([data[i].name, data[i].nilai_minimum, data[i].nilai])
                 }
+                loadChart(listData);
             },
             error: function (err) {
                 console.log(err);
             }
         })
-        return listData
+        // return listData
     }
 
-    async function loadChart() {
+    function loadChart(listData) {
         google.charts.load('current', { 'packages': ['bar'] });
         google.charts.setOnLoadCallback(drawChart);
 
-        var listData = await getDataChart();
+        // var listData = await getDataChart();
 
         function drawChart() {
             // var data = google.visualization.arrayToDataTable([
