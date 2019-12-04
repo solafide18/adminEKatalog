@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 
 <head>
-    <title>E- Katalog Pengembangan Kompetensi Pegawai</title>
+    <title>BATARA | PENGEMBANGAN KOMPETENSI PEGAWAI BAPAREKRAFT</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
