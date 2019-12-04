@@ -19,7 +19,7 @@ class CreateKompetensisTable extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->integer('minimum_lvl');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
 

@@ -251,7 +251,7 @@
                                 <tr>
                                     <th>Level</th>
                                     <th>Deskripsi</th>
-                                    <th>Index Prilaku</th>
+                                    <th>Indikator Prilaku</th>
                                     <th>Nilai Minimum</th>
                                 </tr>
                             </thead>
