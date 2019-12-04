@@ -245,10 +245,10 @@ $("#addEditLevelTemp").click(function () {
         let inIdxPrilaku = $("#modalEditData #inIdxPrilaku").val();
         let inNilaiMin = $("#modalEditData #inNilaiMin").val();
         let flag_is_valid = true;
-        // tblEditLevelTemp.data().each(function (data, idx) {
-        //     if (inLevel == data[0]) flag_is_valid = false;
-        // });
-        // if (!flag_is_valid) throw "Level Sudah ada";
+        tblEditLevelTemp.data().each(function (data, idx) {
+            if (inLevel == data[0]) flag_is_valid = false;
+        });
+        if (!flag_is_valid) throw "Level Sudah ada";
         if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
         if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
 
@@ -275,10 +275,10 @@ $("#addLevelTemp").click(function () {
         let inIdxPrilaku = $("#modalTambahData #inIdxPrilaku").val();
         let inNilaiMin = $("#modalTambahData #inNilaiMin").val();
         let flag_is_valid = true;
-        // tblAddLevelTemp.data().each(function (data, idx) {
-        //     if (inLevel == data[0]) flag_is_valid = false;
-        // });
-        // if (!flag_is_valid) throw "Level Sudah ada";
+        tblAddLevelTemp.data().each(function (data, idx) {
+            if (inLevel == data[0]) flag_is_valid = false;
+        });
+        if (!flag_is_valid) throw "Level Sudah ada";
         if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
         if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
 
