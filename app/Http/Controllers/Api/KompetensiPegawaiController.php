@@ -13,8 +13,8 @@ class KompetensiPegawaiController extends Controller {
 
     public function postKompetensiPegawai(Request $request){
         $data = $request->req;
-        error_log("masuk sini ==============================");
-        // error_log($data);
+        //error_log("masuk sini ==============================");
+        //error_log($data);
         DB::table('kompetensi_pegawais')
         ->insert([
                 'pegawai_id' => $data['pegawai_id'],
@@ -23,6 +23,7 @@ class KompetensiPegawaiController extends Controller {
                 'level_kompetensi_id' => $data['level_kompetensi_id'],
                 'nilai' => $data['nilai'],
                 'gap' => $data['gap'],
+                'information' => $data['information'],
                 'created_at' => Carbon::now()->toDateTimeString()
             ]);
         return response()->json([
