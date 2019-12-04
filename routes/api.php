@@ -36,3 +36,5 @@ Route::delete('/admin/{id}', 'Api\AdministratorController@deleteAdmin');
 
 Route::get('/pegawai/listPegawai', 'Api\KompetensiPegawaiController@getListPegawai');
 Route::get('/pegawai/listKompetensiLevel', 'Api\KompetensiPegawaiController@getListKompetensiLevel');
+
+Route::get('/dashboard/getChart/{id}', 'Api\DashboardController@getChart');
