@@ -14,7 +14,7 @@ class AlterKomPeg extends Migration
     public function up()
     {
         Schema::table('kompetensi_pegawais', function (Blueprint $table) {
-            $table->longText('information')->nulable();
+            $table->longText('information')->nullable();
         });
     }
 

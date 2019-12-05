@@ -14,7 +14,7 @@ class AlterKtgKomp extends Migration
     public function up()
     {
         Schema::table('kategori_kompetensis', function (Blueprint $table) {
-            $table->string('link_url')->nulable();
+            $table->string('link_url')->nullable();
         });
     }
 

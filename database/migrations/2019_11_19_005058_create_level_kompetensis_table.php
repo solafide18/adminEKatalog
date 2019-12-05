@@ -27,7 +27,7 @@ class CreateLevelKompetensisTable extends Migration
             $table->foreign('kompetensi_id')->references('id')
             ->on('kompetensis')
             ->onDelete('cascade');;
-            $table->longText('index_perilaku')->nulable();
+            $table->longText('index_perilaku')->nullable();
             $table->integer('nilai_minimum');
         });
     }
