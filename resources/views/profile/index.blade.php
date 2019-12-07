@@ -189,7 +189,7 @@
                                                             <th>Nama Kompetensi</th>
                                                             <th>Level</th>
                                                             <th>GAP</th>
-
+                                                            <th>Information</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -199,6 +199,7 @@
                                                                 <td>{{$item->name}}</td>
                                                                 <td>{{$item->level}}</td>
                                                                 <td>{{$item->gap}}</td>
+                                                                <td>{{$item->information}}</td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

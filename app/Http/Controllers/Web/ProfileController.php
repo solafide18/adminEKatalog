@@ -39,6 +39,7 @@ class ProfileController extends Controller
                 'kompetensi_pegawais.pegawai_id',
                 'kompetensi_pegawais.nilai',
                 'kompetensi_pegawais.gap',
+                'kompetensi_pegawais.information',
                 'level_kompetensis.level',
                 'level_kompetensis.nilai_minimum',
                 'kompetensis.code',

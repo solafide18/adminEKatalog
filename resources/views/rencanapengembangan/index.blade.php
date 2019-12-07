@@ -71,6 +71,7 @@
                             <label for="">Pegawai ID / PIN</label>
                         </div>
                         <div class="col-md-7">
+                            <input type="hidden" id="inIdPegawaiKompetensi" class="form-group form-control">
                             <input type="text" id="inPegawaiID" class="form-group form-control">
                         </div>
                         <div class="col-md-1">
@@ -147,7 +148,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveAddData" onclick="save()">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnSaveAddData" onclick="save()">Add Data</button>
+                <button type="button" class="btn btn-success" id="btnSaveEditData" onclick="saveEditData()">Save changes</button>
             </div>
         </div>
     </div>
