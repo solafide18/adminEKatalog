@@ -92,7 +92,7 @@ function loadDDLPegawai()
 function loadDDLKompetensi(esselon)
 {
     $.ajax({
-        url: $("#urlPath").val() + "/kompetensi/levelKompetensi/" + esselon,
+        url: $("#urlPath").val() + "/api/kompetensi/levelKompetensi/" + esselon,
         type: 'get',
         dataType: 'json',
         success: function (result) {
@@ -152,8 +152,7 @@ function findPegawai()
 
 function setLevelKompDdl(e) {
     console.log("get value test");
-    console.log("get value test");
-    var value = $('option:selected', e).attr('value');
+    var value = $("#ddlEsselon").val()
     console.log(value);
     loadDDLKompetensi(value);
 }

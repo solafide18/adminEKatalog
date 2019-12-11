@@ -33,6 +33,7 @@ class KompetensiController extends Controller
             ->get();
         for ($i = 0; $i < $data->count(); $i++) {
             $data[$i]->level_kompetensi = DB::table('level_kompetensis')->where('kompetensi_id', $data[$i]->id)->orderBy('level')->get();
+            $data[$i]->gap_config = DB::table('gap_configs')->where('kompetensi_id', $data[$i]->id)->get();
         }
         // $data = $list->toArray();
         // $data[0]->test = [1,2,3];
@@ -183,9 +184,19 @@ class KompetensiController extends Controller
         } else $essLevel = 4;
 
         error_log($essLevel);
-        $data = DB::table('level_kompetensis')
-            ->where('level',$essLevel)
-            ->get();
+
+        $data = DB::table('kompetensis as a')
+        ->join('level_kompetensis as b','b.kompetensi_id','=','a.id')
+        ->select(
+            'b.id',
+            'a.name',
+            'a.code',
+            'b.level',
+            'b.level_description',
+            'b.nilai_minimum'
+        )
+        ->where('b.level',$essLevel)
+        ->get();
 
         return response()->json([
             'code' => 200,
