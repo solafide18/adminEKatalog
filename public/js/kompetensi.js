@@ -19,6 +19,7 @@ function loadgrid() {
             console.log(result.data);
             let rawhtml = "";
             let data = result.data;
+            let rownum = 0;
             for (let i = 0; i < data.length; i++) {
                 // debugger;
                 let data_level = data[i].level_kompetensi;
@@ -27,13 +28,13 @@ function loadgrid() {
                 let old_level = -1;
                 let no = i + 1;
                 if (count_level > 0) {
-                    for (let j = 0; j < data_level.length; j++) {
-                        rawhtml = '<tr level="' + data_level[j].level + '" level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
+                    for (let j = 0; j < data_level.length; j++,rownum++) {
+                        rawhtml = '<tr rownum="'+rownum+'" level="' + data_level[j].level + '" level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
                         // if (flag_col_kompetensi == 0) {
                         if (old_level != data_level[j].level) {
                             rawhtml += '<td>' + no + '</td>' +
                                 '<td>' +
-                                '<center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">' + data[i].name + '</button></center>' +
+                                '<center><button type="button" class="btn btn-warning waves-effect m-r-20" onclick="showDeskripsiKompetensi(this)">' + data[i].name + '</button></center>' +
                                 '</td>';
                             // rawhtml += '<td rowspan="'+count_level+'">' + no + '</td>' +
                             //     '<td rowspan="'+count_level+'"><center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">' + data[i].name + '</button></center>' +
@@ -43,8 +44,10 @@ function loadgrid() {
                             rawhtml += '<td></td><td></td>'
                         }
 
-                        rawhtml += '<td> LEVEL ' + data_level[j].level + ' - ' + data_level[j].level_description + '</td>';
+                        rawhtml += '<td> LEVEL ' + data_level[j].level + '</td>';
+                        rawhtml += '<td>'+ data_level[j].level_description + '</td>';
                         rawhtml += '<td>' + data_level[j].nilai_minimum + '</td>';
+                        rawhtml += '<td>'+ (data[i].gap!=null?data[i].gap:' ') + '</td>';
                         rawhtml += '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>");
                         rawhtml += '</td>';
                         // if (flag_col_kompetensi == 0) {
@@ -61,6 +64,8 @@ function loadgrid() {
                         } else {
                             rawhtml += '<td></td>'
                         }
+                        rawhtml += '<td style="display:none;">'+data[i].description+'</td>';
+                        rawhtml += '<td style="display:none;">'+data[i].name+'</td>';
                         rawhtml += '</tr>'
                         flag_col_kompetensi++;
                         old_level = data_level[j].level;
@@ -395,3 +400,104 @@ function deleteData(e) {
         );
     }
 }
+
+function showDeskripsiKompetensi(e)
+{
+    var parents = $(e).closest("tr");
+    let rownum = parseInt($(parents[0]).attr("rownum"));
+    console.log(rownum);
+    let data = $("#table-main").DataTable().data();
+    console.log(data[rownum])
+    $("#desc_komp_show").val(data[rownum][8])
+    $("#komp_name_show").text(data[rownum][9]);
+    $("#modalDeskripsiKompetensi").modal("show");
+}
+
+$("#btnTambahDataGAP").click(function(){
+    loadDdlKompetensiGAP();
+    $("#modalTambahDataGAP").modal("show");
+})
+
+function loadDdlKompetensiGAP() {
+    $.ajax({
+        url: $("#urlPath").val() + "/api/Kompetensi/listKompetensi/" + menuid,
+        type: 'get',
+        dataType: 'json',
+        success: function (result) {
+            let data = result.data;
+            let rawhtml = '<option value="">Select option</option>';
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                rawhtml += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+            }
+            $("#ddlKompetensiGAP").html(rawhtml)
+        }
+    })
+}
+
+function loadDataGAP(e){
+    try{
+        let kompetensi_id = $(e).val();
+        if(kompetensi_id=="") throw "tidak ada Kompetensi yang dipilih";
+        $.ajax({
+            url: $("#urlPath").val() + "/api/kompetensi/"+kompetensi_id+"/gap",
+            type: 'get',
+            dataType: 'json',
+            success: function (result) {
+                let data = result.data;
+                $("#inGAP").val(data.gap);
+                $("#inJenisProgramPengembangan").val(data.jenis_program_pengembangan);
+                $("#inIsiProgramPengembangan").val(data.isi_program_pengembangan);
+            }
+        })
+    } catch(err){
+        $("#inGAP").val(0);
+        $("#inJenisProgramPengembangan").val("");
+        $("#inIsiProgramPengembangan").val("");
+    }
+}
+
+function clearFieldGAP(){
+    $("#ddlKompetensiGAP").val("");
+    $("#inGAP").val(0);
+    $("#inJenisProgramPengembangan").val("");
+    $("#inIsiProgramPengembangan").val("");
+}
+
+function saveGAP() {
+    try{
+        let kompetensi_id = $("#ddlKompetensiGAP").val();
+        if(kompetensi_id == null || kompetensi_id == "") throw "Harap Pilih Kompetensi Terlebih dahulu";
+        var req = {
+            gap:$("#inGAP").val(),
+            jenis_program_pengembangan:$("#inJenisProgramPengembangan").val(),
+            isi_program_pengembangan:$("#inIsiProgramPengembangan").val(),
+        }
+        $.ajax({
+            url: $("#urlPath").val() + "/api/kompetensi/"+kompetensi_id+"/gap",
+            type: 'post',
+            data: {
+                req: req
+            },
+            // contentType: "application/json",
+            dataType: 'json',
+            success: function (result) {
+                swal("Success!",
+                    result.message,
+                    "success"
+                );
+                loadgrid();
+                $("#modalTambahDataGAP").modal("hide");
+                clearFieldGAP();
+            }
+        });
+    } catch(err) {
+        console.log(err);
+
+        swal("Error!",
+            err,
+            "warning"
+        );
+    }
+}
+

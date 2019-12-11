@@ -23,11 +23,12 @@
             </div>
             <div class="body">
                 @if($isAdmin == 'admin')
-                    <td><button type="button" class="btn btn-info waves-effect m-r-20" id="btnTambahData">Tambah
-                            Data</button></td>
-
-                    <td><button type="button" class="btn btn-warning waves-effect m-r-20"
-                            id="btnTambahDataKompetensi">Tambah Kompetensi</button></td>
+                    <button type="button" class="btn btn-info waves-effect m-r-20" id="btnTambahData">Tambah
+                            Data</button>
+                    <button type="button" class="btn btn-success waves-effect m-r-20"
+                            id="btnTambahDataGAP">GAP</button>
+                    <button type="button" class="btn btn-warning waves-effect m-r-20"
+                            id="btnTambahDataKompetensi">Tambah Kompetensi</button>
                     <br>
                 @endif
             </div>
@@ -40,10 +41,14 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Kompetensi</th>
-                                        <th>Level</th>
-                                        <th>Nilai pemetaan</th>
-                                        <th>Indikator Perilaku</th>
+                                        <th>Standar Level</th>
+                                        <th>Deskripsi Level</th>
+                                        <th>Nilai Pemetaan</th>
+                                        <th>GAP</th>
+                                        <th>Program Pengembangan</th>
                                         <th>Action</th>
+                                        <th style="display:none;">Deskripsi</th>
+                                        <th style="display:none;">Kompetensi Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -225,7 +230,7 @@
                                 <tr>
                                     <th>Level</th>
                                     <th>Deskripsi</th>
-                                    <th>Index Prilaku</th>
+                                    <th>Indikator Prilaku</th>
                                     <th>Nilai Minimum</th>
                                 </tr>
                             </thead>
@@ -290,6 +295,96 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="btnAddkompetensi">Add Kompetensi</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalDeskripsiKompetensi" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="komp_name_show"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="">Deskripsi</label>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea readonly type="text" class="input-group form-control required" id="desc_komp_show"></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalTambahDataGAP" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Tambah Data</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Kompetensi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class='form-group form-control' id="ddlKompetensiGAP" onc>
+                                <option value="">Select option</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">GAP</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" max="0" value="0" class="input-group form-control required"
+                                id="inGAP">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Jenis Program Pengembangan</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="form-group form-control" name="" id="inJenisProgramPengembangan"
+                                rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Isi Program Pengembangan</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="form-group form-control" name="" id="inIsiProgramPengembangan"
+                                rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveGAP()">Save changes</button>
             </div>
         </div>
     </div>

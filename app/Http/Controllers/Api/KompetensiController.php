@@ -14,8 +14,13 @@ class KompetensiController extends Controller
         $data = DB::table('kompetensis')
             ->join('kategori_kompetensis', 'kategori_kompetensis.id', '=', 'kompetensis.kategori_id')
             // ->join('level_kompetensis','level_kompetensis.kompetensi_id','=','kompetensis.kategori_id')
+            ->leftJoin('gap_configs','gap_configs.kompetensi_id','=','kompetensis.id')
             ->select(
                 'kompetensis.*',
+                'gap_configs.id as gap_id',
+                'gap_configs.gap',
+                'gap_configs.jenis_program_pengembangan',
+                'gap_configs.isi_program_pengembangan',
                 'kategori_kompetensis.code',
                 'kategori_kompetensis.description as description_kategori'
                 // 'level_kompetensis.level',
@@ -212,7 +217,7 @@ class KompetensiController extends Controller
                 'data' => null
             ]);
         } else {
-            $data = DB::table('gap_configs')->where('kompetensi_id', $id)->get();
+            $data = DB::table('gap_configs')->where('kompetensi_id', $id)->first();
             return response()->json([
                 'code' => 200,
                 'message' => 'Kompetensi found !',
@@ -222,6 +227,7 @@ class KompetensiController extends Controller
     }
 
     public function addGapConfig($id, Request $request) {
+        // dd($request->req);
         $exist = DB::table('kompetensis')->where('id', $id)->get();
         if ($exist->isEmpty()) {
             return response()->json([
@@ -232,22 +238,45 @@ class KompetensiController extends Controller
         }
         else {
             $data = $request->req;
-            for ($i = 0; $i < count($data); $i++) {
+            $existGAP = DB::table('gap_configs')->where('kompetensi_id', $id)->get();
+            // dd($existGAP);
+            if ($existGAP->isEmpty()) {
                 DB::table('gap_configs')->insert(
                     [
                         'kompetensi_id' => $id,
-                        'gap' => $data[$i]['gap'],
-                        'jenis_program_pengembangan' => $data[$i]['jenis_program_pengembangan'],
-                        'isi_program_pengembangan' => $data[$i]['isi_program_pengembangan'],
+                        'gap' => $data['gap'],
+                        'jenis_program_pengembangan' => $data['jenis_program_pengembangan'],
+                        'isi_program_pengembangan' => $data['isi_program_pengembangan'],
                         'created_at' => Carbon::now()->toDateTimeString()
                     ]
                 );
+                return response()->json([
+                    'code' => 200,
+                    'message' => 'Data Inserted!',
+                    'data' => $data
+                ]);
             }
-            return response()->json([
-                'code' => 200,
-                'message' => 'Data Inserted!',
-                'data' => $data
-            ]);
+            else{
+                DB::table('gap_configs')
+                ->where('kompetensi_id',$id)
+                ->update(
+                    [
+                        'gap' => $data['gap'],
+                        'jenis_program_pengembangan' => $data['jenis_program_pengembangan'],
+                        'isi_program_pengembangan' => $data['isi_program_pengembangan'],
+                        'updated_at' => Carbon::now()->toDateTimeString()
+                    ]
+                );
+                return response()->json([
+                    'code' => 200,
+                    'message' => 'Data Updated!',
+                    'data' => $data
+                ]);
+            }
+            
+            // for ($i = 0; $i < count($data); $i++) {
+                
+            // }
         }
     }
 
