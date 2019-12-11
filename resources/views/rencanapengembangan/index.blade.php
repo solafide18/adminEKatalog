@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-md-8">
                             <select class='form-group form-control' id="ddlEsselon" onchange="setLevelKompDdl(this)">
-                                <option value="">Select Esselon</option>
+                                
                                 <option value="2">2</option>
                                 <option value="3">3</option>  
                                 <option value="4">4</option>
