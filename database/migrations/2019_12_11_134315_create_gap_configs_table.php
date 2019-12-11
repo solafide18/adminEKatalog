@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLevelKompetensisTable extends Migration
+class CreateGapConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,16 @@ class CreateLevelKompetensisTable extends Migration
      */
     public function up()
     {
-        Schema::create('level_kompetensis', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('gap_configs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('level');
-            $table->longText('level_description');
             $table->timestamps();
-
-        });
-
-        Schema::table('level_kompetensis', function (Blueprint $table) {
+            $table->integer('gap');
+            $table->longText('jenis_program_pengembangan')->nullable();
+            $table->longText('isi_program_pengembangan')->nullable();
             $table->unsignedBigInteger('kompetensi_id');
             $table->foreign('kompetensi_id')->references('id')
             ->on('kompetensis')
-            ->onDelete('cascade');;
-            $table->longText('index_perilaku')->nullable();
-            $table->integer('nilai_minimum');
+            ->onDelete('cascade');
         });
     }
 
@@ -39,6 +33,6 @@ class CreateLevelKompetensisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('level_kompetensis');
+        Schema::dropIfExists('gap_configs');
     }
 }

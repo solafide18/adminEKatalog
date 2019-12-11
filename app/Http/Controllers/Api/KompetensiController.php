@@ -146,6 +146,28 @@ class KompetensiController extends Controller
         ]);
     }
 
+    public function getLevelKompetensiByKompetensiAndEsselon($komId, $ess) {
+        if ($ess==4) {
+            $essLevel = 2;
+        } else if ($ess==3) {
+            $essLevel = 3;
+        } else if ($ess==2) {
+            $essLevel = 4; 
+        } else $essLevel = 4;
+
+        error_log($essLevel);
+        $data = DB::table('level_kompetensis')
+            ->where('kompetensi_id', $komId)
+            ->where('level',$essLevel)
+            ->get();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Success!',
+            'data' => $data
+        ]);
+    }
+
     public function deleteLevel($id,$lvl)
     {
         DB::table('level_kompetensis')
@@ -158,4 +180,71 @@ class KompetensiController extends Controller
             'message' => 'Data Deleted!'
         ]);
     }
+
+    public function getGapConfig($id) {
+        $exist = DB::table('kompetensis')->where('id', $id)->get();
+        error_log($exist);
+        if ($exist->isEmpty()) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Data Not Found!',
+                'data' => null
+            ]);
+        } else {
+            $data = DB::table('gap_configs')->where('kompetensi_id', $id)->get();
+            return response()->json([
+                'code' => 200,
+                'message' => 'Kompetensi found !',
+                'data' => $data
+            ]);
+        } 
+    }
+
+    public function addGapConfig($id, Request $request) {
+        $exist = DB::table('kompetensis')->where('id', $id)->get();
+        if ($exist->isEmpty()) {
+            return response()->json([
+                'code' => 404,
+                'message' => 'Data Not Found!',
+                'data' => null
+            ]);
+        }
+        else {
+            $data = $request->req;
+            for ($i = 0; $i < count($data); $i++) {
+                DB::table('gap_configs')->insert(
+                    [
+                        'kompetensi_id' => $id,
+                        'gap' => $data[$i]['gap'],
+                        'jenis_program_pengembangan' => $data[$i]['jenis_program_pengembangan'],
+                        'isi_program_pengembangan' => $data[$i]['isi_program_pengembangan'],
+                        'created_at' => Carbon::now()->toDateTimeString()
+                    ]
+                );
+            }
+            return response()->json([
+                'code' => 200,
+                'message' => 'Data Inserted!',
+                'data' => $data
+            ]);
+        }
+    }
+
+    public function deleteGapConfig($id) {
+        try {
+            DB::table('gap_configs')
+            ->where('id', $id)
+            ->delete();
+            return response()->json([
+                'code' => 200,
+                'message' => 'Data Deleted!'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'code' => 200,
+                'message' => 'Failed to Delete!'
+            ]);
+        }
+    }
+
 }

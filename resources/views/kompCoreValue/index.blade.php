@@ -41,7 +41,7 @@
                                         <th>No</th>
                                         <th>Kompetensi</th>
                                         <th>Level</th>
-                                        <th>Nilai Minimum</th>
+                                        <th>Nilai pemetaan</th>
                                         <th>Indikator Perilaku</th>
                                         <th>Action</th>
                                     </tr>
