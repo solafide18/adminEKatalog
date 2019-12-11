@@ -45,3 +45,4 @@ Route::get('/kompetensi/{id}/gap', 'Api\KompetensiController@getGapConfig');
 Route::post('/kompetensi/{id}/gap', 'Api\KompetensiController@addGapConfig');
 Route::delete('/kompetensi/gap/{id}', 'Api\KompetensiController@deleteGapConfig');
 Route::get('/kompetensi/{komId}/level/{ess}', 'Api\KompetensiController@getLevelKompetensiByKompetensiAndEsselon');
+Route::get('/kompetensi/levelKompetensi/{esselon}', 'Api\KompetensiController@getLevelKompetensiByEsselon');

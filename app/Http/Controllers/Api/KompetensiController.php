@@ -168,6 +168,27 @@ class KompetensiController extends Controller
         ]);
     }
 
+    public function getLevelKompetensiByEsselon($esselon) {
+        if ($esselon==4) {
+            $essLevel = 2;
+        } else if ($esselon==3) {
+            $essLevel = 3;
+        } else if ($esselon==2) {
+            $essLevel = 4; 
+        } else $essLevel = 4;
+
+        error_log($essLevel);
+        $data = DB::table('level_kompetensis')
+            ->where('level',$essLevel)
+            ->get();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Success!',
+            'data' => $data
+        ]);
+    }
+
     public function deleteLevel($id,$lvl)
     {
         DB::table('level_kompetensis')

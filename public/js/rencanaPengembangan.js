@@ -54,7 +54,8 @@ function loadgrid() {
 $("#btnTambahData").click(function () { 
     clearFieldTambahData();
     // loadDDLPegawai();
-    loadDDLKompetensi();
+
+    //loadDDLKompetensi();
     $("#btnSaveAddData").show();
     $("#btnSaveEditData").hide();
     $("#modalTambahData").modal("show");
@@ -88,10 +89,10 @@ function loadDDLPegawai()
         }
     })
 }
-function loadDDLKompetensi()
+function loadDDLKompetensi(esselon)
 {
     $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/listKompetensiLevel",
+        url: $("#urlPath").val() + "/kompetensi/levelKompetensi/" + esselon,
         type: 'get',
         dataType: 'json',
         success: function (result) {
@@ -147,6 +148,14 @@ function findPegawai()
             );      
         }
     })
+}
+
+function setLevelKompDdl(e) {
+    console.log("get value test");
+    console.log("get value test");
+    var value = $('option:selected', e).attr('value');
+    console.log(value);
+    loadDDLKompetensi(value);
 }
 
 function getNilaiMinimum(e)

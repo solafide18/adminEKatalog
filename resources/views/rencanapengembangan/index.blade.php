@@ -38,7 +38,7 @@
                                         <th>Pegawai</th>
                                         <th>Kompetensi</th>
                                         <th>Level</th>
-                                        <th>Nilai Minimum</th>
+                                        <th>Nilai pemetaan</th>
                                         <th>Nilai</th>
                                         <th>GAP</th>
                                         <th>Informasi</th>
@@ -89,6 +89,22 @@
                             <input type="hidden" id="inPegawaiNIP" class="form-group form-control disabled" readonly>
                         </div>
                     </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Esselon</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class='form-group form-control' id="ddlEsselon" onchange="setLevelKompDdl(this)">
+                                <option value="">Select Esselon</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>  
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="">
                     <div class="row">
