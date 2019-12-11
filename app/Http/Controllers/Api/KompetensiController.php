@@ -28,6 +28,7 @@ class KompetensiController extends Controller
             ->get();
         for ($i = 0; $i < $data->count(); $i++) {
             $data[$i]->level_kompetensi = DB::table('level_kompetensis')->where('kompetensi_id', $data[$i]->id)->orderBy('level')->get();
+            $data[$i]->gap_config = DB::table('gap_configs')->where('kompetensi_id', $data[$i]->id)->get();
         }
         // $data = $list->toArray();
         // $data[0]->test = [1,2,3];
