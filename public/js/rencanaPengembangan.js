@@ -151,6 +151,7 @@ function findPegawai()
 }
 
 function setLevelKompDdl(e) {
+    $("#ddlKompetensiLevel").val("");
     console.log("get value test");
     var value = $("#ddlEsselon").val()
     console.log(value);
