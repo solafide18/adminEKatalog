@@ -16,7 +16,7 @@ function loadgrid() {
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            console.log(result.data);
+            // console.log(result.data);
             let rawhtml = "";
             let data = result.data;
             for (let i = 0; i < data.length; i++) {
@@ -117,15 +117,15 @@ function loadDDLKompetensi(esselon)
 function findPegawai()
 {
     console.log("finding starting");
-    
+    let words = $("#inPegawaiID").val();
     $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/listPegawai",
+        url: $("#urlPath").val() + "/api/pegawai/listPegawai/"+words+"/search",
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            let words = $("#inPegawaiID").val();
+            
             let data = result.data;
-            let item = data.find(item=>item.pin === words);
+            let item = data;
             if(item == null )
             {
                 $("#inPegawaiName").val("");
@@ -152,7 +152,7 @@ function findPegawai()
 
 function setLevelKompDdl(e) {
     $("#ddlKompetensiLevel").val("");
-    console.log("get value test");
+    // console.log("get value test");
     var value = $("#ddlEsselon").val()
     console.log(value);
     loadDDLKompetensi(value);
@@ -162,7 +162,7 @@ function getNilaiMinimum(e)
 {
     // debugger;
     var nilmin = $('option:selected', e).attr('nilmin');
-    console.log("find nilai min = ",nilmin);
+    // console.log("find nilai min = ",nilmin);
     $("#inNilaiMin").val(nilmin);
 
     let nilai = $("#inNilai").val();
@@ -203,7 +203,7 @@ function save()
             gap:gap,
             information:information
         }
-        console.log(req);
+        // console.log(req);
         
         $.ajax({
             url: $("#urlPath").val() + "/api/pegawai/kompetensi",
