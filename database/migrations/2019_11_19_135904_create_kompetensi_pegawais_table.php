@@ -18,17 +18,17 @@ class CreateKompetensiPegawaisTable extends Migration
             $table->bigIncrements('id');
             $table->string('pegawai_id');
             $table->string('pegawai_name')->nullable();
-            $table->string('nip')->nulable();
+            $table->string('nip')->nullable();
             $table->timestamps();
         });
 
         Schema::table('kompetensi_pegawais', function (Blueprint $table) {
 
             $table->unsignedBigInteger('level_kompetensi_id');
-            $table->foreign('level_kompetensi_id')->references('id')->on('level_kompetensis')->onDelete('cascade');;
+            $table->foreign('level_kompetensi_id')->references('id')->on('level_kompetensis')->onDelete('cascade');
 
-            $table->integer('nilai')->nulable();
-            $table->integer('gap')->nulable();
+            $table->integer('nilai')->nullable();
+            $table->integer('gap')->nullable();
 
         });
     }
