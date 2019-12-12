@@ -1,5 +1,6 @@
 const menuid = $("#menuid").val();
 const isAdm = $("#isAdm").val();
+const rawButtonActionGAP = '<div class="js-sweetalert"><button type="button" onclick="deleteDataGAP(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button></div>';
 $(document).ready(function () {
 
     console.log("ready");
@@ -23,6 +24,7 @@ function loadgrid() {
             for (let i = 0; i < data.length; i++) {
                 // debugger;
                 let data_level = data[i].level_kompetensi;
+                
                 let count_level = data_level.length;
                 let flag_col_kompetensi = 0;
                 let old_level = -1;
@@ -44,12 +46,20 @@ function loadgrid() {
                             rawhtml += '<td></td><td></td>'
                         }
 
-                        rawhtml += '<td> LEVEL ' + data_level[j].level + '</td>';
-                        rawhtml += '<td>'+ data_level[j].level_description + '</td>';
+                        rawhtml += '<td> LEVEL ' + data_level[j].level +' - ' + data_level[j].level_description+'</td>';
                         rawhtml += '<td>' + data_level[j].nilai_minimum + '</td>';
-                        rawhtml += '<td>'+ (data[i].gap!=null?data[i].gap:' ') + '</td>';
-                        rawhtml += '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>");
-                        rawhtml += '</td>';
+
+                        let data_gap_config = data_level[j].gap_config;
+                        let textGAP = "";
+                        let textProgramPengembanganGAP = "";
+                        for(let k=0;k<data_gap_config.length;k++) {
+                            
+                            textGAP +=  data_gap_config[k].gap +' ('+ data_gap_config[k].jenis_program_pengembangan+')<br/>';
+                            textProgramPengembanganGAP += parseInt(k+1)+'. '+ data_gap_config[k].isi_program_pengembangan +'<br/>';
+                        }
+                        rawhtml += '<td>' + textGAP + '</td>';
+                        rawhtml += '<td>' + textProgramPengembanganGAP + '</td>';
+                        rawhtml += '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>") + '</td>';
                         // if (flag_col_kompetensi == 0) {
                         if (old_level != data_level[j].level && isAdm == "admin") {
                             rawhtml +=
@@ -77,7 +87,8 @@ function loadgrid() {
             }
             $("#table-main").DataTable({
                 // paging: false,
-                "ordering": false
+                "ordering": false,
+                "scrollX": true
             });
         }
     })
@@ -415,6 +426,10 @@ function showDeskripsiKompetensi(e)
 
 $("#btnTambahDataGAP").click(function(){
     loadDdlKompetensiGAP();
+    var tbl = $("#tblAddGAPTemp").DataTable();
+    tbl.rows()
+        .remove()
+        .draw();
     $("#modalTambahDataGAP").modal("show");
 })
 
@@ -435,46 +450,115 @@ function loadDdlKompetensiGAP() {
     })
 }
 
+function loadDdlLevelKompetensiGAP(e) {
+    let kompetensi_id = $(e).val();
+    $.ajax({
+        url: $("#urlPath").val() + "/api/Kompetensi/listLevelKompetensi/" + kompetensi_id,
+        type: 'get',
+        dataType: 'json',   
+        success: function (result) {
+            let data = result.data;
+            let rawhtml = '<option value="">Select option</option>';
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                rawhtml += '<option value="' + data[i].id + '"> Level ' + data[i].level + ' - ' + data[i].level_description + '</option>';
+            }
+            $("#ddlLevelKompetensiGAP").html(rawhtml);
+            loadDataGAP('');
+        }
+    })
+}
+
 function loadDataGAP(e){
     try{
-        let kompetensi_id = $(e).val();
-        if(kompetensi_id=="") throw "tidak ada Kompetensi yang dipilih";
+        let level_kompetensi_id = $("#ddlLevelKompetensiGAP").val();
+        // if(level_kompetensi_id=="") throw "tidak ada  Level Kompetensi yang dipilih";
         $.ajax({
-            url: $("#urlPath").val() + "/api/kompetensi/"+kompetensi_id+"/gap",
+            url: $("#urlPath").val() + "/api/kompetensi/"+level_kompetensi_id+"/gap",
             type: 'get',
             dataType: 'json',
             success: function (result) {
                 let data = result.data;
-                $("#inGAP").val(data.gap);
-                $("#inJenisProgramPengembangan").val(data.jenis_program_pengembangan);
-                $("#inIsiProgramPengembangan").val(data.isi_program_pengembangan);
+                let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+                tblAddGAPTemp.rows()
+                    .remove()
+                    .draw();
+                for(let i=0;i<data.length;i++) {
+                    tblAddGAPTemp.row.add([
+                        data[i].gap,
+                        data[i].jenis_program_pengembangan,
+                        data[i].isi_program_pengembangan,
+                        rawButtonActionGAP
+                    ]).draw();
+                }
+            },
+            error:function(err){
+                console.log(err);
             }
         })
     } catch(err){
-        $("#inGAP").val(0);
-        $("#inJenisProgramPengembangan").val("");
-        $("#inIsiProgramPengembangan").val("");
+        clearFieldGAP();
+        console.log(err);
     }
+}
+
+function deleteDataGAP(e){
+    let rowSelected = $(e).parents('tr');
+    let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+    tblAddGAPTemp.row(rowSelected).remove().draw();;
 }
 
 function clearFieldGAP(){
     $("#ddlKompetensiGAP").val("");
+    $("#ddlLevelKompetensiGAP").val("");
     $("#inGAP").val(0);
     $("#inJenisProgramPengembangan").val("");
     $("#inIsiProgramPengembangan").val("");
 }
 
+function addGAPTemp() {
+    try {
+        let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+        let inGAP = $("#inGAP").val();
+        let inJenisProgramPengembangan = $("#inJenisProgramPengembangan").val();
+        let inIsiProgramPengembangan = $("#inIsiProgramPengembangan").val();
+
+        if (inGAP == null || inGAP == "") throw "Field GAP masih Kosong";
+        if (inJenisProgramPengembangan == null || inJenisProgramPengembangan == "") throw "Field Jenis Program Pengembangan masih Kosong";
+        if (inIsiProgramPengembangan == null || inIsiProgramPengembangan == "") throw "Field Isi Program Pengembangan masih Kosong";
+
+        tblAddGAPTemp.row.add([
+            inGAP,
+            inJenisProgramPengembangan,
+            inIsiProgramPengembangan,
+            rawButtonActionGAP
+        ]).draw();
+
+    } catch (err) {
+        swal("Error!",
+            err,
+            "warning"
+        );
+    }
+}
+
 function saveGAP() {
     try{
-        let kompetensi_id = $("#ddlKompetensiGAP").val();
-        if(kompetensi_id == null || kompetensi_id == "") throw "Harap Pilih Kompetensi Terlebih dahulu";
-        var req = {
-            gap:$("#inGAP").val(),
-            jenis_program_pengembangan:$("#inJenisProgramPengembangan").val(),
-            isi_program_pengembangan:$("#inIsiProgramPengembangan").val(),
-        }
+        let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+        let level_kompetensi_id = $("#ddlLevelKompetensiGAP").val();
+        if(level_kompetensi_id == null || level_kompetensi_id == "") throw "Harap Pilih Level Kompetensi Terlebih dahulu";
+        let req = [];
+        tblAddGAPTemp.data().each(function (data, idx) {
+            let item = {
+                gap: data[0],
+                jenis_program_pengembangan: data[1],
+                isi_program_pengembangan: data[2],
+            }
+            req.push(item);
+        });
+        if(req.length==0) throw "Tidak ada data yang akan disimpan";
         $.ajax({
-            url: $("#urlPath").val() + "/api/kompetensi/"+kompetensi_id+"/gap",
+            url: $("#urlPath").val() + "/api/kompetensi/"+level_kompetensi_id+"/gap",
             type: 'post',
             data: {
                 req: req
