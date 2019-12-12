@@ -36,6 +36,7 @@ Route::post('/admin', 'Api\AdministratorController@addAdmin');
 Route::delete('/admin/{id}', 'Api\AdministratorController@deleteAdmin');
 
 Route::get('/pegawai/listPegawai', 'Api\KompetensiPegawaiController@getListPegawai');
+Route::get('/pegawai/listPegawai/{pin}', 'Api\KompetensiPegawaiController@getListPegawaiById');
 Route::get('/pegawai/listKompetensiLevel', 'Api\KompetensiPegawaiController@getListKompetensiLevel');
 Route::get('/pegawai/listPegawai/{id}', 'Api\KompetensiPegawaiController@getDetailKompetensi');
 

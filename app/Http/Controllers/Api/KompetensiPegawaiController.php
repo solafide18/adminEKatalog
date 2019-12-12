@@ -105,6 +105,33 @@ class KompetensiPegawaiController extends Controller {
         }
     }
 
+    public function getListPegawaiById($pin){
+        $client = new Client;
+        $res = $client->get('https://sadewa.bekraf.go.id/api/pegawai?',
+        [
+            'query' => [
+                'token'=> '7va9dfnf9v7df9av8sd7f9',
+                'pin'=> $pin
+                ]
+        ]);
+        $jsonResponse = json_decode($res->getBody(), true);
+        if ($jsonResponse['code'] == 200) {
+            $data = $jsonResponse['data']['pegawai'];
+            return response()->json([
+                'code' => 200,
+                'message' => $jsonResponse['message'],
+                'data' => $data
+            ]);
+        }
+        else{
+            return response()->json([
+                'code' => $jsonResponse['code'],
+                'message' => $jsonResponse['message'],
+                'data' => []
+            ]);
+        }
+    }
+
     public function getListKompetensiLevel()
     {
         $data = DB::table('kompetensis as a')
