@@ -8,11 +8,11 @@
         align-items: center;
     }
 </style>
-<div class="block-header">
+<!-- <div class="block-header">
     <h2>INFORMASI KARIR</h2>
 </div>
 
-<!-- Widgets -->
+
 <div class="row clearfix">
     <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
         <div class="info-box bg-pink hover-expand-effect">
@@ -80,7 +80,7 @@
             <div class="text">Info Cara Menggunakan Aplikasi</div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">
     <div class="card">
         <div class="header">
