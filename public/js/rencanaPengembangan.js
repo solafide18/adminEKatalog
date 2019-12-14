@@ -152,9 +152,8 @@ function findPegawai()
 
 function setLevelKompDdl(e) {
     $("#ddlKompetensiLevel").val("");
-    // console.log("get value test");
     var value = $("#ddlEsselon").val()
-    console.log(value);
+    //console.log(value);
     loadDDLKompetensi(value);
 }
 
@@ -176,7 +175,35 @@ function nilaiChange(e)
     let nilai = $(e).val();
     let nilai_min = $("#inNilaiMin").val();
     let gap = parseInt(nilai)-parseInt(nilai_min);
+    let levelId = $("#ddlKompetensiLevel").val();
+    autoPopulateInformation(levelId, gap)
     $("#inGAP").val(gap);
+}
+
+function autoPopulateInformation(lvl, gap) {
+    $.ajax({    
+        url: $("#urlPath").val() + "/api/kompetensi/levelKompetensi/"+lvl+"/gap/"+gap,
+        type: 'get',
+        dataType: 'json',
+        success: function (result) {
+            let data = result.data;
+            if(data == null)
+            {
+                $("#inInformation").val("");
+            }
+            else{
+                let item = data[0];
+                $("#inInformation").val(item.isi_program_pengembangan);
+            }
+        },
+        error:function(err){
+            console.log(err);      
+            swal("Error!",
+                err,
+                "warning"
+            );      
+        }
+    })
 }
 
 function save()
