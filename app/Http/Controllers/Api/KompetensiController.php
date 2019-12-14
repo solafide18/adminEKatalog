@@ -103,6 +103,9 @@ class KompetensiController extends Controller
         // DB::table('level_kompetensis')
         //     ->where('kompetensi_id', $id)
         //     ->delete();
+        DB::table('level_kompetensis')
+            ->where('kompetensi_id', $id)
+            ->delete();
         for ($i = 0; $i < count($data); $i++) {
             // $data[$i]->level_kompetensi = DB::table('level_kompetensis')->where('kompetensi_id',$data[$i]->id)->orderBy('level')->get();
 
@@ -345,4 +348,24 @@ class KompetensiController extends Controller
 
     }
 
+    public function getGapByLevelKompetensi($id) {
+        $data = DB::table('gap_configs')
+            ->where('level_kompetensi_id', $id)
+            ->get();
+        // error_log($data);
+        if ($data->isEmpty()) {
+            return response()->json([
+                'code' => 200,
+                'message' => 'Gap not found !',
+                'data' => $data
+            ]);
+        } else {
+            return response()->json([
+                'code' => 200,
+                'message' => 'Gap found !',
+                'data' => $data
+            ]);
+        }
+
+    }
 }

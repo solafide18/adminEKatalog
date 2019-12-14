@@ -43,6 +43,7 @@
                                         <th>GAP</th>
                                         <th>Informasi</th>
                                         <th>Action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>

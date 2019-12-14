@@ -256,6 +256,8 @@ function save()
         })
 
     } catch(err) {
+        console.log(err);
+        
         swal("Warning!",
             err,
             "warning"
@@ -325,7 +327,7 @@ function editData(e){
         var parents = $(e).closest("tr");
         if (parents.length == 0) throw "Kompetensi ID tidak ditemukan";
         let uid = $(parents[0]).attr("uid");
-        loadDDLKompetensi();
+        // loadDDLKompetensi();
 
         $.ajax({
             url: $("#urlPath").val() + "/api/pegawai/listPegawai/" + uid,
@@ -416,6 +418,7 @@ function saveEditData() {
         })
         
     } catch(err) {
-
+        console.log(err);
+        
     }
 }

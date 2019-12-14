@@ -49,3 +49,4 @@ Route::get('/kompetensi/{komId}/level/{ess}', 'Api\KompetensiController@getLevel
 Route::get('/kompetensi/levelKompetensi/{esselon}', 'Api\KompetensiController@getLevelKompetensiByEsselon');
 
 Route::get('/kompetensi/levelKompetensi/{id}/gap/{gap}', 'Api\KompetensiController@getGapByGapAndLevelKompetensi');
+Route::get('/kompetensi/levelKompetensi/gap/{id}', 'Api\KompetensiController@getGapByLevelKompetensi');
