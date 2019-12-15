@@ -10,7 +10,8 @@ $(document).ready(function () {
 function loadgrid() {
     $("#table-main").DataTable().destroy();
     $("#table-main tbody").html('');
-    // console.log($("#urlPath").val() + "/api/Kompetensi/" + menuid);
+    var pegId = $('#pegId').val();
+    console.log(pegId);
     $.ajax({
         url: $("#urlPath").val() + "/api/pegawai/kompetensi",
         type: 'get',

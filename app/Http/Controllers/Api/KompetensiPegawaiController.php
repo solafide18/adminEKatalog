@@ -78,6 +78,32 @@ class KompetensiPegawaiController extends Controller {
             ]);
     }
 
+    public function getListKompetensiPegawaiByPegawaiId($pegewaiId) {
+        $kompetensiPegawai = DB::table('kompetensi_pegawais')
+            ->join('level_kompetensis', 'level_kompetensis.id', '=', 'kompetensi_pegawais.level_kompetensi_id')
+            ->join('kompetensis', 'kompetensis.id', '=', 'level_kompetensis.kompetensi_id')
+            ->select(
+                'kompetensi_pegawais.id',
+                'kompetensi_pegawais.pegawai_name',
+                'kompetensi_pegawais.pegawai_id',
+                'kompetensi_pegawais.nilai',
+                'kompetensi_pegawais.nip',
+                'kompetensi_pegawais.gap',
+                'kompetensi_pegawais.information',
+                'level_kompetensis.level',
+                'level_kompetensis.nilai_minimum',
+                'kompetensis.code',
+                'kompetensis.name',
+                'level_kompetensis.level_description as description'
+            )
+            ->where('kompetensi_pegawais.id',$id)
+            ->get();
+            return response()->json([
+                    'code' => 200,
+                    'data' => $kompetensiPegawai
+            ]);
+    }
+
     public function getListPegawai()
     {
         $client = new Client;

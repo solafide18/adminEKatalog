@@ -12,9 +12,9 @@ class RencanaPengembanganController extends Controller
     {
         $value = $request->session()->get('authenticated', 'default');
         $isAdmin = $request->session()->get('isAdmin', 'default')[0];
+        $pegawaiId = $request->session()->get('id', 'default')[0];
         if ($value[0]=='always') {
-            
-            return view('rencanapengembangan/index',['isAdmin'=>$isAdmin]);
+            return view('rencanapengembangan/index',['isAdmin'=>$isAdmin,'pegawaiId'=>$pegawaiId]);
         } else {
             return redirect()->action('Web\LoginController@index');
         }

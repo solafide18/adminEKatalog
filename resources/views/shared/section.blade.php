@@ -79,6 +79,13 @@
                         <li>
                             <a href="{{url('/')}}/rencanapengembangan">Rencana Pengembangan Kompetensi</a>
                         </li>
+                        <li>
+                            <a href="#">Pengembangan Karir</a>
+                        </li>
+                        <li>
+                            <a href="#">Evaluasi</a>
+                        </li>
+
                         <!--   <li>
                                 <a href="rencanakarir">Rencana Karir</a>
                             </li>
