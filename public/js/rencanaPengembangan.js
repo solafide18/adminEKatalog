@@ -10,10 +10,11 @@ $(document).ready(function () {
 function loadgrid() {
     $("#table-main").DataTable().destroy();
     $("#table-main tbody").html('');
-    var pegId = $('#pegId').val();
-    console.log(pegId);
+    var idPegawai = $('#idPegawai').val();
+    var isAdmin = $("#isAdm").val();
+    // console.log(pegId);
     $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/kompetensi",
+        url: $("#urlPath").val() + "/api/pegawai/kompetensi/"+idPegawai+"/status/"+isAdmin,
         type: 'get',
         dataType: 'json',
         success: function (result) {
