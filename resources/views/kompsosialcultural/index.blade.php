@@ -36,16 +36,16 @@
                             <table id="table-main" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width: 260px;">Action</th>
                                         <th>Kompetensi</th>
                                         <th style="width: 250px;">Standar Level</th>
                                         <th>Nilai Pemetaan</th>
-                                        <th style="width: 200px;">GAP</th>
-                                        <th style="width: 200px;">Program Pengembangan</th>
-                                        <th style="width: 250px;">Indikator Prilaku</th>
-                                        <th>Action</th>
+                                        <!-- <th style="width: 200px;">GAP</th>
+                                        <th style="width: 200px;">Program Pengembangan</th> -->
+                                        <th style="width: 300px;">Indikator Prilaku</th>
                                         <th style="display:none;">Deskripsi</th>
                                         <th style="display:none;">Kompetensi Name</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,7 +118,7 @@
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Index Prilaku</label>
+                            <label for="">Indikator Perilaku</label>
                         </div>
                         <div class="col-md-8">
                             <textarea class="form-group form-control" name="" id="inIdxPrilaku" cols="45"
@@ -140,7 +140,7 @@
                                 <tr>
                                     <th>Level</th>
                                     <th>Deskripsi</th>
-                                    <th>Index Prilaku</th>
+                                    <th>Indikator Perilaku</th>
                                     <th>Nilai Minimum</th>
                                 </tr>
                             </thead>
@@ -205,7 +205,7 @@
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Index Prilaku</label>
+                            <label for="">Indikator Perilaku</label>
                         </div>
                         <div class="col-md-8">
                             <textarea class="form-group form-control" name="" id="inIdxPrilaku" cols="45"
@@ -415,6 +415,38 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onclick="saveGAP()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalShowGAPDesckripsi" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">GAP DATA</h4>
+                <hr>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <table id="tblGAPDesc" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>GAP</th>
+                                    <th>Jenis Program Pengembangan</th>
+                                    <th>Isi Program Pengembangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

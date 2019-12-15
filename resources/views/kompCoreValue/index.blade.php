@@ -117,7 +117,7 @@
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Index Prilaku</label>
+                            <label for="">Indikator Perilaku</label>
                         </div>
                         <div class="col-md-8">
                             <textarea class="form-group form-control" name="" id="inIdxPrilaku" cols="45"
@@ -139,7 +139,7 @@
                                 <tr>
                                     <th>Level</th>
                                     <th>Deskripsi</th>
-                                    <th>Index Prilaku</th>
+                                    <th>Indikator Perilaku</th>
                                     <th>Nilai Minimum</th>
                                     <th>Action</th>
                                 </tr>
@@ -205,7 +205,7 @@
                 <div class="">
                     <div class="row">
                         <div class="col-md-4">
-                            <label for="">Index Prilaku</label>
+                            <label for="">Indikator Perilaku</label>
                         </div>
                         <div class="col-md-8">
                             <textarea class="form-group form-control" name="" id="inIdxPrilaku" cols="45"

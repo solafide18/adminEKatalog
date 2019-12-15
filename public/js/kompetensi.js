@@ -478,7 +478,7 @@ function loadDdlLevelKompetensiGAP(e) {
                 rawhtml += '<option value="' + data[i].id + '"> Level ' + data[i].level + ' - ' + data[i].level_description + '</option>';
             }
             $("#ddlLevelKompetensiGAP").html(rawhtml);
-            loadDataGAP('');
+            //loadDataGAP('');
         }
     })
 }
