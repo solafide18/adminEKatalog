@@ -90,6 +90,43 @@
 
         </div>
         <div class="body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                    <thead>
+                        <tr>
+                            <th>Kode Kompetensi</th>
+                            <th>Nama Kompetensi</th>
+                            <th>Level</th>
+                            <th>GAP</th>
+                            <th>Information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($tableKompetensi as $item)
+                        <tr>
+                            <td>{{$item->code}}</td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->level}}</td>
+                            <td>{{$item->gap}}</td>
+                            <td>{{$item->information}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12 col-md-4 col-sm-6 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h2>
+                Kompetensi Diagram
+            </h2>
+
+        </div>
+        <div class="body">
             <div class="wrap-chart-dashboard">
                 <div id="barchart_material" style="width: 90%; height: 500px;"></div>
             </div>
@@ -97,6 +134,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function () {
         console.log("ready");

@@ -34,12 +34,12 @@ function loadgrid() {
                         rawhtml = '<tr rownum="'+rownum+'" level="' + data_level[j].level + '" level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
                         rawhtml += '<td>';
                         if (old_level != data_level[j].level) {
-
                             rawhtml += '<div class="js-sweetalert">';
-                            rawhtml += '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-5"><i class="material-icons">mode_edit</i>';
-                            rawhtml += '</button>';
-                            rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button>';
-                            if(isAdm == "admin") rawhtml += '<button type="button" class="btn btn-success waves-effect m-r-5" onclick="showGAPKompetensi('+data_level[j].id+')"><i class="material-icons">remove_red_eye</i>&nbsp;GAP</button>';
+                            if(isAdm == "admin") {
+                                rawhtml += '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-5"><i class="material-icons">mode_edit</i></button>';
+                                rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button>';
+                            }
+                            rawhtml += '<button type="button" class="btn btn-success waves-effect m-r-5" onclick="showGAPKompetensi('+data_level[j].id+')"><i class="material-icons">remove_red_eye</i>&nbsp;GAP</button>';
                             rawhtml += '</div>';
                         }
                         rawhtml += '</td>';
