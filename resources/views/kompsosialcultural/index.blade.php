@@ -45,7 +45,6 @@
                                         <th style="width: 300px;">Indikator Prilaku</th>
                                         <th style="display:none;">Deskripsi</th>
                                         <th style="display:none;">Kompetensi Name</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -142,6 +141,7 @@
                                     <th>Deskripsi</th>
                                     <th>Indikator Perilaku</th>
                                     <th>Nilai Minimum</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -229,6 +229,7 @@
                                     <th>Deskripsi</th>
                                     <th>Indikator Prilaku</th>
                                     <th>Nilai Minimum</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -306,11 +307,14 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <label for="">Deskripsi</label>
                     </div>
                     <div class="col-md-8">
                         <textarea readonly type="text" class="input-group form-control required" id="desc_komp_show"></textarea>
+                    </div> -->
+                    <div class="col-md-12">
+                        <p id="desc_komp_show"></p>
                     </div>
                 </div>
 
