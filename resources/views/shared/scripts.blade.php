@@ -49,3 +49,5 @@
 
 <!-- DataTables-1.10.20 -->
 <script src="{{url('/')}}/DataTables-1.10.20/js/jquery.dataTables.js"></script>
+
+<script src="{{url('/')}}/js/loader.js"></script>

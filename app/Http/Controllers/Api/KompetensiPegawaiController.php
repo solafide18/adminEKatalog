@@ -59,6 +59,7 @@ class KompetensiPegawaiController extends Controller {
                 'kompetensi_pegawais.pegawai_name',
                 'kompetensi_pegawais.pegawai_id',
                 'kompetensi_pegawais.nilai',
+                'kompetensi_pegawais.nip',
                 'kompetensi_pegawais.gap',
                 'kompetensi_pegawais.information',
                 'level_kompetensis.level',
@@ -69,12 +70,63 @@ class KompetensiPegawaiController extends Controller {
             )
             ->get();
 
-            error_log('kenapa kosong');
+            // error_log('kenapa kosong');
             error_log($kompetensiPegawai);
             return response()->json([
                     'code' => 200,
                     'data' => $kompetensiPegawai
             ]);
+    }
+
+    public function getListKompetensiPegawaiByPegawaiId($idPegawai,$isAdmin) {
+        if($isAdmin == "admin") {
+            $kompetensiPegawai = DB::table('kompetensi_pegawais')
+                ->join('level_kompetensis', 'level_kompetensis.id', '=', 'kompetensi_pegawais.level_kompetensi_id')
+                ->join('kompetensis', 'kompetensis.id', '=', 'level_kompetensis.kompetensi_id')
+                ->select(
+                    'kompetensi_pegawais.id',
+                    'kompetensi_pegawais.pegawai_name',
+                    'kompetensi_pegawais.pegawai_id',
+                    'kompetensi_pegawais.nilai',
+                    'kompetensi_pegawais.nip',
+                    'kompetensi_pegawais.gap',
+                    'kompetensi_pegawais.information',
+                    'level_kompetensis.level',
+                    'level_kompetensis.nilai_minimum',
+                    'kompetensis.code',
+                    'kompetensis.name',
+                    'level_kompetensis.level_description as description'
+                )
+                ->get();
+            return response()->json([
+                    'code' => 200,
+                    'data' => $kompetensiPegawai
+            ]);
+        } else {
+            $kompetensiPegawai = DB::table('kompetensi_pegawais')
+                ->join('level_kompetensis', 'level_kompetensis.id', '=', 'kompetensi_pegawais.level_kompetensi_id')
+                ->join('kompetensis', 'kompetensis.id', '=', 'level_kompetensis.kompetensi_id')
+                ->Where ('kompetensi_pegawais.pegawai_id',$idPegawai)
+                ->select(
+                    'kompetensi_pegawais.id',
+                    'kompetensi_pegawais.pegawai_name',
+                    'kompetensi_pegawais.pegawai_id',
+                    'kompetensi_pegawais.nilai',
+                    'kompetensi_pegawais.nip',
+                    'kompetensi_pegawais.gap',
+                    'kompetensi_pegawais.information',
+                    'level_kompetensis.level',
+                    'level_kompetensis.nilai_minimum',
+                    'kompetensis.code',
+                    'kompetensis.name',
+                    'level_kompetensis.level_description as description'
+                )
+                ->get();
+            return response()->json([
+                    'code' => 200,
+                    'data' => $kompetensiPegawai
+            ]);
+        }
     }
 
     public function getListPegawai()
@@ -84,6 +136,33 @@ class KompetensiPegawaiController extends Controller {
         [
             'query' => [
                 'token'=> '7va9dfnf9v7df9av8sd7f9'
+                ]
+        ]);
+        $jsonResponse = json_decode($res->getBody(), true);
+        if ($jsonResponse['code'] == 200) {
+            $data = $jsonResponse['data']['pegawai'];
+            return response()->json([
+                'code' => 200,
+                'message' => $jsonResponse['message'],
+                'data' => $data
+            ]);
+        }
+        else{
+            return response()->json([
+                'code' => $jsonResponse['code'],
+                'message' => $jsonResponse['message'],
+                'data' => []
+            ]);
+        }
+    }
+
+    public function getListPegawaiById($pin){
+        $client = new Client;
+        $res = $client->get('https://sadewa.bekraf.go.id/api/pegawai?',
+        [
+            'query' => [
+                'token'=> '7va9dfnf9v7df9av8sd7f9',
+                'pin'=> $pin
                 ]
         ]);
         $jsonResponse = json_decode($res->getBody(), true);
@@ -124,4 +203,51 @@ class KompetensiPegawaiController extends Controller {
         ]);
     }
 
+    public function getDetailKompetensi($id)
+    {
+        $kompetensiPegawai = DB::table('kompetensi_pegawais')
+            ->join('level_kompetensis', 'level_kompetensis.id', '=', 'kompetensi_pegawais.level_kompetensi_id')
+            ->join('kompetensis', 'kompetensis.id', '=', 'level_kompetensis.kompetensi_id')
+            ->select(
+                'kompetensi_pegawais.id',
+                'kompetensi_pegawais.pegawai_name',
+                'kompetensi_pegawais.pegawai_id',
+                'kompetensi_pegawais.nilai',
+                'kompetensi_pegawais.nip',
+                'kompetensi_pegawais.gap',
+                'kompetensi_pegawais.information',
+                'level_kompetensis.level',
+                'level_kompetensis.nilai_minimum',
+                'kompetensis.code',
+                'kompetensis.name',
+                'level_kompetensis.level_description as description'
+            )
+            ->where('kompetensi_pegawais.id',$id)
+            ->first();
+        
+            return response()->json([
+                'code' => 200,
+                'message' => "Data Found",
+                'data' => $kompetensiPegawai
+            ]);
+    }
+
+    public function putKompetensiPegawai(Request $request){
+        $data = $request->req;
+        //error_log("masuk sini ==============================");
+        //error_log($data);
+        DB::table('kompetensi_pegawais')
+        ->where('id',$data['id'])
+        ->update([
+                'level_kompetensi_id' => $data['level_kompetensi_id'],
+                'nilai' => $data['nilai'],
+                'gap' => $data['gap'],
+                'information' => $data['information'],
+                'updated_at' => Carbon::now()->toDateTimeString()
+            ]);
+        return response()->json([
+                'code' => 200,
+                'message' => 'Data Updated!'
+        ]);
+    }
 }

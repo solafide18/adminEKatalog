@@ -38,10 +38,12 @@
                                         <th>Pegawai</th>
                                         <th>Kompetensi</th>
                                         <th>Level</th>
-                                        <th>Nilai Minimum</th>
+                                        <th>Nilai pemetaan</th>
                                         <th>Nilai</th>
                                         <th>GAP</th>
+                                        <th>Informasi</th>
                                         <th>Action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +72,7 @@
                             <label for="">Pegawai ID / PIN</label>
                         </div>
                         <div class="col-md-7">
+                            <input type="hidden" id="inIdPegawaiKompetensi" class="form-group form-control">
                             <input type="text" id="inPegawaiID" class="form-group form-control">
                         </div>
                         <div class="col-md-1">
@@ -87,6 +90,22 @@
                             <input type="hidden" id="inPegawaiNIP" class="form-group form-control disabled" readonly>
                         </div>
                     </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Esselon</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class='form-group form-control' id="ddlEsselon" onchange="setLevelKompDdl(this)">
+                                <option value="">Select Esselon</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>  
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="">
                     <div class="row">
@@ -117,14 +136,37 @@
                             <label for="">Nilai</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="number" min="1" value="1" class="input-group form-control" id="inNilai">
+                            <input type="number" min="1" value="1" class="input-group form-control" id="inNilai" onchange="nilaiChange(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">GAP</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="number" readonly class="input-group form-control disabled"
+                                id="inGAP">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Informasi</label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="input-group form-control" id="inInformation">
+                            </textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveAddData" onclick="save()">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnSaveAddData" onclick="save()">Add Data</button>
+                <button type="button" class="btn btn-success" id="btnSaveEditData" onclick="saveEditData()">Save changes</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,6 @@
 const menuid = $("#menuid").val();
 const isAdm = $("#isAdm").val();
+const rawButtonActionGAP = '<div class="js-sweetalert"><button type="button" onclick="deleteDataGAP(this)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button></div>';
 $(document).ready(function () {
 
     console.log("ready");
@@ -19,48 +20,60 @@ function loadgrid() {
             console.log(result.data);
             let rawhtml = "";
             let data = result.data;
+            let rownum = 0;
             for (let i = 0; i < data.length; i++) {
                 // debugger;
                 let data_level = data[i].level_kompetensi;
+                
                 let count_level = data_level.length;
                 let flag_col_kompetensi = 0;
                 let old_level = -1;
                 let no = i + 1;
                 if (count_level > 0) {
-                    for (let j = 0; j < data_level.length; j++) {
-                        rawhtml = '<tr level="' + data_level[j].level + '" level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
-                        // if (flag_col_kompetensi == 0) {
+                    for (let j = 0; j < data_level.length; j++,rownum++) {
+                        rawhtml = '<tr rownum="'+rownum+'" level="' + data_level[j].level + '" level_id="' + data_level[j].id + '" kompetensi_id="' + data_level[j].kompetensi_id + '">'
+                        rawhtml += '<td>';
                         if (old_level != data_level[j].level) {
-                            rawhtml += '<td>' + no + '</td>' +
-                                '<td>' +
-                                '<center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">' + data[i].name + '</button></center>' +
-                                '</td>';
-                            // rawhtml += '<td rowspan="'+count_level+'">' + no + '</td>' +
-                            //     '<td rowspan="'+count_level+'"><center><button type="button" class="btn btn-warning waves-effect m-r-20" data-toggle="modal" data-target="#IntegritasModal">' + data[i].name + '</button></center>' +
-                            //     '</td>';
-
-                        } else {
-                            rawhtml += '<td></td><td></td>'
+                            rawhtml += '<div class="js-sweetalert">';
+                            if(isAdm == "admin") {
+                                rawhtml += '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-5"><i class="material-icons">mode_edit</i></button>';
+                                rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button>';
+                            }
+                            rawhtml += '<button type="button" class="btn btn-success waves-effect m-r-5" onclick="showGAPKompetensi('+data_level[j].id+')"><i class="material-icons">remove_red_eye</i>&nbsp;GAP</button>';
+                            rawhtml += '</div>';
                         }
-
-                        rawhtml += '<td> LEVEL ' + data_level[j].level + ' - ' + data_level[j].level_description + '</td>';
-                        rawhtml += '<td>' + data_level[j].nilai_minimum + '</td>';
-                        rawhtml += '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>");
                         rawhtml += '</td>';
                         // if (flag_col_kompetensi == 0) {
-                        if (old_level != data_level[j].level && isAdm == "admin") {
-                            rawhtml +=
-                                '<td>' +
-                                '<div class="js-sweetalert">' +
-                                '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-20"><i class="material-icons">mode_edit</i>' +
-                                '</button>' +
-                                '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>' +
-                                '</div>' +
-                                '</td>';
+                        if (old_level != data_level[j].level) {
+                            rawhtml += '<td>';
+                            rawhtml += '<center><button type="button" class="btn btn-warning waves-effect m-r-5" onclick="showDeskripsiKompetensi(this)">' + data[i].name + '</button></center>';
+                            rawhtml += '</td>';
+                            // rawhtml += '<td rowspan="'+count_level+'">' + no + '</td>' +
+                            //     '<td rowspan="'+count_level+'"><center><button type="button" class="btn btn-warning waves-effect m-r-5" data-toggle="modal" data-target="#IntegritasModal">' + data[i].name + '</button></center>' +
+                            //     '</td>';
 
                         } else {
                             rawhtml += '<td></td>'
                         }
+
+                        rawhtml += '<td> LEVEL ' + data_level[j].level +' - ' + data_level[j].level_description+'</td>';
+                        rawhtml += '<td>' + data_level[j].nilai_minimum + '</td>';
+
+                        // let data_gap_config = data_level[j].gap_config;
+                        // let textGAP = "";
+                        // let textProgramPengembanganGAP = "";
+                        // for(let k=0;k<data_gap_config.length;k++) {
+                            
+                        //     textGAP +=  data_gap_config[k].gap +' ('+ data_gap_config[k].jenis_program_pengembangan+')<br/>';
+                        //     textProgramPengembanganGAP += parseInt(k+1)+'. '+ data_gap_config[k].isi_program_pengembangan +'<br/>';
+                        // }
+                        // rawhtml += '<td>' + textGAP + '</td>';
+                        // rawhtml += '<td>' + textProgramPengembanganGAP + '</td>';
+                        rawhtml += '<td>' + data_level[j].index_perilaku.replace(/\n/g, "<br/>") + '</td>';
+                        // if (flag_col_kompetensi == 0) {
+                        
+                        rawhtml += '<td style="display:none;">'+data[i].description+'</td>';
+                        rawhtml += '<td style="display:none;">'+data[i].name+'</td>';
                         rawhtml += '</tr>'
                         flag_col_kompetensi++;
                         old_level = data_level[j].level;
@@ -72,7 +85,8 @@ function loadgrid() {
             }
             $("#table-main").DataTable({
                 // paging: false,
-                "ordering": false
+                "ordering": false,
+                "scrollX": true
             });
         }
     })
@@ -140,7 +154,7 @@ $("#modalTambahDataKompetensi button#btnAddkompetensi").click(function () {
     })
 })
 
-$("#addEditLevelTemp button#btnSaveAddData").click(function () {
+$("#modalEditData button#btnSaveAddData").click(function () {
     try {
         // debugger;
         let tblEditLevelTemp = $("#tblEditLevelTemp").DataTable();
@@ -178,6 +192,10 @@ $("#addEditLevelTemp button#btnSaveAddData").click(function () {
                 );
                 loadgrid();
                 $("#modalEditData").modal("hide");
+                clearFieldEditLevelKompetensi();
+                tblEditLevelTemp.rows()
+                    .remove()
+                    .draw();
             }
         });
     } catch (err) {
@@ -187,6 +205,15 @@ $("#addEditLevelTemp button#btnSaveAddData").click(function () {
         );
     }
 })
+
+function clearFieldEditLevelKompetensi()
+{
+    $("#modalEditData #inLevel").val("");
+    $("#modalEditData #inNilaiMin").val("");
+    $("#modalEditData #inDescripsiLvl").val("");
+    $("#modalEditData #inIdxPrilaku").val("");
+    // $("#modalEditData #inLevel").val("");
+}
 
 $("#modalTambahData button#btnSaveAddData").click(function () {
     try {
@@ -245,10 +272,10 @@ $("#addEditLevelTemp").click(function () {
         let inIdxPrilaku = $("#modalEditData #inIdxPrilaku").val();
         let inNilaiMin = $("#modalEditData #inNilaiMin").val();
         let flag_is_valid = true;
-        // tblEditLevelTemp.data().each(function (data, idx) {
-        //     if (inLevel == data[0]) flag_is_valid = false;
-        // });
-        // if (!flag_is_valid) throw "Level Sudah ada";
+        tblEditLevelTemp.data().each(function (data, idx) {
+            if (inLevel == data[0]) flag_is_valid = false;
+        });
+        if (!flag_is_valid) throw "Level Sudah ada";
         if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
         if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
 
@@ -256,7 +283,8 @@ $("#addEditLevelTemp").click(function () {
             inLevel,
             inDescripsiLvl,
             inIdxPrilaku,
-            inNilaiMin
+            inNilaiMin,
+            '<div class="js-sweetalert"><button type="button" onclick="deleteDataLevelKomp(this,1)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button></div>'
         ]).draw();
 
     } catch (err) {
@@ -275,10 +303,10 @@ $("#addLevelTemp").click(function () {
         let inIdxPrilaku = $("#modalTambahData #inIdxPrilaku").val();
         let inNilaiMin = $("#modalTambahData #inNilaiMin").val();
         let flag_is_valid = true;
-        // tblAddLevelTemp.data().each(function (data, idx) {
-        //     if (inLevel == data[0]) flag_is_valid = false;
-        // });
-        // if (!flag_is_valid) throw "Level Sudah ada";
+        tblAddLevelTemp.data().each(function (data, idx) {
+            if (inLevel == data[0]) flag_is_valid = false;
+        });
+        if (!flag_is_valid) throw "Level Sudah ada";
         if (inDescripsiLvl == null || inDescripsiLvl == "") throw "Field Deskripsi masih Kosong";
         if (inIdxPrilaku == null || inIdxPrilaku == "") throw "Field Index Prilaku masih Kosong";
 
@@ -286,7 +314,8 @@ $("#addLevelTemp").click(function () {
             inLevel,
             inDescripsiLvl,
             inIdxPrilaku,
-            inNilaiMin
+            inNilaiMin,
+            '<div class="js-sweetalert"><button type="button" onclick="deleteDataLevelKomp(this,0)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button></div>'
         ]).draw();
 
     } catch (err) {
@@ -334,7 +363,8 @@ async function editData(e) {
                     data[i].level,
                     data[i].level_description,
                     data[i].index_perilaku,
-                    data[i].nilai_minimum
+                    data[i].nilai_minimum,
+                    '<div class="js-sweetalert"><button type="button" onclick="deleteDataLevelKomp(this,1)" class="btn btn-danger waves-effect m-r-5"><i class="material-icons">cancel</i></button></div>'
                 ]).draw();
                 $("#KompetensiIdEdit").val(data[i].kompetensi_id);
             }
@@ -393,5 +423,227 @@ function deleteData(e) {
             err,
             "warning"
         );
+    }
+}
+
+function showDeskripsiKompetensi(e)
+{
+    var parents = $(e).closest("tr");
+    let rownum = parseInt($(parents[0]).attr("rownum"));
+    console.log(rownum);
+    let data = $("#table-main").DataTable().data();
+    console.log(data[rownum])
+    $("#desc_komp_show").text(data[rownum][5])
+    $("#komp_name_show").text(data[rownum][6]);
+    $("#modalDeskripsiKompetensi").modal("show");
+}
+
+$("#btnTambahDataGAP").click(function(){
+    loadDdlKompetensiGAP();
+    var tbl = $("#tblAddGAPTemp").DataTable();
+    tbl.rows()
+        .remove()
+        .draw();
+    $("#modalTambahDataGAP").modal("show");
+})
+
+function loadDdlKompetensiGAP() {
+    $.ajax({
+        url: $("#urlPath").val() + "/api/Kompetensi/listKompetensi/" + menuid,
+        type: 'get',
+        dataType: 'json',
+        success: function (result) {
+            let data = result.data;
+            let rawhtml = '<option value="">Select option</option>';
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                rawhtml += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+            }
+            $("#ddlKompetensiGAP").html(rawhtml)
+        }
+    })
+}
+
+function loadDdlLevelKompetensiGAP(e) {
+    let kompetensi_id = $(e).val();
+    $.ajax({
+        url: $("#urlPath").val() + "/api/Kompetensi/listLevelKompetensi/" + kompetensi_id,
+        type: 'get',
+        dataType: 'json',   
+        success: function (result) {
+            let data = result.data;
+            let rawhtml = '<option value="">Select option</option>';
+            console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                rawhtml += '<option value="' + data[i].id + '"> Level ' + data[i].level + ' - ' + data[i].level_description + '</option>';
+            }
+            $("#ddlLevelKompetensiGAP").html(rawhtml);
+            //loadDataGAP('');
+        }
+    })
+}
+
+function loadDataGAP(e){
+    try{
+        let level_kompetensi_id = $("#ddlLevelKompetensiGAP").val();
+        // if(level_kompetensi_id=="") throw "tidak ada  Level Kompetensi yang dipilih";
+        $.ajax({
+            url: $("#urlPath").val() + "/api/kompetensi/"+level_kompetensi_id+"/gap",
+            type: 'get',
+            dataType: 'json',
+            success: function (result) {
+                let data = result.data;
+                let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+                tblAddGAPTemp.rows()
+                    .remove()
+                    .draw();
+                for(let i=0;i<data.length;i++) {
+                    tblAddGAPTemp.row.add([
+                        data[i].gap,
+                        data[i].jenis_program_pengembangan,
+                        data[i].isi_program_pengembangan,
+                        rawButtonActionGAP
+                    ]).draw();
+                }
+            },
+            error:function(err){
+                console.log(err);
+            }
+        })
+    } catch(err){
+        clearFieldGAP();
+        console.log(err);
+    }
+}
+
+function deleteDataGAP(e){
+    let rowSelected = $(e).parents('tr');
+    let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+    tblAddGAPTemp.row(rowSelected).remove().draw();;
+}
+
+function clearFieldGAP(){
+    $("#ddlKompetensiGAP").val("");
+    $("#ddlLevelKompetensiGAP").val("");
+    $("#inGAP").val(0);
+    $("#inJenisProgramPengembangan").val("");
+    $("#inIsiProgramPengembangan").val("");
+}
+
+function addGAPTemp() {
+    try {
+        let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+        let inGAP = $("#inGAP").val();
+        let inJenisProgramPengembangan = $("#inJenisProgramPengembangan").val();
+        let inIsiProgramPengembangan = $("#inIsiProgramPengembangan").val();
+
+        if (inGAP == null || inGAP == "") throw "Field GAP masih Kosong";
+        if (inJenisProgramPengembangan == null || inJenisProgramPengembangan == "") throw "Field Jenis Program Pengembangan masih Kosong";
+        if (inIsiProgramPengembangan == null || inIsiProgramPengembangan == "") throw "Field Isi Program Pengembangan masih Kosong";
+
+        tblAddGAPTemp.row.add([
+            inGAP,
+            inJenisProgramPengembangan,
+            inIsiProgramPengembangan,
+            rawButtonActionGAP
+        ]).draw();
+
+    } catch (err) {
+        swal("Error!",
+            err,
+            "warning"
+        );
+    }
+}
+
+function saveGAP() {
+    try{
+        let tblAddGAPTemp = $("#tblAddGAPTemp").DataTable();
+        let level_kompetensi_id = $("#ddlLevelKompetensiGAP").val();
+        if(level_kompetensi_id == null || level_kompetensi_id == "") throw "Harap Pilih Level Kompetensi Terlebih dahulu";
+        let req = [];
+        tblAddGAPTemp.data().each(function (data, idx) {
+            let item = {
+                gap: data[0],
+                jenis_program_pengembangan: data[1],
+                isi_program_pengembangan: data[2],
+            }
+            req.push(item);
+        });
+        if(req.length==0) throw "Tidak ada data yang akan disimpan";
+        $.ajax({
+            url: $("#urlPath").val() + "/api/kompetensi/"+level_kompetensi_id+"/gap",
+            type: 'post',
+            data: {
+                req: req
+            },
+            // contentType: "application/json",
+            dataType: 'json',
+            success: function (result) {
+                swal("Success!",
+                    result.message,
+                    "success"
+                );
+                loadgrid();
+                $("#modalTambahDataGAP").modal("hide");
+                clearFieldGAP();
+            }
+        });
+    } catch(err) {
+        console.log(err);
+
+        swal("Error!",
+            err,
+            "warning"
+        );
+    }
+}
+
+function showGAPKompetensi(id)
+{
+    try{
+        console.log(id);
+        
+        $.ajax({
+            url: $("#urlPath").val() + "/api/kompetensi/levelKompetensi/gap/"+id,
+            type: 'get',
+            dataType: 'json',
+            success: function (result) {
+                let data = result.data;
+                var tbl = $("#tblGAPDesc").DataTable();
+                tbl.rows()
+                    .remove()
+                    .draw();
+                for(let i=0;i<data.length;i++) {
+                    tbl.row.add([
+                        data[i].gap,
+                        data[i].jenis_program_pengembangan,
+                        data[i].isi_program_pengembangan
+                    ]).draw();
+                }
+                $("#modalShowGAPDesckripsi").modal("show");
+            },
+            error:function(err){
+                console.log(err);                
+            }
+        });
+    } catch(err) {
+        console.log(err);
+
+        swal("Error!",
+            err,
+            "warning"
+        );
+    }
+}
+
+function deleteDataLevelKomp(e,stage){
+    let rowSelected = $(e).parents('tr');
+    if(stage==0) {
+        let tbl = $("#tblAddLevelTemp").DataTable();
+        tbl.row(rowSelected).remove().draw();
+    } else{
+        let tbl = $("#tblEditLevelTemp").DataTable();
+        tbl.row(rowSelected).remove().draw();
     }
 }

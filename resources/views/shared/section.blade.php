@@ -34,7 +34,7 @@
             <ul class="list">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active">
-                    <a href="index">
+                    <a href="{{url('/')}}/home">
                         <i class="material-icons">dashboard</i>
                         <span>Dashboard</span>
                     </a>
@@ -79,6 +79,13 @@
                         <li>
                             <a href="{{url('/')}}/rencanapengembangan">Rencana Pengembangan Kompetensi</a>
                         </li>
+                        <li>
+                            <a href="#">Pengembangan Karir</a>
+                        </li>
+                        <li>
+                            <a href="#">Evaluasi</a>
+                        </li>
+
                         <!--   <li>
                                 <a href="rencanakarir">Rencana Karir</a>
                             </li>

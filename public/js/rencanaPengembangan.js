@@ -10,13 +10,15 @@ $(document).ready(function () {
 function loadgrid() {
     $("#table-main").DataTable().destroy();
     $("#table-main tbody").html('');
-    // console.log($("#urlPath").val() + "/api/Kompetensi/" + menuid);
+    var idPegawai = $('#idPegawai').val();
+    var isAdmin = $("#isAdm").val();
+    // console.log(pegId);
     $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/kompetensi",
+        url: $("#urlPath").val() + "/api/pegawai/kompetensi/"+idPegawai+"/status/"+isAdmin,
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            console.log(result.data);
+            // console.log(result.data);
             let rawhtml = "";
             let data = result.data;
             for (let i = 0; i < data.length; i++) {
@@ -27,8 +29,10 @@ function loadgrid() {
                 rawhtml += '<td>'+data[i].nilai_minimum+'</td>';
                 rawhtml += '<td>'+data[i].nilai+'</td>';
                 rawhtml += '<td>'+data[i].gap+'</td>';
+                rawhtml += '<td>'+data[i].information+'</td>';
                 rawhtml += '<td>'+'<div class="js-sweetalert">';
                 if(isAdm == 'admin'){
+                    rawhtml += '<button type="button" onclick="editData(this)" class="btn btn-info waves-effect m-r-20"><i class="material-icons">mode_edit</i></button>';
                     rawhtml += '<button type="button" onclick="deleteData(this)" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">cancel</i></button>';
                 }
                 rawhtml += '</div>' +'</td>';
@@ -52,7 +56,10 @@ function loadgrid() {
 $("#btnTambahData").click(function () { 
     clearFieldTambahData();
     // loadDDLPegawai();
-    loadDDLKompetensi();
+
+    //loadDDLKompetensi();
+    $("#btnSaveAddData").show();
+    $("#btnSaveEditData").hide();
     $("#modalTambahData").modal("show");
 })
 function clearFieldTambahData()
@@ -63,6 +70,12 @@ function clearFieldTambahData()
     $("#inNilaiMin").val("");
     $("#inNilai").val("");
     $("#inPegawaiNIP").val("");
+    $("#inGAP").val("");
+    $("#inInformation").val("");
+    $("#inIdPegawaiKompetensi").val("");
+    $("#inPegawaiID").removeClass("disabled");
+    $("#inPegawaiID").removeAttr("readonly","readonly");
+    $("#btnSearch").show();
 }
 function loadDDLPegawai()
 {
@@ -78,10 +91,10 @@ function loadDDLPegawai()
         }
     })
 }
-function loadDDLKompetensi()
+function loadDDLKompetensi(esselon)
 {
     $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/listKompetensiLevel",
+        url: $("#urlPath").val() + "/api/kompetensi/levelKompetensi/" + esselon,
         type: 'get',
         dataType: 'json',
         success: function (result) {
@@ -106,15 +119,15 @@ function loadDDLKompetensi()
 function findPegawai()
 {
     console.log("finding starting");
-    
+    let words = $("#inPegawaiID").val();
     $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/listPegawai",
+        url: $("#urlPath").val() + "/api/pegawai/listPegawai/"+words+"/search",
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            let words = $("#inPegawaiID").val();
+            
             let data = result.data;
-            let item = data.find(item=>item.pin === words);
+            let item = data;
             if(item == null )
             {
                 $("#inPegawaiName").val("");
@@ -139,60 +152,114 @@ function findPegawai()
     })
 }
 
+function setLevelKompDdl(e) {
+    $("#ddlKompetensiLevel").val("");
+    var value = $("#ddlEsselon").val()
+    //console.log(value);
+    loadDDLKompetensi(value);
+}
+
 function getNilaiMinimum(e)
 {
     // debugger;
     var nilmin = $('option:selected', e).attr('nilmin');
-    console.log("find nilai min = ",nilmin);
+    // console.log("find nilai min = ",nilmin);
     $("#inNilaiMin").val(nilmin);
+
+    let nilai = $("#inNilai").val();
+    let nilai_min = $("#inNilaiMin").val();
+    let gap = parseInt(nilai==null?0:nilai)-parseInt(nilai_min);
+    $("#inGAP").val(gap);
+}
+
+function nilaiChange(e)
+{
+    let nilai = $(e).val();
+    let nilai_min = $("#inNilaiMin").val();
+    let gap = parseInt(nilai)-parseInt(nilai_min);
+    let levelId = $("#ddlKompetensiLevel").val();
+    autoPopulateInformation(levelId, gap)
+    $("#inGAP").val(gap);
+}
+
+function autoPopulateInformation(lvl, gap) {
+    $.ajax({    
+        url: $("#urlPath").val() + "/api/kompetensi/levelKompetensi/"+lvl+"/gap/"+gap,
+        type: 'get',
+        dataType: 'json',
+        success: function (result) {
+            let data = result.data;
+            if(data == null)
+            {
+                $("#inInformation").val("");
+            }
+            else{
+                let item = data[0];
+                $("#inInformation").val(item.isi_program_pengembangan);
+            }
+        },
+        error:function(err){
+            console.log(err);      
+            swal("Error!",
+                err,
+                "warning"
+            );      
+        }
+    })
 }
 
 function save()
 {
     try{
-    let level_kompetensi_id = $("#ddlKompetensiLevel").val();
-    let pegawai_id = $("#inPegawaiID").val();
-    let pegawai_name = $("#inPegawaiName").val();
-    let nilai = $("#inNilai").val();
-    let nilai_min = $("#inNilaiMin").val();
-    let gap = parseInt(nilai)-parseInt(nilai_min);
-    let nip = $("#inPegawaiNIP").val();
-    if(pegawai_name == null || pegawai_name == undefined || pegawai_name == "" || pegawai_name == "undefined") throw "Pastikan Pegawai ID yang anda masukan benar, dan tekan tombol search untuk memastikan";
-    if(level_kompetensi_id == null || level_kompetensi_id == undefined || level_kompetensi_id == "" || level_kompetensi_id == "undefined") throw "Field Kompetensi Level masih Kosong/Belum dipilih";
-    if(nilai == null || nilai == undefined || nilai == "" || nilai == "undefined") throw "Field Nilai masih Kosong";
-    let req = {
-        pegawai_id:pegawai_id,
-        pegawai_name:pegawai_name,
-        nip:nip==null?" ":nip,
-        level_kompetensi_id:level_kompetensi_id,
-        nilai:nilai,
-        gap:gap
-    }
-    console.log(req);
-    
-    $.ajax({
-        url: $("#urlPath").val() + "/api/pegawai/kompetensi",
-        type: 'post',
-        data:{req:req},
-        dataType: 'json',
-        success: function (result) {
-            loadgrid();
-            $("#modalTambahData").modal("hide");
-            swal("Success!",
-                result.message,
-                "success"
-            );
-        },
-        error:function(err){
-            console.log(err);            
-            swal("Error!",
-                err,
-                "error"
-            );
+        let level_kompetensi_id = $("#ddlKompetensiLevel").val();
+        let pegawai_id = $("#inPegawaiID").val();
+        let pegawai_name = $("#inPegawaiName").val();
+        let nilai = $("#inNilai").val();
+        let nilai_min = $("#inNilaiMin").val();
+        let gap = parseInt(nilai)-parseInt(nilai_min);
+        let nip = $("#inPegawaiNIP").val();
+        let information = $("#inInformation").val();
+        if(pegawai_name == null || pegawai_name == undefined || pegawai_name == "" ) throw "Pastikan Pegawai ID yang anda masukan benar, dan tekan tombol search untuk memastikan";
+        if(level_kompetensi_id == null || level_kompetensi_id == undefined || level_kompetensi_id == ""  ) throw "Field Kompetensi Level masih Kosong/Belum dipilih";
+        if(nilai == null || nilai == undefined || nilai == "" ) throw "Field Nilai masih Kosong";
+        if(information == null || information == undefined || information == "" ) throw "Field Informasi masih Kosong";
+        let req = {
+            pegawai_id:pegawai_id,
+            pegawai_name:pegawai_name,
+            nip:nip==null?" ":nip,
+            level_kompetensi_id:level_kompetensi_id,
+            nilai:nilai,
+            gap:gap,
+            information:information
         }
-    })
+        // console.log(req);
+        
+        $.ajax({
+            url: $("#urlPath").val() + "/api/pegawai/kompetensi",
+            type: 'post',
+            data:{req:req},
+            dataType: 'json',
+            success: function (result) {
+                loadgrid();
+                $("#modalTambahData").modal("hide");
+                clearFieldTambahData();
+                swal("Success!",
+                    result.message,
+                    "success"
+                );
+            },
+            error:function(err){
+                console.log(err);            
+                swal("Error!",
+                    err,
+                    "error"
+                );
+            }
+        })
 
     } catch(err) {
+        console.log(err);
+        
         swal("Warning!",
             err,
             "warning"
@@ -251,5 +318,109 @@ function deleteData(e)
             err,
             "warning"
         );
+    }
+}
+
+function editData(e){
+    try {
+        clearFieldTambahData();
+        // loadDDLPegawai();
+        
+        var parents = $(e).closest("tr");
+        if (parents.length == 0) throw "Kompetensi ID tidak ditemukan";
+        let uid = $(parents[0]).attr("uid");
+        // loadDDLKompetensi();
+
+        $.ajax({
+            url: $("#urlPath").val() + "/api/pegawai/listPegawai/" + uid,
+            type: 'get',
+            dataType: 'json',
+            success: function (result) {
+                if (result.code != 200) throw result.message;
+                let data = result.data;
+                $("#inIdPegawaiKompetensi").val(data.id);
+                $("#ddlKompetensiLevel").val(data.level);
+                $("#inPegawaiID").val(data.pegawai_id);
+                $("#inPegawaiName").val(data.pegawai_name);
+                $("#inNilai").val(data.nilai);
+                $("#inNilaiMin").val(data.nilai_minimum);
+                $("#inPegawaiNIP").val(data.nip);
+                $("#inInformation").val(data.information);
+                $("#inGAP").val(data.gap);
+
+                $("#inPegawaiID").addClass("disabled");
+                $("#inPegawaiID").attr("readonly","readonly");
+                $("#btnSearch").hide();
+                $("#btnSaveAddData").hide();
+                $("#btnSaveEditData").show();
+                $("#modalTambahData").modal("show");
+            },
+            error: function (err) {
+                console.log(err);
+                swal("Error!",
+                    err,
+                    "error"
+                );
+            }
+        })
+        
+    } catch (err) {
+        console.log(err);
+
+        swal("Error!",
+            err,
+            "warning"
+        );
+    }
+}
+
+function saveEditData() {
+    try{
+        let inIdPegawaiKompetensi = $("#inIdPegawaiKompetensi").val();
+        let level_kompetensi_id = $("#ddlKompetensiLevel").val();
+        let pegawai_id = $("#inPegawaiID").val();
+        let pegawai_name = $("#inPegawaiName").val();
+        let nilai = $("#inNilai").val();
+        let nilai_min = $("#inNilaiMin").val();
+        let gap = parseInt(nilai)-parseInt(nilai_min);
+        let nip = $("#inPegawaiNIP").val();
+        let information = $("#inInformation").val();
+        let req = {
+            id : inIdPegawaiKompetensi,
+            pegawai_id:pegawai_id,
+            pegawai_name:pegawai_name,
+            nip:nip==null?" ":nip,
+            level_kompetensi_id:level_kompetensi_id,
+            nilai:nilai,
+            gap:gap,
+            information:information
+        }
+        $.ajax({
+            url: $("#urlPath").val() + "/api/pegawai/kompetensi",
+            type: 'put',
+            data:{req:req},
+            dataType: 'json',
+            success: function (result) {
+                loadgrid();
+                
+                $("#modalTambahData").modal("hide");
+                clearFieldTambahData();
+                swal("Success!",
+                    result.message,
+                    "success"
+                );
+            },
+            error:function(err){
+                console.log(err);            
+                swal("Error!",
+                    err,
+                    "error"
+                );
+            }
+        })
+        
+    } catch(err) {
+        console.log(err);
+        
     }
 }
